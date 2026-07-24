@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../../dist/assets/favicon/favicon.ico" type="image/x-icon" />
+    <title>UI Element Samples</title>
+    <link rel="stylesheet" href="assets/styles/style.min.css" />
+  </head>
+  <body>
+    <header>
+      <div class="branding"><h1>UI Element Guide</h1></div>
+      <nav>
+        <ul>
+          <li><a href="#button-elements" class="page-link">Buttons</a></li>
+          <li><a href="#select-element" class="page-link">Select</a></li>
+          <li><a href="#input-elements" class="page-link">Inputs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="button-elements">
+        <h2>Default HTML Button Elements</h2>
+        <div class="project-card">
+          <p>
+            &emsp;<em>Basic Elements <small>(no styles applied)</small></em
+            ><br />
+            <a href="#">anchor</a>&emsp;<button type="button">button</button>
+          </p>
+        </div>
+        <h2>Styled Button Elements</h2>
+        <div class="project-card">
+          <h3>Buttons</h3>
+          <button type="button" class="button-primary">primary</button>
+          <button type="button" class="button-secondary">secondary</button>
+          <button type="button" class="button-success">success</button>
+          <button type="button" class="button-warning">warning</button>
+          <button type="button" class="button-danger">danger</button>
+          <button type="button" class="button-info">info</button>
+          <button disabled type="button" class="button-primary">disabled</button><br />
+          <h3>Anchor Button Elements</h3>
+          <a class="button-primary" href="#">primary</a>
+          <a class="button-secondary" href="#">secondary</a>
+          <a class="button-success" href="#">success</a>
+          <a class="button-warning" href="#">warning</a>
+          <a class="button-danger" href="#">danger</a>
+          <a class="button-info" href="#">info</a>
+          <a class="button-primary disabled-link" href="#">disabled</a>
+        </div>
+      </section>
+
+      <section id="select-element">
+        <h2>Select Element</h2>
+        <div class="project-card">
+          <label for="selectId">Choose an Item:</label>
+          <select name="select" id="selectId">
+            <option value="">--Please choose an option--</option>
+            <optgroup label="Category 1">
+              <option value="item1">Item 1</option>
+              <option value="item2">Item 2</option>
+              <option value="item3">Item 3</option>
+            </optgroup>
+            <optgroup label="Category 2">
+              <option value="item4">Item 4</option>
+              <option value="item5">Item 5</option>
+              <option value="item6">Item 6</option>
+            </optgroup>
+          </select>
+          <br />
+        </div>
+      </section>
+
+      <section id="input-elements">
+        <h2>Input Elements</h2>
+        <div class="project-card">
+          <h3>Form Template</h3>
+          <form>
+            <fieldset>
+              <legend>Form Legend</legend>
+              <h4>Information Input Elements</h4>
+              <label for="textId">Text (4 to 8 characters):</label>
+              <input type="text" id="textId" name="text" minlength="4" maxlength="8" placeholder="text" /><br />
+              <label for="numberId">Number (10-100):</label>
+              <input type="number" id="numberId" name="number" min="10" max="100" placeholder="number" /><br />
+              <label for="urlId">Url:</label>
+              <input type="url" id="urlId" name="url" pattern="https://.*" placeholder="url" /><br />
+              <label for="emailId">E-Mail:</label>
+              <input type="email" id="emailId" name="email" placeholder="number" /><br />
+              <label for="pass">Password (8 characters minimum):</label>
+              <input type="password" id="pass" name="password" minlength="8" placeholder="password" required /><br />
+              <label for="phone">Phone Number (<small>Format: 123-456-7890</small>):</label>
+              <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="tel" /><br />
+              <label for="textareaId">Text Area:</label><br />
+              <textarea name="textarea" id="textareaId" placeholder="textarea"></textarea><br />
+              <input type="reset" class="button-warning" value="Reset" />
+              <input type="submit" class="button-success" value="Submit" />
+            </fieldset>
+          </form>
+        </div>
+        <div class="project-card">
+          <h3>Search Input Element</h3>
+          <label for="searchId">Search:</label>
+          <input type="search" id="searchId" name="search" placeholder="search" />
+          <button class="button-primary">Search</button><br />
+        </div>
+        <div class="project-card">
+          <h3>Date/Time Input Elements</h3>
+          <label for="dateId">Date:</label>
+          <input type="date" id="dateId" name="date" /><br />
+          <label for="start">Month:</label>
+          <input type="month" id="start" name="start" min="2018-03" value="2018-05" /><br />
+          <label for="weekId">Choose a week in May or June:</label>
+          <input type="week" name="week" id="weekId" min="2018-W18" max="2018-W26" /><br />
+          <label for="appointment">Choose an appointment time:</label>
+          <input type="time" id="appointment" name="appointment" min="09:00" max="18:00" /><br />
+          <label for="meetingId">Choose an appointment time:</label>
+          <input type="datetime-local" id="meetingId" name="meeting" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" />
+        </div>
+        <div class="project-card">
+          <h3>Interactive Input Elements</h3>
+          <p>&emsp;<em>Range Element</em></p>
+          <label for="rangeId">Range: </label>
+          <input type="range" id="rangeId" name="range" min="0" max="11" step=" 0.5" /><br />
+          <p>&emsp;<em>Color Chooser Element</em></p>
+          <form id="color-form">
+            <label for="color-picker">Color:</label>
+            <input type="color" value="#00ff00" id="color-picker" />
+            <code><output name="hex" for="color-picker"></output></code><br />
+            <script>
+              const form = document.getElementById('color-form')
+              const color = form.elements['color-picker']
+              const hex = form.elements['hex']
+              function updateResult() {
+                hex.value = color.value
+              }
+              form.addEventListener('input', updateResult)
+              updateResult()
+            </script>
+          </form>
+          <p>&emsp;<em>Checkbox Element</em></p>
+          <input type="checkbox" id="checkbox1" name="checkbox" value="checkbox1" checked />
+          <label for="checkbox1">Checkbox 1</label>
+          <input type="checkbox" id="checkbox2" name="checkbox" value="checkbox2" />
+          <label for="checkbox2">Checkbox 2</label>
+          <input type="checkbox" id="checkbox3" name="checkbox" value="checkbox3" />
+          <label for="checkbox3">Checkbox 3</label><br />
+          <p>&emsp;<em>Radio Element</em></p>
+          <input type="radio" id="radio1" name="radio" value="radio1" checked />
+          <label for="radio1">Radio 1</label>
+          <input type="radio" id="radio2" name="radio" value="radio2" />
+          <label for="radio2">Radio 2</label>
+          <input type="radio" id="radio3" name="radio" value="radio3" />
+          <label for="radio3">Radio 3</label><br />
+        </div>
+        <div class="project-card">
+          <h3>File Upload Input Elements</h3>
+          <!-- File Upload -->
+          <p>
+            &emsp;<em>Choose a file to upload:</em>
+            <label class="file-input-label">
+              <input type="file" id="fileUpload" />
+              <span>Select File</span>
+            </label>
+          </p>
+          <output id="fileInfo"></output>
+          <script>
+            const fileInput = document.getElementById('fileUpload')
+            const fileInfo = document.getElementById('fileInfo')
+            fileInput.addEventListener('change', () => {
+              console.log(fileInput.files)
+              const file = fileInput.files[0]
+              console.log(file)
+              fileInfo.textContent = file ? `Selected: ${file.name}` : ''
+            })
+          </script>
+          <!-- Image Upload with Preview -->
+          <p>
+            &emsp;<em>Choose a image to upload:</em>
+            <label class="file-input-label">
+              <input type="file" id="imageUpload" accept="image/*" />
+              <span>Select Image</span>
+            </label>
+          </p>
+          <div style="margin-top: 10px">
+            <img id="previewImage" src="" alt="Image preview" style="display: none" />
+          </div>
+          <br />
+          <script>
+            const imageInput = document.getElementById('imageUpload')
+            const previewImage = document.getElementById('previewImage')
+            imageInput.addEventListener('change', () => {
+              const file = imageInput.files[0]
+              if (file) {
+                const reader = new FileReader()
+                reader.onload = () => {
+                  previewImage.src = reader.result
+                  previewImage.style.display = 'block'
+                  previewImage.style.width = '55%'
+                  previewImage.style.height = 'auto'
+                  previewImage.style.borderRadius = '6px'
+                  previewImage.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)'
+                }
+                reader.readAsDataURL(file)
+              }
+            })
+          </script>
+        </div>
+        <!-- Experimental -->
+        <div class="project-card" id="image-input-elements">
+          <h3>Image Input Elements (Under Construction)</h3>
+          <p>&emsp;<em>Not Included: Create styles for image input elements.</em></p>
+          <input type="image" id="image" alt="Login" src="" />
+        </div>
+      </section>
+
+      <section id="dialog-elements">
+        <h2>Dialogs</h2>
+        <div class="project-card">
+          <button type="button" id="sampleButton" class="button-primary">Click to View</button>
+          <dialog id="sampleDialog">
+            <button type="button" id="closeSampleButton" class="button-danger dialog-close">
+              Close
+            </button>
+            <div class="dialog-card">
+              <h4>Sample Header</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+          </dialog>
+        </div>
+        <script>
+          const sampleButton = document.getElementById('sampleButton')
+          const sampleDialog = document.getElementById('sampleDialog')
+          const closeSample = document.getElementById('closeSampleButton')
+          sampleButton.addEventListener('click', () => {
+            sampleDialog.showModal()
+          })
+          closeSample.addEventListener('click', () => {
+            sampleDialog.close()
+          })
+        </script>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy;2025 felixthecat8a. All rights reserved. |
+        <a href="https://github.com/felixthecat8a" target="_blank" class="page-link">GitHub</a>
+      </p>
+    </footer>
+
+    <label class="dark-mode-toggle">
+      <input type="checkbox" id="darkModeCheckbox" class="dark-mode-checkbox" />
+      <span id="slider">light</span>
+    </label>
+    <script>
+      const darkModeCheckbox = document.getElementById('darkModeCheckbox')
+      const darkModeText = document.getElementById('slider')
+      if (localStorage.getItem('darkMode') === 'true') {
+        darkModeCheckbox.checked = true
+        document.body.classList.add('dark-mode')
+        darkModeText.textContent = 'dark'
+      }
+      darkModeCheckbox.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode')
+        localStorage.setItem('darkMode', darkModeCheckbox.checked)
+        if (darkModeCheckbox.checked) {
+          darkModeText.textContent = 'dark'
+        } else {
+          darkModeText.textContent = 'light'
+        }
+      })
+    </script>
+
+  </body>
+</html>

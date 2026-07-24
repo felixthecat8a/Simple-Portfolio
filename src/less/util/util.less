@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+// Font families
+@font-serif: Georgia, 'Times New Roman', Times, serif;
+@font-sans: 'Lato', Arial, Helvetica, sans-serif;
+@font-mono: 'Roboto Mono', 'Courier New', Courier, monospace;
+@font-code: 'Google Sans Code', Courier, monospace;
+@primary-font-family: @font-sans;
+@code-font-family: @font-mono;
+// General Theme Tokens
+@color-dark: #1f1f1f;
+@color-light: #f1f1f1;
+@color-grey: #333;
+@color-green: hsl(115, 50%, 50%);
+@color-blue: hsl(200, 50%, 50%);
+@color-orange: hsl(25, 50%, 50%);
+@color-yellow: hsl(55, 50%, 55%);
+@color-red: hsl(0, 50%, 50%);
+// Main Colors
+@bg-header: darken(@color-green, 35%);
+@txt-header: @color-light;
+@accent-color: saturate(@color-green, 55%);
+@bg-main: @color-light;
+@txt-main: @color-grey;
+@bg-footer: @color-dark;
+@txt-footer: @color-light;
+@card-border-green: 5px solid @color-green;
+@card-border-blue: 5px solid @color-blue;
+@card-border-orange: 5px solid @color-orange;
+@card-border-yellow: 5px solid @color-yellow;
+@card-border-red: 5px solid @color-red;
+
+@breakpoint-xs: calc(480 / 16 * 1rem);
+@breakpoint-sm: calc(576 / 16 * 1rem);
+@breakpoint-md: calc(768 / 16 * 1rem);
+@breakpoint-lg: calc(992 / 16 * 1rem);
+@breakpoint-xl: calc(1200 / 16 * 1rem);
+@breakpoint-xxl: calc(1400 / 16 * 1rem);
+
+#media-lib {
+  .extra-small(@rules) {
+    @media only screen and (max-width: @breakpoint-xs) {
+      @rules();
+    }
+  }
+  .small(@rules) {
+    @media only screen and (max-width: @breakpoint-sm) {
+      @rules();
+    }
+  }
+  .medium(@rules) {
+    @media only screen and (max-width: @breakpoint-md) {
+      @rules();
+    }
+  }
+  .large(@rules) {
+    @media only screen and (max-width: @breakpoint-lg) {
+      @rules();
+    }
+  }
+  .extra-large(@rules) {
+    @media only screen and (max-width: @breakpoint-xl) {
+      @rules();
+    }
+  }
+  .extra-extra-large(@rules) {
+    @media only screen and (max-width: @breakpoint-xxl) {
+      @rules();
+    }
+  }
+}

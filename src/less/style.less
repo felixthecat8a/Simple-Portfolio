@@ -1,0 +1,57 @@
+@import './util/util';
+@import './layout/layout';
+@import './component/component';
+
+body {
+  .header-style(@bg-header,@txt-header,@accent-color);
+  .main-style({
+    #ui-components.button-styles();
+    #ui-components.data-input-styles();
+    #ui-components.interactive-inputs();
+    #components-lib.form-styles();
+    #components-lib.anchor-styles();
+    #components-lib.dialog-styles();
+    #components-lib.meter-styles();
+    #components-lib.spinner-styles();
+  });
+  .footer-style(@bg-footer,@txt-footer,@accent-color);
+  .project-card,
+  .skills-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    margin: 1em 0;
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .skills-card {
+    ul {
+      margin-left: 12px;
+    }
+  }
+  .side-green {
+    border-left: @card-border-green;
+  }
+  .side-blue {
+    border-left: @card-border-blue;
+  }
+  .side-orange {
+    border-left: @card-border-orange;
+  }
+  .side-yellow {
+    border-left: @card-border-yellow;
+  }
+  .side-red {
+    border-left: @card-border-red;
+  }
+}
+
+// @import './honeycomb.less';
+// #honeycomb-lib.honeycomb-styles();
+
+@import './theme/dark-mode';
+#dark-mode.dark-mode-settings();
+#dark-mode.dark-mode-toggle-checkbox(0.8rem);

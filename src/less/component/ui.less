@@ -1,0 +1,143 @@
+#ui-element-lib {
+  .box-attributes() {
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    outline: none;
+    font: inherit;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.25rem 0.75rem;
+    margin: 0 0.25rem 0.5rem 0.25rem;
+  }
+
+  .button-attributes(@bg-color) {
+    cursor: pointer;
+    border: none;
+    color: #f1f1f1 !important;
+    @bg-gradient: darken(@bg-color, 5%);
+    background: linear-gradient(135deg, @bg-color, @bg-gradient);
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+    &:hover {
+      @bg-hover: lighten(@bg-color, 5%);
+      background: linear-gradient(135deg, @bg-hover, @bg-color);
+      transform: scale(1.01);
+      box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.1);
+    }
+    &:active {
+      @active-grad: darken(@bg-gradient, 5%);
+      background: linear-gradient(135deg, @bg-gradient, @active-grad);
+      transform: scale(0.99);
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+#ui-components {
+  .button-styles() {
+    @button-defaults: {
+      primary: #007bff;
+      secondary: #6c757d;
+      success: #27a745;
+      danger: #dc3545;
+      warning: #dd5625;
+      info: #17a2b8;
+    };
+    each(@button-defaults, {
+      a.button-@{key} {
+        text-decoration: none !important;
+        #ui-element-lib.box-attributes();
+      }
+      a.button-@{key},
+      button.button-@{key},
+      input[type='reset'].button-@{key},
+      input[type='submit'].button-@{key} {
+        #ui-element-lib.button-attributes(@value);
+      }
+    });
+    button,
+    input[type='reset'],
+    input[type='submit'] {
+      #ui-element-lib.box-attributes();
+      &:disabled {
+        opacity: 50%;
+        cursor: not-allowed;
+        box-shadow: none;
+        filter: grayscale(40%);
+      }
+    }
+    .disabled-link {
+      opacity: 50%;
+      cursor: not-allowed;
+      box-shadow: none;
+      filter: grayscale(40%);
+    }
+    label.file-input-label {
+      position: relative;
+      #ui-element-lib.box-attributes();
+      border: @border-gray-line;
+      #ui-element-lib.button-attributes(rgb(36, 181, 36));
+      input[type='file'] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .data-input-styles() {
+    select,
+    textarea,
+    input[type='number'],
+    input[type='text'],
+    input[type='url'],
+    input[type='password'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='search'],
+    input[type='date'],
+    input[type='month'],
+    input[type='week'],
+    input[type='time'],
+    input[type='datetime-local'] {
+      #ui-element-lib.box-attributes();
+      border: @border-gray-line;
+    }
+    textarea {
+      width: 100%;
+    }
+  }
+
+  .interactive-inputs() {
+    input[type='range'],
+    input[type='checkbox'],
+    input[type='radio'],
+    input[type='color'] {
+      cursor: pointer;
+    }
+    input[type='checkbox'],
+    input[type='radio'] {
+      accent-color: darkcyan;
+      width: 1.1em;
+      height: 1.1em;
+      margin: 0.3em;
+      vertical-align: middle;
+    }
+    input[type='color'] {
+      background: none;
+      appearance: auto;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      inline-size: 50px;
+      block-size: 32px;
+      box-sizing: border-box;
+      border: @border-gray-line;
+    }
+  }
+}

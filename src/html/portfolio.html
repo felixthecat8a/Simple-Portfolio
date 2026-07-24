@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Felix Ochoa</title>
+    <link rel="stylesheet" href="assets/styles/style.min.css" />
+  </head>
+  <body>
+    <header>
+      <div class="branding">
+        <h1>Felix Ochoa</h1>
+        <p><strong>Educator</strong> | <em>Applied Engineering&#8226;Robotics&#8226;Engineering Design</em></p>
+      </div>
+      <nav class="header-nav">
+        <ul>
+          <li><a href="#about-section">About</a></li>
+          <li><a href="#projects-section">Projects</a></li>
+          <li><a href="#skills-section">Skills</a></li>
+          <li><a href="#contact-section">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about-section">
+        <h2>About Me</h2>
+        <article id="about-article">
+          <p>
+            Hi! I'm Felix, a technology and mathematics educator with over eighteen years of experience and a degree in Electrical Engineering.
+            I enjoy working on Arduino-based projects and empowering students to build functional, real-world systems from scratch.
+          </p>
+        </article>
+      </section>
+
+      <section id="projects-section">
+        <h2>My Projects</h2>
+
+        <div class="project-card side-green" id="project-Felix8A">
+          <h3>Felix8A</h3>
+          <p>
+            &emsp;&emsp;The <strong><em>Felix8A</em></strong> library is a lightweight Arduino library designed for simple input and output device control.
+            It combines LED, button, and timer utilities into a single, easy-to-use package.
+          </p>
+          <button type="button" id="openButton00" class="button-success">LightString</button>
+          <dialog id="dialog00">
+            <button type="button" id="closeButton00" class="button-danger dialog-close">Close</button>
+            <div class="dialog-card">
+              <h4>WS2812 Light Control Box</h4>
+              <p>
+                &emsp;&emsp;I used the library to make a sketch that updates the colors of a WS2812 LED string, similar to Christmas tree lights, using a push button.
+                I used Tinkercad and a 3D printer to design and fabricate a control box that houses an Arduino Nano, a momentary push button, a latching button, and a 9V battery.
+              </p>
+              <br>
+              <p><strong>Equipment:</strong> <code>Arduino Nano Every, Arduino Nano Terminal Adapter, Apiele&reg; Latching and Non-latching Pushbuttons & 3D Printer</code></p>
+              <p><strong>Tech:</strong> <code>PlatformIO, C++, Arduino & Tinkercad</code></p>
+              <br>
+              <a class="button-success" href="https://github.com/felixthecat8a/Felix8A" target="_blank" rel="noopener noreferrer">Felix8A</a>
+              <a class="button-primary" href="https://www.tinkercad.com/" target="_blank" rel="noopener noreferrer">Tinkercad</a>
+              <a class="button-info" href="https://github.com/felixthecat8a/Felix8A/blob/main/LightString.md" target="_blank" rel="noopener noreferrer">LightString</a>
+            </div>
+          </dialog>
+        </div>
+
+        <div class="project-card side-blue" id="project-Felix8A">
+          <h3>FelixSense</h3>
+          <p>
+            &emsp;&emsp;The <strong><em>FelixSense</em></strong> library is a lightweight Arduino library for analog sensors such as photoresistors, thermistors, and potentiometers.
+            It provides smoothing, normalization, mapped outputs, calculations, and easy sensor-specific classes.
+          </p>
+          <button type="button" id="openButton01" class="button-primary">RGB Thermometer</button>
+          <dialog id="dialog01">
+            <button type="button" id="closeButton01" class="button-danger dialog-close">Close</button>
+            <div class="dialog-card">
+              <h4>RGB Thermometer</h4>
+              <p>
+                &emsp;&emsp;I used the library to build a digital thermometer that reads temperature from a thermistor-resistor sensor circuit and display it on an 18-Pin RGB LCD module.
+                The LCD module's RGB pins are used to visually represent temperature through color, while a photoresistor-resistor sensor circuit adjusts display brightness based on ambient light levels.
+              </p>
+              <p>
+                &emsp;&emsp;I used Timkercad to design and print a platform to mount an Arduino UNO R3 and breadboard.
+              </p>
+              <p><strong>Equipment:</strong> <code>Arduino UNO R3, 18-pin RGB LCD Module, breadboard & 3D Printer</code></p>
+              <p><strong>Tech:</strong> <code>PlatformIO, C++, Arduino & Tinkercad</code></p>
+              <a class="button-secondary disabled-link" href="https://github.com/felixthecat8a/FelixSense" target="_blank" rel="noopener noreferrer">FelixSense</a>
+              <a class="button-primary" href="https://www.tinkercad.com/" target="_blank" rel="noopener noreferrer">Tinkercad</a>
+              <a class="button-warning disabled-link" href="https://github.com/felixthecat8a/FelixSense/blob/main/ThermometerRGB.md" target="_blank" rel="noopener noreferrer">ThermometerRGB</a>
+            </div>
+          </dialog>
+        </div>
+
+        <div class="project-card side-orange" id="project-arduino-rest-api-server">
+          <h3>Arduino RESTful Weather Server and Client</h3>
+          <p>
+            &emsp;&emsp;This project includes a JSON WiFi server for Nano RP2040 + AHT10/AHT20 that shares sensor data over AP using WiFiNINA and a ESP32 Temperature & Humidity Display Client with LVGL.
+          </p>
+          <button type="button" id="openButton02" class="button-warning">Server</button>
+          <dialog id="dialog02">
+            <button type="button" id="closeButton02" class="button-danger dialog-close">Close</button>
+            <div class="dialog-card">
+              <h3>Arduino RESTful Weather Server</h3>
+              <p>
+                &emsp;&emsp;<strong>Server:</strong> used an Arduino Nano RP2040 Connect to collect real-time temperature and humidity data from a sensor.
+                The readings are served as JSON through a RESTful API using the onboard Wi-Fi module.
+                The system is designed to be easily consumed by JavaScript-based frontends and embedded clients.
+              </p>
+              <p><strong>Equipment:</strong> <code>Arduino Nano RP2040 Connect, AHT20 sensor</code></p>
+              <p><strong>Libraries:</strong> <code>WiFiNINA, ArduinoJson</code></p>
+              <p><strong>Tech:</strong> <code>Arduino IDE, JavaScript, HTML, CSS</code></p>
+              <a class="button-secondary" href="https://github.com/felixthecat8a/Arduino-Weather-Server-and-Client" target="_blank" rel="noopener noreferrer">View GitHub</a>
+              <a class="button-info" href="https://docs.arduino.cc/libraries/wifinina/" target="_blank" rel="noopener noreferrer">WiFiNINA</a>
+              <a class="button-warning" href="https://docs.arduino.cc/libraries/arduinojson/" target="_blank" rel="noopener noreferrer">ArduinoJson</a>
+            </div>
+          </dialog>
+          <button type="button" id="openButton03" class="button-danger">Client</button>
+          <dialog id="dialog03">
+            <button type="button" id="closeButton03" class="button-danger dialog-close">Close</button>
+            <div class="dialog-card">
+              <h3>Arduino RESTful Weather Client</h3>
+              <p>
+                &emsp;&emsp;<strong>Client:</strong>I used an ESP32 CYD (Cheap Yellow Display) to develop a display client.
+                The ESP32 connects to the REST API over Wi-Fi and renders live environmental data on a touchscreen interface built with the LVGL graphics library.
+                The UI includes real-time updates and is optimized for embedded display performance.
+              </p>
+              <p><strong>Equipment:</strong> <code>ESP32 CYD (Cheap Yellow Display)</code></p>
+              <p><strong>Libraries:</strong> <code>ArduinoJson, WiFi, HTTPClient, LVGL, TFT_eSPI</code></p>
+              <p><strong>Tech:</strong> <code>Arduino IDE</code></p>
+              <a class="button-success" href="https://lvgl.io/" target="_blank" rel="noopener noreferrer">LVGL</a>
+              <a class="button-primary" href="https://docs.arduino.cc/libraries/tft_espi/" target="_blank" rel="noopener noreferrer">TFT_eSPI</a>
+              <a class="button-info" href="https://docs.arduino.cc/libraries/wifi/" target="_blank" rel="noopener noreferrer">WiFi</a>
+              <a class="button-warning" href="https://docs.arduino.cc/libraries/httpclient/" target="_blank" rel="noopener noreferrer">HTTPClient</a>
+            </div>
+          </dialog>
+        </div>
+
+      </section>
+
+      <section id="skills-section">
+        <h2>Skills & Tools</h2>
+        <div class="skills-card side-yellow">
+          <ul>
+            <li><strong>Languages:</strong> C++ (Arduino), JavaScript (Node.js), Python (CircuitPython)</li>
+            <li><strong>Web Technologies:</strong> HTML, CSS, Less.js, Gulp.js, Mocha.js</li>
+            <li><strong>Tools:</strong> Visual Studio Code, GitHub, PlatformIO, ArduinoIDE, Tinkercad, Fusion 360</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact-section">
+        <h2>Contact</h2>
+        <p>
+          You can find my projects and source code on <a href="https://github.com/felixthecat8a" target="_blank">GitHub</a>
+        </p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>&copy;2026 felixthecat8a. All rights reserved. | <a href="https://github.com/felixthecat8a" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script src="assets/scripts/main.min.js"></script>
+  </body>
+</html>

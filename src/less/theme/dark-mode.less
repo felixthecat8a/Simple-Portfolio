@@ -1,0 +1,59 @@
+// Dark Mode  Colors
+@bg-main-dark: @color-grey;
+@txt-main-dark: @color-light;
+
+#dark-mode {
+  .dark-mode-settings {
+    body.dark-mode {
+      background-color: @bg-main-dark;
+      color: @txt-main-dark;
+      main {
+        #components-lib.anchor-styles(#cdc, #efe);
+        #components-lib.dialog-styles(@bg-main-dark, @txt-main-dark);
+        section {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        .js-card,
+        .project-card,
+        .skills-card {
+          background: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+  .dark-mode-toggle-checkbox(@size:0.75rem,@color:#11ff55) {
+    label.dark-mode-toggle {
+      font-family: @font-code;
+      font-size: @size;
+      font-weight: 900;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      position: fixed;
+      bottom: 1.5em;
+      right: 1.25em;
+    }
+    input[type='checkbox'].dark-mode-checkbox {
+      display: none;
+    }
+    #slider {
+      display: inline-block;
+      padding: 1.5px;
+      background-color: @color;
+      color: #333;
+      border-radius: 20px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      transition:
+        background-color 0.3s,
+        color 0.3s;
+      width: 60px;
+      &:hover {
+        filter: brightness(1.05);
+      }
+    }
+    .dark-mode-toggle input:checked + #slider {
+      background-color: #bbb;
+      color: #222;
+    }
+  }
+}
