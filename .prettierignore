@@ -1,0 +1,23 @@
+node_modules
+coverage
+# !dist/
+
+# Ignore Compiled Stylesheets
+**/*.min.css
+**/*.min.css.map
+
+# Ignore Compiled Scripts
+**/*.min.js
+**/*.min.js.map
+
+# Ignore files
+**/*.html
+**/*.md
+
+# Ignore Config files
+**/*.json
+**/*.yaml
+
+# Ignore Other
+**/*.pdf
+**/*.zip

@@ -1,0 +1,20 @@
+// cSpell Settings
+{
+  "version": "0.2", // Version of the setting file. (Always 0.2)
+  "language": "en", // language - current active spelling language
+  "ignorePaths": [
+    "node_modules/**",
+    "coverage/**"
+  ],
+  // words - list of words to be always considered correct
+  "words": [
+    "lessc",
+    "streetsidesoftware"
+  ],
+  // flagWords - list of words to be always considered incorrect
+  // This is useful for offensive words and common spelling errors.
+  "flagWords": [
+    "hte" // For example "hte" should be "the"
+  ],
+  "allowCompoundWords": true
+}
