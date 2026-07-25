@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <title>Felix8A Documentation</title>
+  <link rel="stylesheet" href="assets/styles/style.min.css" />
+</head>
+
+<body>
+  <main class="main-docs">
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>Felix8A</h3>
+        <span class="version">v1.1.1</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li> <a href="#led-class">Felix8A::LED Class</a> </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div id="main-content">
+
+      <!-- Introduction Section -->
+      <section id="introduction">
+        <h1>Introduction</h1>
+        <p>
+          The <strong>Felix8A</strong> library is a lightweight Arduino toolkit for working with common components such as LEDs, RGB lighting, buttons, timing utilities, and color helpers.
+        </p>
+      </section>
+
+      <!-- Getting Started Section -->
+      <section id="getting-started">
+        <h1>Getting Started</h1>
+        <p>Follow these quick installation steps to add the Felix8A library to your project.</p>
+        <h2>Install via ZIP file</h2>
+        <ol>
+          <li>
+            Download the .zip file of the <a href="https://github.com/felixthecat8a/Felix8A/releases/latest/">latest release</a>.
+          </li>
+          <li>
+            In the Arduino IDE, go to "Sketch > Include Library > Add .ZIP Library...." and select the downloaded .zip file.
+          </li>
+        </ol>
+        <br>
+        <h3>Updating the Library</h3>
+        <ol>
+          <li>
+            Go to Documents > Arduino > libraries > Felix8A and delete the existing Felix8A folder from your libraries directory.
+          </li>
+          <li>
+            Follow the installation steps above to install the latest version.
+          </li>
+        </ol>
+        <br>
+        <h2>Add to PlatformIO Project</h2>
+        <div class="code-wrapper">
+          <div class="code-header">platformio.ini</div>
+          <pre><code>
+  lib_deps =
+    https://github.com/felixthecat8a/Felix8A.git
+          </code></pre>
+        </div>
+      </section>
+
+      <section id="led-class">
+        <h1>Felix8A::LED Class</h1>
+
+        <p>
+          The <code>Felix8A::LED</code> class provides a simple interface for controlling a single digital LED.
+          It supports basic operations such as turning the LED on/off, toggling state, and handling active-low configurations.
+        </p>
+
+        <!-- Constructor -->
+        <h2>Constructor</h2>
+        <div class="code-wrapper">
+          <div class="code-header">Constructor</div>
+          <pre><code class="language-cpp">
+      LED(uint8_t pin, bool activeLow = false);
+          </code></pre>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>pin</code></td>
+              <td>uint8_t</td>
+              <td>GPIO pin connected to the LED</td>
+            </tr>
+            <tr>
+              <td><code>activeLow</code></td>
+              <td>bool</td>
+              <td>Set to <code>true</code> if the LED is active-low (default: false)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Notes -->
+        <div class="alert alert-blue">
+          <strong>Tip:</strong> Use <code>activeLow = true</code> for boards where the LED turns on when the pin is LOW.
+        </div>
+
+        <!-- Methods -->
+        <h2>Methods</h2>
+
+        <!-- <ul class="method-list">
+          <li><a href="#led-begin">begin()</a></li>
+          <li><a href="#led-on">on()</a></li>
+          <li><a href="#led-off">off()</a></li>
+          <li><a href="#led-toggle">toggle()</a></li>
+          <li><a href="#led-ison">isOn()</a></li>
+          <li><a href="#led-setpin">setPin()</a></li>
+          <li><a href="#led-getpin">getPin()</a></li>
+          <li><a href="#led-activelow">setActiveLow()</a></li>
+          <li><a href="#led-isactivelow">isActiveLow()</a></li>
+        </ul> -->
+
+        <details  id="led-begin" class="accordion">
+          <summary><code>void begin()</code></summary>
+          <div class="accordion-content">
+            <p>Initializes the LED pin and prepares it for output.</p>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+          #include &lt;Felix8A.h&gt;
+
+          Felix8A::LED led(13);
+
+          void setup() {
+            led.begin();
+          }
+              </code></pre>
+            </div>
+
+          </div>
+        </details>
+
+        <details  id="led-on" class="accordion">
+          <summary><code>void on()</code></summary>
+          <div class="accordion-content">
+            <p>Turns the LED on.</p>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+          #include &lt;Felix8A.h&gt;
+
+          Felix8A::LED led(13);
+
+          void setup() {
+            led.begin();
+            led.on();
+          }
+              </code></pre>
+            </div>
+
+          </div>
+        </details>
+
+        <details  id="led-off" class="accordion">
+          <summary><code>void off()</code></summary>
+          <div class="accordion-content">
+            <p>Turns the LED off.</p>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+          #include &lt;Felix8A.h&gt;
+
+          Felix8A::LED led(13);
+
+          void setup() {
+            led.begin();
+          }
+
+          void loop() {
+            led.on();
+            delay(1000);
+
+            led.off();
+            delay(1000);
+          }
+              </code></pre>
+            </div>
+
+          </div>
+        </details>
+
+        <details  id="led-toggle" class="accordion">
+          <summary><code>void toggle()</code></summary>
+          <div class="accordion-content">
+            <p>Toggles the LED between ON and OFF states.</p>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+          #include &lt;Felix8A.h&gt;
+
+          Felix8A::LED led(13);
+
+          void setup() {
+            led.begin();
+          }
+
+          void loop() {
+            led.toggle();
+            delay(1000);
+          }
+              </code></pre>
+            </div>
+
+          </div>
+        </details>
+
+        <details  id="led-ison" class="accordion">
+          <summary><code>bool isOn()</code></summary>
+          <div class="accordion-content">
+            <p>Returns the current state of the LED.</p>
+            <h4>Returns</h4>
+            <table>
+              <tr>
+                <td><code>true</code></td>
+                <td>The LED is currently ON</td>
+              </tr>
+              <tr>
+                <td><code>false</code></td>
+                <td>The LED is currently OFF</td>
+              </tr>
+            </table>
+
+            <div class="alert alert-orange">
+              <strong>Note:</strong> This reflects the stored state, not a physical read from the pin.
+            </div>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+          #include &lt;Felix8A.h&gt;
+
+          Felix8A::LED led(13);
+
+          void setup() {
+            led.begin();
+          }
+
+          void loop() {
+            if (led.isOn()) {
+              led.off();
+            } else {
+              led.on();
+            }
+            delay(1000);
+          }
+              </code></pre>
+            </div>
+
+          </div>
+        </details>
+
+        <details  id="led-setpin" class="accordion">
+          <summary><code>void setPin(uint8_t pin)</code></summary>
+          <div class="accordion-content">
+            <p>Changes the GPIO pin used by the LED.</p>
+            <h3>Parameters</h3>
+            <table>
+              <tr>
+                <td><code>pin</code></td>
+                <td>New GPIO pin number</td>
+              </tr>
+            </table>
+          </div>
+        </details>
+
+        <details  id="led-getpin" class="accordion">
+          <summary><code>uint8_t getPin()</code></summary>
+          <div class="accordion-content">
+            <p>Returns the GPIO pin currently assigned to the LED.</p>
+            <h4>Returns</h4>
+            <table>
+              <tr>
+                <td><code>uint8_t</code></td>
+                <td>The GPIO pin number used by the LED</td>
+              </tr>
+            </table>
+
+            <div class="alert alert-orange">
+              <strong>Note:</strong> This value reflects the current configuration and may change if <code>setPin()</code> is called.
+            </div>
+
+          </div>
+        </details>
+
+        <details id="led-activelow" class="accordion">
+          <summary><code>void setActiveLow(bool enable)</code></summary>
+          <div class="accordion-content">
+            <p>
+              Sets whether the LED is active-low.
+              When enabled, the LED turns on when the pin is LOW.
+            </p>
+          </div>
+        </details>
+
+        <details id="led-isactivelow" class="accordion">
+          <summary><code>bool isActiveLow()</code></summary>
+          <div class="accordion-content">
+            <p>Returns whether the LED is configured as active-low.</p>
+
+            <h4>Returns</h4>
+            <table>
+              <tr>
+                <td><code>true</code></td>
+                <td>The LED turns on when the pin is LOW</td>
+              </tr>
+              <tr>
+                <td><code>false</code></td>
+                <td>The LED operates in standard active-high mode</td>
+              </tr>
+            </table>
+
+            <div class="alert alert-orange">
+              <strong>Note:</strong> This is a configuration setting. Use <code>isOn()</code> to check the current LED state.
+            </div>
+
+          </div>
+        </details>
+
+      </section>
+
+      <section id="pwm-class">
+
+      </section>
+
+    </div>
+
+    <script>
+      document.querySelectorAll('#sidebar a').forEach(link => {
+        link.addEventListener('click', function () {
+          document.querySelectorAll('#sidebar a').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    </script>
+
+    <script>
+      if (window.location.hash) {
+        const el = document.querySelector(window.location.hash);
+        if (el && el.tagName === "DETAILS") {
+          el.open = true;
+          el.scrollIntoView();
+        }
+      }
+    </script>
+
+  </main>
+
+</body>
+
+</html>

@@ -12,7 +12,14 @@
     strong { font-weight: bold; }
     em { font-style: italic; }
     abbr[title] { text-decoration: none; }
-    code { font-family: @code-font-family; }
+    code {
+      font-family: @code-font-family;
+      font-size: 0.9rem;
+    }
+    pre {
+      padding: 0.1rem;
+      overflow-x: auto;
+    }
     figcaption {
       font-size: small;
       font-weight: normal;
@@ -53,6 +60,9 @@
         margin-bottom: 1em;
         background-color: rgba(0, 0, 0, 0.05);
         border-radius: 12px;
+        ul, ol {
+          margin-left: 12px;
+        }
       }
     }
     #media-lib.small({

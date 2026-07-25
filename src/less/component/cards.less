@@ -1,0 +1,69 @@
+.info-card-styles() {
+  .info-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    margin: 1em 0;
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    ul {
+      margin-left: 12px;
+    }
+  }
+}
+
+.alert-card-styles() {
+  .alert {
+    padding: 1rem;
+    border-left: 4px solid;
+    border-radius: 0.375rem;
+    margin: 1.5rem 0;
+  }
+
+  .alert-blue {
+    background-color: #e0f2fe;
+    border-color: #0284c7;
+    color: #0369a1;
+  }
+
+  .alert-orange {
+    background-color: #fef3c7;
+    border-color: #d97706;
+    color: #b45309;
+  }
+
+  .alert-green {
+    background-color: #dcfce7;
+    border-color: #16a34a;
+    color: #166534;
+  }
+
+  .alert-red {
+    background-color: #fee2e2;
+    border-color: #dc2626;
+    color: #991b1b;
+  }
+}
+
+.card-styles() {
+  .info-card-styles();
+  .side-green {
+    border-left: @card-border-green;
+  }
+  .side-blue {
+    border-left: @card-border-blue;
+  }
+  .side-orange {
+    border-left: @card-border-orange;
+  }
+  .side-yellow {
+    border-left: @card-border-yellow;
+  }
+  .side-red {
+    border-left: @card-border-red;
+  }
+  .alert-card-styles();
+}

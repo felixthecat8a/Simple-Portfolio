@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/styles/style.min.css" />
   </head>
   <body>
-    <header>
+    <header class="header-portfolio">
       <div class="branding">
         <h1>Felix Ochoa</h1>
         <p><strong>Educator</strong> | <em>Applied Engineering&#8226;Robotics&#8226;Engineering Design</em></p>
@@ -23,7 +23,7 @@
       </nav>
     </header>
 
-    <main>
+    <main class="main-portfolio">
       <section id="about-section">
         <h2>About Me</h2>
         <article id="about-article">
@@ -37,7 +37,7 @@
       <section id="projects-section">
         <h2>My Projects</h2>
 
-        <div class="project-card side-green" id="project-Felix8A">
+        <div class="info-card side-green" id="project-Felix8A">
           <h3>Felix8A</h3>
           <p>
             &emsp;&emsp;The <strong><em>Felix8A</em></strong> library is a lightweight Arduino library designed for simple input and output device control.
@@ -63,7 +63,7 @@
           </dialog>
         </div>
 
-        <div class="project-card side-blue" id="project-Felix8A">
+        <div class="info-card side-blue" id="project-Felix8A">
           <h3>FelixSense</h3>
           <p>
             &emsp;&emsp;The <strong><em>FelixSense</em></strong> library is a lightweight Arduino library for analog sensors such as photoresistors, thermistors, and potentiometers.
@@ -79,18 +79,18 @@
                 The LCD module's RGB pins are used to visually represent temperature through color, while a photoresistor-resistor sensor circuit adjusts display brightness based on ambient light levels.
               </p>
               <p>
-                &emsp;&emsp;I used Timkercad to design and print a platform to mount an Arduino UNO R3 and breadboard.
+                &emsp;&emsp;I used Tinkercad to design and print a platform to mount an Arduino UNO R3 and breadboard.
               </p>
               <p><strong>Equipment:</strong> <code>Arduino UNO R3, 18-pin RGB LCD Module, breadboard & 3D Printer</code></p>
               <p><strong>Tech:</strong> <code>PlatformIO, C++, Arduino & Tinkercad</code></p>
-              <a class="button-secondary disabled-link" href="https://github.com/felixthecat8a/FelixSense" target="_blank" rel="noopener noreferrer">FelixSense</a>
+              <a class="button-secondary" href="https://github.com/felixthecat8a/FelixSense" target="_blank" rel="noopener noreferrer">FelixSense</a>
               <a class="button-primary" href="https://www.tinkercad.com/" target="_blank" rel="noopener noreferrer">Tinkercad</a>
               <a class="button-warning disabled-link" href="https://github.com/felixthecat8a/FelixSense/blob/main/ThermometerRGB.md" target="_blank" rel="noopener noreferrer">ThermometerRGB</a>
             </div>
           </dialog>
         </div>
 
-        <div class="project-card side-orange" id="project-arduino-rest-api-server">
+        <div class="info-card side-orange" id="project-arduino-rest-api-server">
           <h3>Arduino RESTful Weather Server and Client</h3>
           <p>
             &emsp;&emsp;This project includes a JSON WiFi server for Nano RP2040 + AHT10/AHT20 that shares sensor data over AP using WiFiNINA and a ESP32 Temperature & Humidity Display Client with LVGL.
@@ -138,7 +138,7 @@
 
       <section id="skills-section">
         <h2>Skills & Tools</h2>
-        <div class="skills-card side-yellow">
+        <div class="info-card side-yellow">
           <ul>
             <li><strong>Languages:</strong> C++ (Arduino), JavaScript (Node.js), Python (CircuitPython)</li>
             <li><strong>Web Technologies:</strong> HTML, CSS, Less.js, Gulp.js, Mocha.js</li>
@@ -156,7 +156,7 @@
 
     </main>
 
-    <footer>
+    <footer class="footer-portfolio">
       <p>&copy;2026 felixthecat8a. All rights reserved. | <a href="https://github.com/felixthecat8a" target="_blank">GitHub</a></p>
     </footer>
 

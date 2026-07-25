@@ -24,7 +24,7 @@
   });
 }
 
-.header-style(@bg: @color-dark, @txt: @color-light, @accent: #95ff05) {
+.header-styles(@bg: @color-dark, @txt: @color-light, @accent: #95ff05) {
   header {
     background-color: @bg;
     color: @txt;
@@ -51,17 +51,86 @@
   });
 }
 
-.main-style(@block) {
-  main {
+.main-styles(@block) {
+  main.main-portfolio {
     background-color: inherit;
     color: inherit;
     width: min(80ch, 100% - 5em);
     margin: 1.5em auto;
     @block();
   }
+
+  main.main-docs {
+    display: flex;
+    @block();
+
+    #sidebar {
+      width: 260px;
+      height: 100vh;
+      background-color: @bg-sidebar;
+      color: @txt-sidebar;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 2rem 1.5rem;
+      overflow-y: auto;
+    }
+
+    .sidebar-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .sidebar-header .version {
+      font-size: 0.85rem;
+      color: @txt-sidebar;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin-top: 2.5rem;
+      li {
+        margin-bottom: 0.75rem;
+      }
+      a {
+        color: #cbd5e1;
+        text-decoration: none;
+        font-size: 0.95rem;
+        display: block;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: @accent-color;
+        }
+      }
+    }
+
+    #main-content {
+      margin-left: 260px;
+      padding: 3rem 4rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+  }
+  #media-lib.medium({
+    main.main-docs {
+      flex-direction: column;
+    }
+    #sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    #main-content {
+      margin-left: 0;
+      padding: 2rem 1.5rem;
+    }
+  });
 }
 
-.footer-style(@bg: @color-dark, @txt: @color-light, @accent: #95ff05) {
+.footer-styles(@bg: @color-dark, @txt: @color-light, @accent: #95ff05) {
   footer {
     background-color: @bg;
     color: @txt;

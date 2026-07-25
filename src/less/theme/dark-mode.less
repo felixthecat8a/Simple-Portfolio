@@ -8,14 +8,12 @@
       background-color: @bg-main-dark;
       color: @txt-main-dark;
       main {
-        #components-lib.anchor-styles(#cdc, #efe);
-        #components-lib.dialog-styles(@bg-main-dark, @txt-main-dark);
+        #template-component-lib.anchor-styles(#cdc, #efe);
+        #template-component-lib.dialog-styles(@bg-main-dark, @txt-main-dark);
         section {
           background-color: rgba(255, 255, 255, 0.1);
         }
-        .js-card,
-        .project-card,
-        .skills-card {
+        .info-card {
           background: rgba(0, 0, 0, 0.2);
         }
       }
@@ -56,4 +54,9 @@
       color: #222;
     }
   }
+}
+
+.dark-mode-styles() {
+  #dark-mode.dark-mode-settings();
+  #dark-mode.dark-mode-toggle-checkbox(0.8rem);
 }

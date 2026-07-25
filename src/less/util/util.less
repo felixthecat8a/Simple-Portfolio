@@ -14,13 +14,14 @@
 @color-grey: #333;
 @color-green: hsl(115, 50%, 50%);
 @color-blue: hsl(200, 50%, 50%);
-@color-orange: hsl(25, 50%, 50%);
+@color-orange: hsl(25, 100%, 55%);
 @color-yellow: hsl(55, 50%, 55%);
 @color-red: hsl(0, 50%, 50%);
 // Main Colors
-@bg-header: darken(@color-green, 35%);
+@color-theme: @color-green;
+@bg-header: darken(@color-theme, 35%);
 @txt-header: @color-light;
-@accent-color: saturate(@color-green, 55%);
+@accent-color: saturate(@color-theme, 55%);
 @bg-main: @color-light;
 @txt-main: @color-grey;
 @bg-footer: @color-dark;
@@ -30,6 +31,15 @@
 @card-border-orange: 5px solid @color-orange;
 @card-border-yellow: 5px solid @color-yellow;
 @card-border-red: 5px solid @color-red;
+
+@bg-sidebar: darken(@color-theme, 35%);
+@txt-sidebar: @color-light;
+@bg-header-code: darken(@color-theme, 40%);
+@txt-header-code: #e2e2e2;
+@bg-body-code: darken(@color-theme, 30%);
+@txt-body-code: #d3d3d3;
+@bg-inline-code: #d3d3d3;
+@txt-inline-code: #3d3d3d;
 
 @breakpoint-xs: calc(480 / 16 * 1rem);
 @breakpoint-sm: calc(576 / 16 * 1rem);

@@ -1,103 +1,39 @@
 @import './ui';
+@import './template';
+@import './cards';
 
-@border-gray-line: 1px solid #999;
-
-#components-lib {
-  .anchor-styles(@link:#353, @hover:#797) {
-    a {
-      text-decoration: none;
-      color: @link;
-      transition: color 0.2s ease;
-      &:link,
-      &:visited {
-        color: @link;
-      }
-      &:hover,
-      &:active {
-        text-decoration: underline;
-        color: @hover;
-      }
-    }
+.spinner-styles(@color-spinner: #999) {
+  .spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid @color-spinner;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-left: 0.5em;
   }
 
-  .form-styles() {
-    form {
-      margin: 0 auto;
-      fieldset {
-        padding: 0.5em 1.5em;
-        border-radius: 5px;
-        border: @border-gray-line;
-        legend {
-          font-size: x-large;
-          font-weight: bold;
-          font-style: italic;
-          text-align: left;
-          padding-inline: 0.5em;
-        }
-      }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
   }
+}
 
-  .dialog-styles(@dialog-bg: #fefefe, @dialog-txt: #1f1f1f) {
-    dialog {
-      background: #333;
-      margin: auto;
-      padding: 1.5em 1em;
-      min-width: 45em;
-      position: fixed;
-      border: 4px solid transparent;
-      border-image: linear-gradient(to right, #28a745, #007bff) 1;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      button.dialog-close {
-        position: absolute;
-        top: 4px;
-        right: 1px;
-      }
-    }
-    dialog[open] {
-      opacity: 1;
-    }
-    dialog::backdrop {
-      background: rgba(0, 0, 0, 0.5);
-      transition: background 0.25s ease;
-    }
-    .dialog-card {
-      background-color: @dialog-bg;
-      color: @dialog-txt;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 1em 2em;
-      margin: 1em auto;
-    }
-  }
+.ui-component-styles() {
+  #ui-component-lib.button-styles();
+  #ui-component-lib.data-input-styles();
+  #ui-component-lib.interactive-inputs();
+}
 
-  .meter-styles() {
-    meter {
-      width: 75%;
-      height: 1em;
-      margin-top: 0.5em;
-      border-radius: 0.5em;
-      appearance: none;
-    }
-  }
-
-  .spinner-styles(@color-spinner: #999) {
-    .spinner {
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      border: 2px solid @color-spinner;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-      margin-left: 0.5em;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-  }
+.template-component-styles() {
+  #template-component-lib.form-styles();
+  #template-component-lib.anchor-styles();
+  #template-component-lib.dialog-styles();
+  #template-component-lib.code-styles();
+  #template-component-lib.table-styles();
+  #template-component-lib.accordion-styles();
+  #template-component-lib.meter-styles();
+  .spinner-styles();
 }
