@@ -50,5 +50,5 @@ function watchFiles() {
 exports.dev = gulp.series(gulp.parallel(buildStyles, buildScripts), watchFiles)
 exports.watch = watchFiles
 exports.build = gulp.parallel(buildStyles, buildScripts)
-exports.copy = gulp.series(html, favicon)
+exports.copy = gulp.parallel(html, favicon)
 exports.default = gulp.parallel(buildStyles, buildScripts, html, favicon)
