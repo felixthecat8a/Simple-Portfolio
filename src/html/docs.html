@@ -22,6 +22,7 @@
         <li><a href="#led-class">Felix8A::LED</a></li>
         <li><a href="#pwm-class">Felix8A::PWM</a></li>
         <li><a href="#rgb-class">Felix8A::RGB</a></li>
+        <li><a href="#button-class">Felix8A::Button</a></li>
       </ul>
     </nav>
 
@@ -530,8 +531,7 @@
         <h2>Constructor</h2>
         <div class="code-wrapper">
           <pre><code class="language-cpp">
-        RGB(uint8_t rPin, uint8_t gPin, uint8_t bPin, bool commonAnode = true,
-            LED_t type = BASIC_LED, int8_t rCh = -1, int8_t gCh = -1, int8_t bCh = -1);
+    RGB(uint8_t rPin, uint8_t gPin, uint8_t bPin, bool commonAnode = true, LED_t type = BASIC_LED, int8_t rCh = -1, int8_t gCh = -1, int8_t bCh = -1);
           </code></pre>
         </div>
         <!-- Parameter Table  -->
@@ -807,9 +807,320 @@
           </div>
         </details>
 
-
-
       </section>
+      <!-- Felix8A::Button Class Section -->
+       <section id="button-class">
+        <h1>Felix8A::Button Class</h1>
+        <p>
+          The <code>Felix8A::Button</code> class provides debounced button input handling
+          with built-in support for press, release, click, multi-click, and hold events.
+        </p>
+        <div class="alert alert-tip">
+          <strong>Tip:</strong> Call <code>update()</code> in your main loop to process button events.
+        </div>
+        <h2>Constructor</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-cpp">
+    Button(uint8_t pin, bool activeLow = true, uint16_t debounceTime = 50);
+          </code></pre>
+        </div>
+        <!-- Parameter Table  -->
+        <table id="button-class-parameter-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>pin</code></td>
+              <td>uint8_t</td>
+              <td>Button pin</td>
+            </tr>
+            <tr>
+              <td><code>activeLow</code></td>
+              <td>bool</td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td><code>debounceTime</code></td>
+              <td>uint16_t</td>
+              <td> </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    #include &lt;Felix8A.h&gt;
+    #define BUTTON_PIN 2
+    Felix8A::Button button(BUTTON_PIN);
+          </code></pre>
+        </div>
+        <!-- Methods -->
+        <h2>Methods</h2>
+        <!-- <h3>Lifecycle</h3>
+        <ul class="method-list">
+          <li><a href="#btn-begin">begin()</a></li>
+          <li><a href="#btn-update">update()</a></li>
+        </ul>
+        <h3>State Queries</h3>
+        <ul class="method-list">
+          <li><a href="#btn-isdown">isDown()</a></li>
+          <li><a href="#btn-isheld">isHeld()</a></li>
+        </ul>
+        <h3>Event Polling</h3>
+        <ul class="method-list">
+          <li><a href="#btn-poll">poll()</a></li>
+        </ul>
+        <h3>Event Methods</h3>
+        <ul class="method-list">
+          <li><a href="#btn-pressed">wasPressed()</a></li>
+          <li><a href="#btn-released">wasReleased()</a></li>
+          <li><a href="#btn-click">wasClicked()</a></li>
+          <li><a href="#btn-double">wasDoubleClicked()</a></li>
+          <li><a href="#btn-triple">wasTripleClicked()</a></li>
+          <li><a href="#btn-held">wasHeld()</a></li>
+        </ul>
+        <h3>Configuration</h3>
+        <ul class="method-list">
+          <li><a href="#btn-holdtime">setHoldTime()</a></li>
+          <li><a href="#btn-multitime">setMultiClickTime()</a></li>
+        </ul> -->
+
+        <details id="button-begin" class="accordion">
+          <summary><code>void begin()</code></summary>
+          <div class="accordion-content">
+            <p>Initializes the button input pin and internal state.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      button.begin();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-update" class="accordion">
+          <summary><code>void update()</code></summary>
+          <div class="accordion-content">
+            <p>
+              Updates the button state. This method must be called repeatedly
+              (typically inside <code>loop()</code>) to detect events.
+            </p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-isdown" class="accordion">
+          <summary><code>bool isDown()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> if the button is currently pressed.</p>
+          </div>
+        </details>
+
+        <details id="btn-isheld" class="accordion">
+          <summary><code>bool isHeld()</code></summary>
+          <div class="accordion-content">
+            <p>
+              Returns <code>true</code> if the button is currently being held
+              (after the hold threshold is reached).
+            </p>
+          </div>
+        </details>
+
+        <details id="btn-poll" class="accordion">
+          <summary><code>Event poll()</code></summary>
+          <div class="accordion-content">
+            <p>
+              Returns the most recent button event and clears it.
+            </p>
+
+            <p><strong>Possible values:</strong></p>
+            <ul>
+              <li><code>None</code></li>
+              <li><code>Press</code></li>
+              <li><code>Release</code></li>
+              <li><code>Click</code></li>
+              <li><code>DoubleClick</code></li>
+              <li><code>TripleClick</code></li>
+              <li><code>Hold</code></li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="btn-pressed" class="accordion">
+          <summary><code>bool wasPressed()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> once when the button is pressed.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasPressed()) {
+        Serial.println("Pressed!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-released" class="accordion">
+          <summary><code>bool wasReleased()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> once when the button is released.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasReleased()) {
+        Serial.println("Released!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-click" class="accordion">
+          <summary><code>bool wasClicked()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> when a single click is detected.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasClicked()) {
+        Serial.println("Click!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-double" class="accordion">
+          <summary><code>bool wasDoubleClicked()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> when a double-click is detected.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasDoubleClicked()) {
+        Serial.println("Double Click!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-triple" class="accordion">
+          <summary><code>bool wasTripleClicked()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> when a triple-click is detected.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasTripleClicked()) {
+        Serial.println("Triple Click!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-held" class="accordion">
+          <summary><code>bool wasHeld()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> once when the button enters the hold state.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasHeld()) {
+        Serial.println("Held!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-holdtime" class="accordion">
+          <summary><code>void setHoldTime(uint16_t ms)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the duration (in milliseconds) required to trigger a hold event.</p>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      button.begin();
+      button.setHoldTime(900);
+      button.setMultiClickTime(250);
+    }
+              </code></pre>
+            </div>
+
+          </div>
+        </details>
+
+        <details id="btn-multitime" class="accordion">
+          <summary><code>void setMultiClickTime(uint16_t ms)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the maximum time interval between clicks for multi-click detection.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      button.begin();
+      button.setHoldTime(900);
+      button.setMultiClickTime(250);
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+       </section>
+
+
+
+
 
     </div>
 
