@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <title>Standard Project Document</title>
+  <link rel="stylesheet" href="assets/styles/style.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="main-docs">
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h2>Project</h2>
+        <span class="version">v1.0.0</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#project-class">Project Class</a></li>
+        <li><a href="#sample">Sample</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div id="main-content">
+
+      <!-- Introduction Section -->
+      <section id="introduction">
+        <h1>Introduction</h1>
+        <p>The <strong>Project</strong> introduction.</p>
+      </section>
+      <!-- Getting Started Section -->
+      <section id="getting-started">
+        <h1>Getting Started</h1>
+        <p>Follow these quick installation steps to add the module to your project.</p>
+      </section>
+      <!-- Project Class Section -->
+      <section id="project-class">
+        <h1>Project Class</h1>
+        <p>Description</p>
+        <!-- Constructor -->
+        <h2>Constructor</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-cpp">
+    Project(uint8_t param);
+          </code></pre>
+        </div>
+        <!-- Parameter Table  -->
+        <table id="project-class-parameter-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>param</code></td>
+              <td>uint8_t</td>
+              <td>description</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Notes -->
+        <div class="alert alert-tip">
+          <strong>Tip:</strong> tip.
+        </div>
+        <div class="alert alert-note">
+          <strong>Note:</strong> note.
+        </div>
+        <div class="alert alert-warn">
+          <strong>Warning:</strong> warn.
+        </div>
+        <div class="alert alert-danger">
+          <strong>Danger:</strong> danger.
+        </div>
+        <!-- Code Setup -->
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    #include &lt;Project.h&gt;
+    Project project(5);
+          </code></pre>
+        </div>
+        <!-- Methods -->
+        <h2>Methods</h2>
+        <!-- <ul class="method-list">
+          <li><a href="#project-begin">begin()</a></li>
+        </ul> -->
+
+        <details  id="project-begin" class="accordion">
+          <summary><code>void begin()</code></summary>
+          <div class="accordion-content">
+            <p>Initializes the project class object.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      led.begin();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section id="sample">
+        <h1>Sample</h1>
+        <p>Description</p>
+
+        <h2>Methods</h2>
+        <ul class="fx-method-list">
+          <li><a href="#method-id">methodName()</a></li>
+        </ul>
+
+        <!-- Accordion Component -->
+        <details class="fx-accordion" id="method-id">
+          <summary class="fx-accordion-summary">
+            <code>functionSignature()</code>
+          </summary>
+
+          <div class="fx-accordion-content">
+            <p>Description goes here.</p>
+
+            <!-- Optional: Parameter Table Component -->
+            <table class="fx-table fx-table-params">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Rows -->
+                 <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                 </tr>
+              </tbody>
+            </table>
+
+            <!-- Optional: Code Example -->
+            <div class="fx-code">
+              <div class="fx-code-header">filename</div>
+              <pre><code class="language-cpp">
+              // your code here
+              </code></pre>
+            </div>
+
+          </div>
+
+        </details>
+
+        <div class="fx-alert fx-alert-info">
+          <strong>Tip:</strong> Helpful info here.
+        </div>
+
+      </section>
+
+      <style>
+
+      </style>
+
+    </div>
+
+  </main>
+</body>
+</html>

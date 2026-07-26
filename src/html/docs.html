@@ -13,7 +13,7 @@
     <!-- Sidebar Navigation -->
     <nav id="sidebar">
       <div class="sidebar-header">
-        <h3>Felix8A</h3>
+        <h2>Felix8A</h2>
         <span class="version">v1.1.1</span>
       </div>
       <ul class="nav-links">
@@ -23,6 +23,9 @@
         <li><a href="#pwm-class">Felix8A::PWM</a></li>
         <li><a href="#rgb-class">Felix8A::RGB</a></li>
         <li><a href="#button-class">Felix8A::Button</a></li>
+        <li><a href="#c32-class">Felix8A::Color32</a></li>
+        <li><a href="#palette-class">Felix8A::Palette</a></li>
+        <li><a href="#palette-class">Felix8A::Time</a></li>
       </ul>
     </nav>
 
@@ -809,7 +812,7 @@
 
       </section>
       <!-- Felix8A::Button Class Section -->
-       <section id="button-class">
+      <section id="button-class">
         <h1>Felix8A::Button Class</h1>
         <p>
           The <code>Felix8A::Button</code> class provides debounced button input handling
@@ -1116,12 +1119,612 @@
           </div>
         </details>
 
-       </section>
+      </section>
+      <!-- Felix8A::Color32 Class Section -->
+      <section id="c32-class">
+        <h1>Felix8A::Color32 Utility Class</h1>
+        <p>
+          The <code>Felix8A::Color32</code> class provides lightweight utilities for
+          working with 24-bit RGB colors packed into a single <code>uint32_t</code>.
+        </p>
+        <div class="alert alert-green">
+          <strong>Format:</strong> Colors are stored as <code>0xRRGGBB</code>.
+        </div>
+        <!-- Methods -->
+        <h2>Methods</h2>
+        <!-- <h3>Creation</h3>
+        <ul class="method-list">
+          <li><a href="#c32-hex">hex()</a></li>
+          <li><a href="#c32-rgb">rgb()</a></li>
+          <li><a href="#c32-fromhex">fromHex()</a></li>
+        </ul>
+        <h3>Channel Extraction</h3>
+        <ul class="method-list">
+          <li><a href="#c32-red">red()</a></li>
+          <li><a href="#c32-green">green()</a></li>
+          <li><a href="#c32-blue">blue()</a></li>
+        </ul>
+        <h3>Color Operations</h3>
+        <ul class="method-list">
+          <li><a href="#c32-scale">scale()</a></li>
+          <li><a href="#c32-blend">blend()</a></li>
+        </ul>
+        <h3>Constants</h3>
+        <ul class="method-list">
+          <li><a href="#c32-basic">Basic Colors</a></li>
+          <li><a href="#c32-spectrum">Color Spectrum</a></li>
+        </ul> -->
 
+        <details id="c32-hex" class="accordion">
+          <summary><code>uint32_t hex(uint8_t r, uint8_t g, uint8_t b)</code></summary>
+          <div class="accordion-content">
+            <p>Creates a packed 24-bit color from RGB values.</p>
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    uint32_t color = Color32::hex(255, 0, 0); // Red
+              </code></pre>
+            </div>
+          </div>
+        </details>
 
+        <details id="c32-rgb" class="accordion">
+          <summary><code>uint32_t rgb(uint8_t r, uint8_t g, uint8_t b)</code></summary>
+          <div class="accordion-content">
+            <p>Alias for <code>hex()</code>.</p>
+          </div>
+        </details>
 
+        <details id="c32-fromhex" class="accordion">
+          <summary><code>uint32_t fromHex(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Ensures a value is treated as a 24-bit color by masking out extra bits.</p>
+          </div>
+        </details>
 
+        <details id="c32-red" class="accordion">
+          <summary><code>uint8_t red(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Extracts the red channel (0-255).</p>
+          </div>
+        </details>
 
+        <details id="c32-green" class="accordion">
+          <summary><code>uint8_t green(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Extracts the green channel (0-255).</p>
+          </div>
+        </details>
+
+        <details id="c32-blue" class="accordion">
+          <summary><code>uint8_t blue(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Extracts the blue channel (0-255).</p>
+          </div>
+        </details>
+
+        <details id="c32-scale" class="accordion">
+          <summary><code>uint32_t scale(uint32_t color, uint8_t brightness)</code></summary>
+          <div class="accordion-content">
+            <p>Scales a color's brightness while preserving its hue.</p>
+            <ul>
+              <li><code>brightness = 0</code> → off</li>
+              <li><code>brightness = 255</code> → full brightness</li>
+            </ul>
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    auto dimRed = Color32::scale(Color32::RED, 128);
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="c32-blend" class="accordion">
+          <summary><code>uint32_t blend(uint32_t a, uint32_t b, uint8_t t)</code></summary>
+          <div class="accordion-content">
+            <p>Linearly interpolates between two colors.</p>
+            <ul>
+              <li><code>t = 0</code> → color A</li>
+              <li><code>t = 255</code> → color B</li>
+            </ul>
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    auto purple = Color32::blend(Color32::RED, Color32::BLUE, 128);
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="c32-basic" class="accordion">
+          <summary><code>Basic Preset Colors</code></summary>
+          <div class="accordion-content">
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    Felix8A::Color32::BLACK / Felix8A::Color32::OFF = 0x000000;
+    Felix8A::Color32::GRAY / Felix8A::Color32::GREY = 0x999999;
+    Felix8A::Color32::WHITE           = 0xFFFFFF;
+    Felix8A::Color32::RED             = 0xFF0000;
+    Felix8A::Color32::VERMILION       = 0xFF4000;
+    Felix8A::Color32::ORANGE          = 0xFF8000;
+    Felix8A::Color32::AMBER           = 0xFFBF00;
+    Felix8A::Color32::YELLOW          = 0xFFFF00;
+    Felix8A::Color32::LIME            = 0xBFFF00;
+    Felix8A::Color32::CHARTREUSE      = 0x80FF00;
+    Felix8A::Color32::HARLEQUIN       = 0x40FF00;
+    Felix8A::Color32::GREEN           = 0x00FF00;
+    Felix8A::Color32::MINT            = 0x00FF40;
+    Felix8A::Color32::SPRING_GREEN    = 0x00FF80;
+    Felix8A::Color32::TURQUOISE       = 0x00FFBF;
+    Felix8A::Color32::CYAN            = 0x00FFFF;
+    Felix8A::Color32::SKY_BLUE        = 0x00BFFF;
+    Felix8A::Color32::AZURE           = 0x0080FF;
+    Felix8A::Color32::SAPPHIRE        = 0x0040FF;
+    Felix8A::Color32::BLUE            = 0x0000FF;
+    Felix8A::Color32::INDIGO          = 0x4000FF;
+    Felix8A::Color32::VIOLET          = 0x8000FF;
+    Felix8A::Color32::ELECTRIC_PURPLE = 0xBF00FF;
+    Felix8A::Color32::MAGENTA         = 0xFF00FF;
+    Felix8A::Color32::HOT_PINK        = 0xFF00BF;
+    Felix8A::Color32::ROSE            = 0xFF0080;
+    Felix8A::Color32::CRIMSON         = 0xFF0040;
+    Felix8A::Color32::CORAL           = 0xBF4040;
+    Felix8A::Color32::MOCHA           = 0xBFBF40;
+    Felix8A::Color32::HONEYDEW        = 0x40BF40;
+    Felix8A::Color32::CELESTE         = 0x40BFBF;
+    Felix8A::Color32::LAVENDER        = 0x4040BF;
+    Felix8A::Color32::LILAC           = 0xBF40BF;
+    Felix8A::Color32::MAROON          = 0x800000;
+    Felix8A::Color32::OLIVE           = 0x808000;
+    Felix8A::Color32::EMERALD         = 0x008000;
+    Felix8A::Color32::TEAL            = 0x008080;
+    Felix8A::Color32::NAVY            = 0x000080;
+    Felix8A::Color32::PURPLE          = 0x800080;
+    Felix8A::Color32::ARDUINO_TEAL    = 0x00878F;
+              </code></pre>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <h2>Color Formats</h2>
+
+      <table class="color-table">
+        <tr>
+          <th>Format</th>
+          <th>Example</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>HEX</td>
+          <td><code>0xFF0000</code></td>
+          <td>Packed 24-bit color</td>
+        </tr>
+        <tr>
+          <td>RGB</td>
+          <td><code>(255, 0, 0)</code></td>
+          <td>Red, Green, Blue channels</td>
+        </tr>
+        <tr>
+          <td>HSV</td>
+          <td><code>(0°, 100%, 100%)</code></td>
+          <td>Hue, Saturation, Value</td>
+        </tr>
+      </table>
+      <!-- Felix8A::Palette Class Section -->
+      <section id="palette-class">
+        <h1>Felix8A::Palette Class</h1>
+        <p>
+          The <code>Felix8A::Palette</code> class represents a collection of colors
+          that can be indexed or smoothly interpolated to create gradients.
+        </p>
+        <div class="alert alert-tip">
+          <strong>Tip:</strong> Use <code>lerp()</code> to generate smooth color transitions across a palette.
+        </div>
+        <h2>Constructors</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-cpp">
+    Palette(const uint32_t* colors, uint8_t size);
+
+    template &lt;size_t N&gt;
+    Palette(const uint32_t (&colors)[N]);
+          </code></pre>
+        </div>
+        <!-- Parameter Table -->
+        <table id="palette-class-parameter-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>colors</code></td>
+              <td><code>const uint32_t*</code></td>
+              <td>Pointer to an array of 24-bit colors (<code>0xRRGGBB</code>) used by the palette.</td>
+            </tr>
+            <tr>
+              <td><code>size</code></td>
+              <td><code>uint8_t</code></td>
+              <td>Number of colors in the palette. Used for indexing and interpolation.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-note">
+          <strong>Note:</strong> The palette does not copy the array; it stores a reference. Ensure the color array remains valid.
+        </div>
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    constexpr uint32_t colors[] = {
+      Color32::RED,
+      Color32::GREEN,
+      Color32::BLUE
+    };
+
+    Palette palette(colors);
+          </code></pre>
+        </div>
+
+        <h2>Methods</h2>
+        <!-- <h3>Access</h3>
+        <ul class="method-list">
+          <li><a href="#pal-size">size()</a></li>
+          <li><a href="#pal-count">count()</a></li>
+          <li><a href="#pal-data">data()</a></li>
+        </ul>
+        <h3>Indexing</h3>
+        <ul class="method-list">
+          <li><a href="#pal-index">operator[]</a></li>
+          <li><a href="#pal-reversed">reversed()</a></li>
+        </ul>
+        <h3>Interpolation</h3>
+        <ul class="method-list">
+          <li><a href="#pal-lerp">lerp()</a></li>
+          <li><a href="#pal-blend">blend()</a></li>
+        </ul> -->
+
+        <details id="pal-size" class="accordion">
+          <summary><code>uint8_t size()</code></summary>
+          <div class="accordion-content">
+            <p>Returns the number of colors in the palette.</p>
+          </div>
+        </details>
+
+        <details id="pal-count" class="accordion">
+          <summary><code>uint8_t count()</code></summary>
+          <div class="accordion-content">
+            <p>Alias for <code>size()</code>.</p>
+          </div>
+        </details>
+
+        <details id="pal-data" class="accordion">
+          <summary><code>const uint32_t* data()</code></summary>
+          <div class="accordion-content">
+            <p>Returns a pointer to the underlying color array.</p>
+          </div>
+        </details>
+
+        <details id="pal-index" class="accordion">
+          <summary><code>uint32_t operator[](uint8_t i)</code></summary>
+          <div class="accordion-content">
+            <p>
+              Returns the color at index <code>i</code>. The index wraps automatically,
+              allowing seamless looping through the palette.
+            </p>
+
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    palette[0];    // First color
+    palette[10];   // Wraps if size &lt; 10
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="pal-reversed" class="accordion">
+          <summary><code>uint32_t reversed(uint8_t i)</code></summary>
+          <div class="accordion-content">
+            <p>Returns colors in reverse order, with automatic wrapping.</p>
+          </div>
+        </details>
+
+        <details id="pal-lerp" class="accordion">
+          <summary><code>uint32_t lerp(uint8_t t)</code></summary>
+          <div class="accordion-content">
+            <p>Interpolates smoothly across the palette.</p>
+            <ul>
+              <li><code>t = 0</code> → first color</li>
+              <li><code>t = 255</code> → last color</li>
+            </ul>
+            <p><code>palette.lerp(128)</code> would be the midpoint gradient.</p>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      static uint8_t t = 0;
+      rgb.setHex(palette.lerp(t));
+      t++;
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="pal-blend" class="accordion">
+          <summary><code>uint32_t blend(uint32_t c1, uint32_t c2, uint8_t t)</code></summary>
+          <div class="accordion-content">
+            <p>Blends two colors together using linear interpolation.</p>
+          </div>
+          <!-- Parameter Table -->
+          <table id="pal-blend-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>c1</code></td>
+                <td><code>uint32_t</code></td>
+                <td>First color (start of the blend).</td>
+              </tr>
+              <tr>
+                <td><code>c2</code></td>
+                <td><code>uint32_t</code></td>
+                <td>Second color (end of the blend).</td>
+              </tr>
+              <tr>
+                <td><code>t</code></td>
+                <td><code>uint8_t</code></td>
+                <td>
+                  Interpolation factor (0-255). <code>0</code> returns <code>c1</code>,
+                  <code>255</code> returns <code>c2</code>, values in between produce a smooth blend.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
+
+        <details id="pal-lerp8"  class="accordion">
+          <summary><code>uint8_t lerp8(uint8_t a, uint8_t b, uint8_t t)</code></summary>
+          <div class="accordion-content">
+            <p>
+              Performs an 8-bit linear interpolation between two values.
+              Commonly used for smooth transitions in color calculations.
+            </p>
+            <!-- Parameter Table -->
+            <table id="pal-lerp8-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>a</code></td>
+                  <td><code>uint8_t</code></td>
+                  <td>Starting value.</td>
+                </tr>
+                <tr>
+                  <td><code>b</code></td>
+                  <td><code>uint8_t</code></td>
+                  <td>Ending value.</td>
+                </tr>
+                <tr>
+                  <td><code>t</code></td>
+                  <td><code>uint8_t</code></td>
+                  <td>
+                    Interpolation factor (0-255). <code>0</code> returns <code>a</code>,
+                    <code>255</code> returns <code>b</code>, values in between produce a linear interpolation.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+      </section>
+      <!-- Felix8A::Time Class Section -->
+      <section id="time-class">
+        <h1>Felix8A::Time Utility</h1>
+
+        <p>
+          The <code>Felix8A::Time</code> class provides lightweight, non-blocking
+          timing utilities built on top of <code>millis()</code>.
+        </p>
+
+        <div class="alert alert-blue">
+          <strong>Tip:</strong> Use these methods instead of <code>delay()</code> for responsive, non-blocking code.
+        </div>
+
+        <h2>Methods</h2>
+        <!-- <ul class="method-list">
+          <li><a href="#time-every">every()</a></li>
+          <li><a href="#time-after">after()</a></li>
+          <li><a href="#time-reset">reset()</a></li>
+          <li><a href="#time-once">once()</a></li>
+        </ul> -->
+
+        <details id="time-every" class="accordion">
+          <summary><code>bool every(unsigned long interval, unsigned long& last)</code></summary>
+          <div class="accordion-content">
+            <p>
+              Triggers repeatedly at a fixed interval. Automatically compensates for drift
+              to maintain consistent timing.
+            </p>
+            <!-- Parameter Table -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>interval</code></td>
+                  <td><code>unsigned long</code></td>
+                  <td>Interval in milliseconds.</td>
+                </tr>
+                <tr>
+                  <td><code>last</code></td>
+                  <td><code>unsigned long&</code></td>
+                  <td>Timestamp of the last trigger (updated automatically).</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    unsigned long last = 0;
+
+    void loop() {
+      if (Time::every(1000, last)) {
+        // Runs every 1 second
+      }
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="time-after" class="accordion">
+          <summary><code>bool after(unsigned long interval, unsigned long start)</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> once the specified time has elapsed since <code>start</code>.</p>
+            <!-- Parameter Table -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>interval</code></td>
+                  <td><code>unsigned long</code></td>
+                  <td>Duration in milliseconds.</td>
+                </tr>
+                <tr>
+                  <td><code>start</code></td>
+                  <td><code>unsigned long</code></td>
+                  <td>Start timestamp.</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </details>
+
+        <details id="time-reset" class="accordion">
+          <summary><code>void reset(unsigned long& timestamp)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the given timestamp to the current time (<code>millis()</code>).</p>
+            <!-- Parameter Table -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>timestamp</code></td>
+                  <td><code>unsigned long&</code></td>
+                  <td>Variable to store the current time.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details id="time-once" class="accordion">
+          <summary><code>bool once(unsigned long interval, unsigned long& start)</code></summary>
+          <div class="accordion-content">
+            <p>Triggers only once after the specified interval. Automatically resets itselfafter firing.</p>
+            <!-- Parameter Table -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>interval</code></td>
+                  <td><code>unsigned long</code></td>
+                  <td>Delay in milliseconds.</td>
+                </tr>
+                <tr>
+                  <td><code>start</code></td>
+                  <td><code>unsigned long&</code></td>
+                  <td>
+                    Start timestamp. Must be non-zero to be active.
+                    Reset to <code>0</code> after triggering.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    unsigned long timer = millis(); // arm
+
+    void loop() {
+      if (Time::once(2000, timer)) {
+        // Runs once after 2 seconds
+      }
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <h2>Common Patterns</h2>
+
+        <h3>Blink Without delay()</h3>
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    unsigned long t = 0;
+
+    void loop() {
+      if (Time::every(500, t)) {
+        led.toggle();
+      }
+    }
+          </code></pre>
+        </div>
+
+        <h3>One-Shot Timer</h3>
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    unsigned long t = millis();
+
+    void loop() {
+      if (Time::once(3000, t)) {
+        // fires once after 3s
+      }
+    }
+          </code></pre>
+        </div>
+
+      </section>
     </div>
 
     <script>
