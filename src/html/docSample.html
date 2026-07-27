@@ -34,6 +34,19 @@
       <section id="getting-started">
         <h1>Getting Started</h1>
         <p>Follow these quick installation steps to add the module to your project.</p>
+        <!-- Notes -->
+        <div class="alert alert-tip">
+          <strong>Tip:</strong> tip.
+        </div>
+        <div class="alert alert-note">
+          <strong>Note:</strong> note.
+        </div>
+        <div class="alert alert-warn">
+          <strong>Warning:</strong> warn.
+        </div>
+        <div class="alert alert-danger">
+          <strong>Danger:</strong> danger.
+        </div>
       </section>
       <!-- Project Class Section -->
       <section id="project-class">
@@ -63,19 +76,6 @@
             </tr>
           </tbody>
         </table>
-        <!-- Notes -->
-        <div class="alert alert-tip">
-          <strong>Tip:</strong> tip.
-        </div>
-        <div class="alert alert-note">
-          <strong>Note:</strong> note.
-        </div>
-        <div class="alert alert-warn">
-          <strong>Warning:</strong> warn.
-        </div>
-        <div class="alert alert-danger">
-          <strong>Danger:</strong> danger.
-        </div>
         <!-- Code Setup -->
         <div class="code-wrapper">
           <div class="code-header">example.ino</div>
@@ -125,26 +125,15 @@
         <p>For Development</p>
         <!-- Constructor -->
         <h2>Constructor</h2>
-        <docs-code lang="cpp" title="constructor">
+        <docs-code lang="cpp">
           Project(uint8_t param);
         </docs-code>
         <!-- Parameter Table  -->
-        <table id="parameter-table">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>param</code></td>
-              <td>uint8_t</td>
-              <td>description</td>
-            </tr>
-          </tbody>
-        </table>
+        <docs-table title="Parameters" columns="Name,Type,Description">
+          <docs-row name="param" type="uint8_t">
+            description
+          </docs-row>
+        </docs-table>
         <!-- Code Setup -->
         <docs-code lang="cpp" title="example.ino">
           #include &lt;Project.h&gt;

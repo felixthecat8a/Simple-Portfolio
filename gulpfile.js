@@ -32,13 +32,21 @@ function buildScripts() {
 
 function html() {
   return gulp.src('src/html/**/*.html')
-    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      removeComments: true,
+    }))
     .pipe(gulp.dest('dist/'))
 }
 
 function favicon() {
   return gulp.src('src/favicon/favicon.ico')
     .pipe(gulp.dest('dist/'))
+}
+
+function components() {
+  return gulp.src('src/js/components/docsComponents.js')
+    .pipe(gulp.dest('dist/assets/components/'))
 }
 
 function watchFiles() {
@@ -50,5 +58,5 @@ function watchFiles() {
 exports.dev = gulp.series(gulp.parallel(buildStyles, buildScripts), watchFiles)
 exports.watch = watchFiles
 exports.build = gulp.parallel(buildStyles, buildScripts)
-exports.copy = gulp.parallel(html, favicon)
-exports.default = gulp.parallel(buildStyles, buildScripts, html, favicon)
+exports.copy = gulp.parallel(html, favicon, components)
+exports.default = gulp.parallel(buildStyles, buildScripts, html, favicon, components)
