@@ -1,35 +1,35 @@
-class DocsAccordion extends HTMLElement {
+class TechDocsAccordion extends HTMLElement {
   connectedCallback() {
     const title = this.getAttribute("title") || "";
     const content = this.innerHTML;
 
     this.innerHTML = `
       <style>
-        details.docs-accordion {
+        details.tech-docs-accordion {
           background: rgba(255, 255, 255, 0.9);
-          color: @color-dark;
-          border: @border-gray-line;
+          color: #1f1f1f;
+          border: 1px solid #999;
           border-radius: 0.375rem;
           margin-bottom: 0.5rem;
         }
 
-        summary.docs-accordion-summary {
+        summary.tech-docs-accordion-summary {
           padding: 1rem;
           font-weight: 600;
           cursor: pointer;
           outline: none;
         }
 
-        .docs-accordion-content {
+        .tech-docs-accordion-content {
           padding: 0 1rem 1rem;
         }
       </style>
 
-      <details class="docs-accordion">
-        <summary class="docs-accordion-summary">
+      <details class="tech-docs-accordion">
+        <summary class="tech-docs-accordion-summary">
           <code>${title}</code>
         </summary>
-        <div class="docs-accordion-content">
+        <div class="tech-docs-accordion-content">
           ${content}
         </div>
       </details>
@@ -37,7 +37,7 @@ class DocsAccordion extends HTMLElement {
   }
 }
 
-class DocsTable extends HTMLElement {
+class TechDocsTable extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -54,7 +54,7 @@ class DocsTable extends HTMLElement {
       .split(",")
       .map(c => c.trim());
 
-    const rows = Array.from(this.querySelectorAll("docs-row")).map(row => {
+    const rows = Array.from(this.querySelectorAll("tech-docs-row")).map(row => {
       return {
         name: row.getAttribute("name") || "",
         type: row.getAttribute("type") || "",
@@ -62,9 +62,27 @@ class DocsTable extends HTMLElement {
       };
     });
 
+    const getCell = (col, r) => {
+      switch (col.toLowerCase()) {
+        case "name":
+        case "parameter":
+        case "value":
+          return `<td><code>${r.name}</code></td>`;
+
+        case "type":
+          return `<td>${r.type}</td>`;
+
+        case "description":
+          return `<td>${r.desc}</td>`;
+
+        default:
+          return `<td></td>`;
+      }
+    };
+
     this.shadowRoot.innerHTML = `
       <style>
-        .docs-table {
+        .tech-docs-table {
           border-bottom: 1.5px solid #333;
           border-radius: 0.25rem;
           overflow: hidden;
@@ -72,7 +90,7 @@ class DocsTable extends HTMLElement {
           font-size: 0.9rem;
         }
 
-        .docs-table-header {
+        .tech-docs-table-header {
           background: #ccc;
           color: #222;
           padding: 0.5rem 1rem;
@@ -111,8 +129,8 @@ class DocsTable extends HTMLElement {
         }
       </style>
 
-      <div class="docs-table">
-        ${title ? `<div class="docs-table-header">${title}</div>` : ""}
+      <div class="tech-docs-table">
+        ${title ? `<div class="tech-docs-table-header">${title}</div>` : ""}
         <table>
           <thead>
             <tr>
@@ -122,12 +140,7 @@ class DocsTable extends HTMLElement {
           <tbody>
             ${rows.map(r => `
               <tr>
-                ${columns.map(col => {
-                  if (col === "Name") return `<td><code>${r.name}</code></td>`;
-                  if (col === "Type") return `<td>${r.type}</td>`;
-                  if (col === "Description") return `<td>${r.desc}</td>`;
-                  return `<td></td>`;
-                }).join("")}
+                ${columns.map(col => getCell(col, r)).join("")}
               </tr>
             `).join("")}
           </tbody>
@@ -137,12 +150,13 @@ class DocsTable extends HTMLElement {
   }
 }
 
-customElements.define("docs-accordion", DocsAccordion);
-customElements.define("docs-table", DocsTable);
+customElements.define("tech-docs-accordion", TechDocsAccordion);
+customElements.define("tech-docs-table", TechDocsTable);
+
 
 // in development
 
-class DocsCode extends HTMLElement {
+class TechDocsCode extends HTMLElement {
   static get observedAttributes() {
     return ["lang", "title"];
   }
@@ -167,7 +181,7 @@ class DocsCode extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>
-        .docs-code {
+        .tech-docs-code {
           border: 1px solid #333;
           border-radius: 0.5rem;
           overflow: hidden;
@@ -176,7 +190,7 @@ class DocsCode extends HTMLElement {
           margin: 0.5rem 0;
         }
 
-        .docs-code-header {
+        .tech-docs-code-header {
           font-family: monospace;
           font-size: 0.8rem;
           background: #1f1f1f;
@@ -200,12 +214,12 @@ class DocsCode extends HTMLElement {
         }
       </style>
 
-      <div class="docs-code">
-        ${title ? `<div class="docs-code-header">${title}</div>` : ""}
+      <div class="tech-docs-code">
+        ${title ? `<div class="tech-docs-code-header">${title}</div>` : ""}
         <pre><code class="language-${lang}"><slot></slot></code></pre>
       </div>
     `;
   }
 }
 
-customElements.define("docs-code", DocsCode);
+customElements.define("tech-docs-code", TechDocsCode);

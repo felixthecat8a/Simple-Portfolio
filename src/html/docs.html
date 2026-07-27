@@ -6,6 +6,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <title>Felix8A Documentation</title>
   <link rel="stylesheet" href="assets/styles/style.min.css" />
+  <script src="assets/components/docsComponents.js" defer></script>
 </head>
 
 <body>
@@ -85,28 +86,15 @@
     LED(uint8_t pin, bool activeLow = false);
           </code></pre>
         </div>
-        <!-- Parameter Table  -->
-        <table id="led-class-parameter-table">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>pin</code></td>
-              <td>uint8_t</td>
-              <td>GPIO pin connected to the LED</td>
-            </tr>
-            <tr>
-              <td><code>activeLow</code></td>
-              <td>bool</td>
-              <td>Set to <code>true</code> if the LED is active-low (default: false)</td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Parameters Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="pin" type="uint8_t">
+            GPIO pin connected to the LED
+          </tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the LED is active-low (default: false)
+          </tech-docs-row>
+        </tech-docs-table>
         <!-- Notes -->
         <div class="alert alert-tip">
           <strong>Tip:</strong> Use <code>activeLow = true</code> for boards where the LED turns on when the pin is LOW.
@@ -122,23 +110,12 @@
         </div>
         <!-- Methods -->
         <h2>Methods</h2>
-        <!-- <ul class="method-list">
-          <li><a href="#led-begin">begin()</a></li>
-          <li><a href="#led-on">on()</a></li>
-          <li><a href="#led-off">off()</a></li>
-          <li><a href="#led-toggle">toggle()</a></li>
-          <li><a href="#led-ison">isOn()</a></li>
-          <li><a href="#led-setpin">setPin()</a></li>
-          <li><a href="#led-getpin">getPin()</a></li>
-          <li><a href="#led-activelow">setActiveLow()</a></li>
-          <li><a href="#led-isactivelow">isActiveLow()</a></li>
-        </ul> -->
 
         <details  id="led-begin" class="accordion">
           <summary><code>void begin()</code></summary>
           <div class="accordion-content">
             <p>Initializes the LED pin and prepares it for output.</p>
-
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -154,7 +131,7 @@
           <summary><code>void on()</code></summary>
           <div class="accordion-content">
             <p>Turns the LED on.</p>
-
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -171,7 +148,7 @@
           <summary><code>void off()</code></summary>
           <div class="accordion-content">
             <p>Turns the LED off.</p>
-
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -191,7 +168,7 @@
           <summary><code>void toggle()</code></summary>
           <div class="accordion-content">
             <p>Toggles the LED between ON and OFF states.</p>
-
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -201,7 +178,6 @@
     }
               </code></pre>
             </div>
-
           </div>
         </details>
 
@@ -209,30 +185,15 @@
           <summary><code>bool isOn()</code></summary>
           <div class="accordion-content">
             <p>Returns the current state of the LED.</p>
-            <table id="led-ison-table">
-              <thead>
-                <tr>
-                  <th>Returns</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>true</code></td>
-                  <td>The LED is currently ON</td>
-                </tr>
-                <tr>
-                  <td><code>false</code></td>
-                  <td>The LED is currently OFF</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <!-- Returns Table -->
+            <tech-docs-table title="Returns" columns="Value,Description">
+              <tech-docs-row name="true">The LED is currently ON</tech-docs-row>
+              <tech-docs-row name="false">The LED is currently OFF</tech-docs-row>
+            </tech-docs-table>
             <div class="alert alert-warn">
               <strong>Note:</strong> This reflects the stored state, not a physical read from the pin.
             </div>
-
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -246,7 +207,6 @@
     }
               </code></pre>
             </div>
-
           </div>
         </details>
 
@@ -254,21 +214,12 @@
           <summary><code>void setPin(uint8_t pin)</code></summary>
           <div class="accordion-content">
             <p>Changes the GPIO pin used by the LED.</p>
-            <table id="led-ison-table">
-              <thead>
-                <tr>
-                  <th>Parameters</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>pin</code></td>
-                  <td>New GPIO pin number</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Parameters Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="pin" type="uint8_t">
+                New GPIO pin number
+              </tech-docs-row>
+            </tech-docs-table>
           </div>
         </details>
 
@@ -276,26 +227,15 @@
           <summary><code>uint8_t getPin()</code></summary>
           <div class="accordion-content">
             <p>Returns the GPIO pin currently assigned to the LED.</p>
-            <table id="led-getpin-table">
-              <thead>
-                <tr>
-                  <th>Returns</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>uint8_t</code></td>
-                  <td>The GPIO pin number used by the LED</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <!-- Returns Table -->
+            <tech-docs-table title="Returns" columns="Type,Description">
+              <tech-docs-row type="uint8_t">
+                The GPIO pin number used by the LED
+              </tech-docs-row>
+            </tech-docs-table>
             <div class="alert alert-warn">
               <strong>Note:</strong> This value reflects the current configuration and may change if <code>setPin()</code> is called.
             </div>
-
           </div>
         </details>
 
@@ -306,21 +246,12 @@
               Sets whether the LED is active-low.
               When enabled, the LED turns on when the pin is LOW.
             </p>
-            <table id="led-activelow-table">
-              <thead>
-                <tr>
-                  <th>Parameters</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>enable</code></td>
-                  <td>Set true to enable active-low</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="enable" type="bool">
+                Set true to enable active-low
+              </tech-docs-row>
+            </tech-docs-table>
           </div>
         </details>
 
@@ -328,26 +259,11 @@
           <summary><code>bool isActiveLow()</code></summary>
           <div class="accordion-content">
             <p>Returns whether the LED is configured as active-low.</p>
-            <table id="led-isactivelow-table">
-              <thead>
-                <tr>
-                  <th>Returns</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>true</code></td>
-                  <td>The LED turns on when the pin is LOW</td>
-                </tr>
-                <tr>
-                  <td><code>false</code></td>
-                  <td>The LED operates in standard active-high mode</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <!-- Returns Table -->
+            <tech-docs-table title="Returns" columns="Value,Description">
+              <tech-docs-row name="true">Reference to store red value</tech-docs-row>
+              <tech-docs-row name="false">Reference to store green value</tech-docs-row>
+            </tech-docs-table>
             <div class="alert alert-warn">
               <strong>Note:</strong> This is a configuration setting. Use <code>isOn()</code> to check the current LED state.
             </div>
@@ -372,38 +288,21 @@
     PWM(uint8_t pin, bool activeLow = false, LED_t type = BASIC_LED, int8_t channel = -1);
           </code></pre>
         </div>
-        <!-- Parameter Table  -->
-        <table id="pwm-class-parameter-table">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>pin</code></td>
-              <td>uint8_t</td>
-              <td>GPIO pin connected to the LED</td>
-            </tr>
-            <tr>
-              <td><code>activeLow</code></td>
-              <td>bool</td>
-              <td>Set to <code>true</code> if the LED is active-low</td>
-            </tr>
-            <tr>
-              <td><code>type</code></td>
-              <td>LED_t</td>
-              <td>Type of PWM implementation (BASIC_LED or ESP32_LED)</td>
-            </tr>
-            <tr>
-              <td><code>channel</code></td>
-              <td>int8_t</td>
-              <td>Optional ESP32 LEDC channel (-1 for auto allocation)</td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Parameter Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="pin" type="uint8_t">
+            GPIO pin connected to the LED
+          </tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the LED is active-low
+          </tech-docs-row>
+          <tech-docs-row name="type" type="LED_t">
+            Type of PWM implementation (BASIC_LED or ESP32_LED)
+          </tech-docs-row>
+          <tech-docs-row name="channel" type="uint8_t">
+            Optional ESP32 LEDC channel (-1 for auto allocation)
+          </tech-docs-row>
+        </tech-docs-table>
         <!-- Notes -->
         <div class="alert alert-note">
           <strong>Note:</strong> Select pins with the ~ symbol.
@@ -419,20 +318,12 @@
         </div>
         <!-- Methods -->
         <h2>Methods</h2>
-        <!-- <ul class="method-list">
-          <li><a href="#pwm-begin">begin()</a></li>
-          <li><a href="#pwm-setpwm">setPWM()</a></li>
-          <li><a href="#pwm-setbrightness">setBrightness()</a></li>
-          <li><a href="#pwm-setglow">setGlow()</a></li>
-          <li><a href="#pwm-on">on()</a></li>
-          <li><a href="#pwm-off">off()</a></li>
-          <li><a href="#pwm-toggle">toggle()</a></li>
-        </ul> -->
 
         <details id="pwm-begin" class="accordion">
           <summary><code>void begin()</code></summary>
           <div class="accordion-content">
             <p>Initializes the PWM output for the configured pin.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -451,21 +342,12 @@
           <summary><code>void setPWM(uint8_t level)</code></summary>
           <div class="accordion-content">
             <p>Sets the PWM level of the LED.</p>
-            <table id="pwm-setpwm-table">
-              <thead>
-                <tr>
-                  <th>Parameters</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>level</code></td>
-                  <td>Brightness value (0-255)</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="level" type="uint8_t">
+                Brightness value (0-255)
+              </tech-docs-row>
+            </tech-docs-table>
             <div class="alert alert-blue">
               <strong>Note:</strong> This method automatically handles active-low inversion.
             </div>
@@ -537,38 +419,16 @@
     RGB(uint8_t rPin, uint8_t gPin, uint8_t bPin, bool commonAnode = true, LED_t type = BASIC_LED, int8_t rCh = -1, int8_t gCh = -1, int8_t bCh = -1);
           </code></pre>
         </div>
-        <!-- Parameter Table  -->
-        <table id="rgb-class-parameter-table">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>rPin</code></td>
-              <td>uint8_t</td>
-              <td>Red channel pin</td>
-            </tr>
-            <tr>
-              <td><code>gPin</code></td>
-              <td>uint8_t</td>
-              <td>Green channel pin</td>
-            </tr>
-            <tr>
-              <td><code>bPin</code></td>
-              <td>uint8_t</td>
-              <td>Blue channel pin</td>
-            </tr>
-            <tr>
-              <td><code>activeLow</code></td>
-              <td>bool</td>
-              <td>Set to <code>true</code> if the LED is common-anode (active-low)</td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Parameter Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="rPin" type="uint8_t">Red channel pin</tech-docs-row>
+          <tech-docs-row name="gPin" type="uint8_t">Green channel pin</tech-docs-row>
+          <tech-docs-row name="bPin" type="uint8_t">Blue channel pin</tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the LED is common-anode (active-low)
+          </tech-docs-row>
+        </tech-docs-table>
+        <!-- Example Code -->
         <div class="code-wrapper">
           <div class="code-header">example.ino</div>
           <pre><code class="language-cpp">
@@ -584,39 +444,12 @@
         </div>
         <!-- Methods -->
         <h2>Methods</h2>
-        <!-- <h3>Initialization</h3>
-        <ul class="method-list">
-          <li><a href="#rgb-begin">begin()</a></li>
-        </ul>
-        <h3>Set Color</h3>
-        <ul class="method-list">
-          <li><a href="#rgb-setrgb">setRGB()</a></li>
-          <li><a href="#rgb-sethex">setHex()</a></li>
-          <li><a href="#rgb-sethsv">setHSV()</a></li>
-          <li><a href="#rgb-setcmyk">setCMYK()</a></li>
-        </ul>
-        <h3>Adjustments</h3>
-        <ul class="method-list">
-          <li><a href="#rgb-brightness">setBrightness()</a></li>
-          <li><a href="#rgb-gamma">setGammaCorrection()</a></li>
-        </ul>
-        <h3>Getters</h3>
-        <ul class="method-list">
-          <li><a href="#rgb-getred">getRed()</a></li>
-          <li><a href="#rgb-getgreen">getGreen()</a></li>
-          <li><a href="#rgb-getblue">getBlue()</a></li>
-          <li><a href="#rgb-gethex">getHex()</a></li>
-          <li><a href="#rgb-gethexstring">getHexString()</a></li>
-        </ul>
-        <h3>Presets</h3>
-        <ul class="method-list">
-          <li><a href="#rgb-presets">Color Presets</a></li>
-        </ul> -->
 
         <details id="rgb-begin" class="accordion">
           <summary><code>void begin()</code></summary>
           <div class="accordion-content">
             <p>Initializes all RGB pins for PWM output.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -632,6 +465,7 @@
           <summary><code>setRGB(...)</code></summary>
           <div class="accordion-content">
             <p>Sets the LED color using RGB values.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <pre><code class="language-cpp">
     void setRGB(uint8_t r, uint8_t g, uint8_t b);
@@ -640,23 +474,15 @@
     void setRGB(const RGB_Color& c);
               </code></pre>
             </div>
-            <table id="rgb-setrgb-table">
-              <thead>
-                <tr>
-                  <th>Parameter</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><code>r</code></td><td>Red value (0-255)</td></tr>
-                <tr><td><code>g</code></td><td>Green value (0-255)</td></tr>
-                <tr><td><code>b</code></td><td>Blue value (0-255)</td></tr>
-                <tr>
-                  <td><code>hex</code></td>
-                  <td>Hexadecimal color value such as 0xFF0000 for Red</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="r" type="uint8_t">Red value (0-255)</tech-docs-row>
+              <tech-docs-row name="g" type="uint8_t">Green value (0-255)</tech-docs-row>
+              <tech-docs-row name="b" type="uint8_t">Blue value (0-255)</tech-docs-row>
+              <tech-docs-row name="hex" type="uint32_t">
+                Hexadecimal color value such as 0xFF0000 for Red
+              </tech-docs-row>
+            </tech-docs-table>
             <div class="alert alert-note">
               <strong>Note:</strong> Values are automatically adjusted for brightness and gamma correction if enabled.
             </div>
@@ -667,21 +493,12 @@
           <summary><code>void setHex(uint32_t hex)</code></summary>
           <div class="accordion-content">
             <p>Sets the LED color using a hexadecimal value.</p>
-            <table id="rgb-sethex-table">
-              <thead>
-                <tr>
-                  <th>Parameters</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>hex</code></td>
-                  <td>Hexadecimal color value such as 0x00FF00 for Green</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="hex" type="uint32_t">
+                Hexadecimal color value such as 0x00FF00 for Green
+              </tech-docs-row>
+            </tech-docs-table>
           </div>
         </details>
 
@@ -689,19 +506,12 @@
           <summary><code>void setHSV(int hue, float sat = 1.0, float val = 1.0)</code></summary>
           <div class="accordion-content">
             <p>Sets the LED color using HSV (Hue, Saturation, Value).</p>
-            <table id="rgb-sethsv-table">
-              <thead>
-                <tr>
-                  <th>Parameters</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><code>hue</code></td><td>0-360 degrees</td></tr>
-                <tr><td><code>sat</code></td><td>0.0-1.0</td></tr>
-                <tr><td><code>val</code></td><td>0.0-1.0</td></tr>
-              </tbody>
-            </table>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="hue" type="int">0-360 degrees</tech-docs-row>
+              <tech-docs-row name="sat" type="float">0.0-1.0</tech-docs-row>
+              <tech-docs-row name="val" type="float">0.0-1.0</tech-docs-row>
+            </tech-docs-table>
             <div class="alert alert-blue">
               <strong>Best For:</strong> Animations, color cycling, smooth transitions
             </div>
@@ -712,21 +522,12 @@
           <summary><code>void setBrightness(uint8_t brightness)</code></summary>
           <div class="accordion-content">
             <p>Adjusts overall brightness without changing color.</p>
-            <table id="rgb-brightness-table">
-              <thead>
-                <tr>
-                  <th>Parameters</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>brightness</code></td>
-                  <td>Brightness value (0-255)</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="brightness" type="uint8_t">
+                Brightness value (0-255)
+              </tech-docs-row>
+            </tech-docs-table>
           </div>
         </details>
 
@@ -778,28 +579,18 @@
           <summary><code>void getRGB(uint8_t &r, uint8_t &g, uint8_t &b)</code></summary>
           <div class="accordion-content">
             <p>Retrieves the current RGB color values.</p>
-            <table id="rgb-getrgb-table">
-              <thead>
-                <tr>
-                  <th>Parameter</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>r</code></td>
-                  <td>Reference to store red value</td>
-                </tr>
-                <tr>
-                  <td><code>g</code></td>
-                  <td>Reference to store green value</td>
-                </tr>
-                <tr>
-                  <td><code>b</code></td>
-                  <td>Reference to store blue value</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="r" type="uint8_t">
+                Reference to store red value
+              </tech-docs-row>
+              <tech-docs-row name="g" type="uint8_t">
+                Reference to store green value
+              </tech-docs-row>
+              <tech-docs-row name="b" type="uint8_t">
+                Reference to store blue value
+              </tech-docs-row>
+            </tech-docs-table>
           </div>
         </details>
 
@@ -827,33 +618,21 @@
     Button(uint8_t pin, bool activeLow = true, uint16_t debounceTime = 50);
           </code></pre>
         </div>
-        <!-- Parameter Table  -->
-        <table id="button-class-parameter-table">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>pin</code></td>
-              <td>uint8_t</td>
-              <td>Button pin</td>
-            </tr>
-            <tr>
-              <td><code>activeLow</code></td>
-              <td>bool</td>
-              <td> </td>
-            </tr>
-            <tr>
-              <td><code>debounceTime</code></td>
-              <td>uint16_t</td>
-              <td> </td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Parameter Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="pin" type="uint8_t">
+            Button pin
+          </tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the button is active-low.
+            An active-low button reads <code>false</code> when pressed and <code>true</code> when released.
+            It uses a pull-up resistor to hold the pin high by default.
+          </tech-docs-row>
+          <tech-docs-row name="debounceTime" type="uint16_t">
+            Time in milliseconds used to filter out rapid signal changes caused by mechanical switch bouncing.
+          </tech-docs-row>
+        </tech-docs-table>
+        <!-- Setup Code -->
         <div class="code-wrapper">
           <div class="code-header">example.ino</div>
           <pre><code class="language-cpp">
@@ -864,39 +643,12 @@
         </div>
         <!-- Methods -->
         <h2>Methods</h2>
-        <!-- <h3>Lifecycle</h3>
-        <ul class="method-list">
-          <li><a href="#btn-begin">begin()</a></li>
-          <li><a href="#btn-update">update()</a></li>
-        </ul>
-        <h3>State Queries</h3>
-        <ul class="method-list">
-          <li><a href="#btn-isdown">isDown()</a></li>
-          <li><a href="#btn-isheld">isHeld()</a></li>
-        </ul>
-        <h3>Event Polling</h3>
-        <ul class="method-list">
-          <li><a href="#btn-poll">poll()</a></li>
-        </ul>
-        <h3>Event Methods</h3>
-        <ul class="method-list">
-          <li><a href="#btn-pressed">wasPressed()</a></li>
-          <li><a href="#btn-released">wasReleased()</a></li>
-          <li><a href="#btn-click">wasClicked()</a></li>
-          <li><a href="#btn-double">wasDoubleClicked()</a></li>
-          <li><a href="#btn-triple">wasTripleClicked()</a></li>
-          <li><a href="#btn-held">wasHeld()</a></li>
-        </ul>
-        <h3>Configuration</h3>
-        <ul class="method-list">
-          <li><a href="#btn-holdtime">setHoldTime()</a></li>
-          <li><a href="#btn-multitime">setMultiClickTime()</a></li>
-        </ul> -->
 
         <details id="button-begin" class="accordion">
           <summary><code>void begin()</code></summary>
           <div class="accordion-content">
             <p>Initializes the button input pin and internal state.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -915,6 +667,7 @@
               Updates the button state. This method must be called repeatedly
               (typically inside <code>loop()</code>) to detect events.
             </p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -967,6 +720,7 @@
           <summary><code>bool wasPressed()</code></summary>
           <div class="accordion-content">
             <p>Returns <code>true</code> once when the button is pressed.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -987,6 +741,7 @@
           <summary><code>bool wasReleased()</code></summary>
           <div class="accordion-content">
             <p>Returns <code>true</code> once when the button is released.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1007,6 +762,7 @@
           <summary><code>bool wasClicked()</code></summary>
           <div class="accordion-content">
             <p>Returns <code>true</code> when a single click is detected.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1027,6 +783,7 @@
           <summary><code>bool wasDoubleClicked()</code></summary>
           <div class="accordion-content">
             <p>Returns <code>true</code> when a double-click is detected.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1047,6 +804,7 @@
           <summary><code>bool wasTripleClicked()</code></summary>
           <div class="accordion-content">
             <p>Returns <code>true</code> when a triple-click is detected.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1067,6 +825,7 @@
           <summary><code>bool wasHeld()</code></summary>
           <div class="accordion-content">
             <p>Returns <code>true</code> once when the button enters the hold state.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1087,7 +846,7 @@
           <summary><code>void setHoldTime(uint16_t ms)</code></summary>
           <div class="accordion-content">
             <p>Sets the duration (in milliseconds) required to trigger a hold event.</p>
-
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1106,6 +865,7 @@
           <summary><code>void setMultiClickTime(uint16_t ms)</code></summary>
           <div class="accordion-content">
             <p>Sets the maximum time interval between clicks for multi-click detection.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1132,33 +892,12 @@
         </div>
         <!-- Methods -->
         <h2>Methods</h2>
-        <!-- <h3>Creation</h3>
-        <ul class="method-list">
-          <li><a href="#c32-hex">hex()</a></li>
-          <li><a href="#c32-rgb">rgb()</a></li>
-          <li><a href="#c32-fromhex">fromHex()</a></li>
-        </ul>
-        <h3>Channel Extraction</h3>
-        <ul class="method-list">
-          <li><a href="#c32-red">red()</a></li>
-          <li><a href="#c32-green">green()</a></li>
-          <li><a href="#c32-blue">blue()</a></li>
-        </ul>
-        <h3>Color Operations</h3>
-        <ul class="method-list">
-          <li><a href="#c32-scale">scale()</a></li>
-          <li><a href="#c32-blend">blend()</a></li>
-        </ul>
-        <h3>Constants</h3>
-        <ul class="method-list">
-          <li><a href="#c32-basic">Basic Colors</a></li>
-          <li><a href="#c32-spectrum">Color Spectrum</a></li>
-        </ul> -->
 
         <details id="c32-hex" class="accordion">
           <summary><code>uint32_t hex(uint8_t r, uint8_t g, uint8_t b)</code></summary>
           <div class="accordion-content">
             <p>Creates a packed 24-bit color from RGB values.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <pre><code class="language-cpp">
     uint32_t color = Color32::hex(255, 0, 0); // Red
@@ -1210,6 +949,7 @@
               <li><code>brightness = 0</code> → off</li>
               <li><code>brightness = 255</code> → full brightness</li>
             </ul>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <pre><code class="language-cpp">
     auto dimRed = Color32::scale(Color32::RED, 128);
@@ -1226,6 +966,7 @@
               <li><code>t = 0</code> → color A</li>
               <li><code>t = 255</code> → color B</li>
             </ul>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <pre><code class="language-cpp">
     auto purple = Color32::blend(Color32::RED, Color32::BLUE, 128);
@@ -1284,31 +1025,16 @@
           </div>
         </details>
       </section>
-
-      <h2>Color Formats</h2>
-
-      <table class="color-table">
-        <tr>
-          <th>Format</th>
-          <th>Example</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>HEX</td>
-          <td><code>0xFF0000</code></td>
-          <td>Packed 24-bit color</td>
-        </tr>
-        <tr>
-          <td>RGB</td>
-          <td><code>(255, 0, 0)</code></td>
-          <td>Red, Green, Blue channels</td>
-        </tr>
-        <tr>
-          <td>HSV</td>
-          <td><code>(0°, 100%, 100%)</code></td>
-          <td>Hue, Saturation, Value</td>
-        </tr>
-      </table>
+      <!-- Color Formats -->
+      <div id="color-formats">
+        <h2>Color Formats</h2>
+        <table class="color-table">
+          <tr><th>Format</th><th>Example</th><th>Description</th></tr>
+          <tr><td>HEX</td><td><code>0xFF0000</code></td><td>Packed 24-bit color</td></tr>
+          <tr><td>RGB</td><td><code>(255, 0, 0)</code></td><td>Red, Green, Blue channels</td></tr>
+          <tr><td>HSV</td><td><code>(0°, 100%, 100%)</code></td><td>Hue, Saturation, Value</td></tr>
+        </table>
+      </div>
       <!-- Felix8A::Palette Class Section -->
       <section id="palette-class">
         <h1>Felix8A::Palette Class</h1>
@@ -1329,30 +1055,18 @@
           </code></pre>
         </div>
         <!-- Parameter Table -->
-        <table id="palette-class-parameter-table">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>colors</code></td>
-              <td><code>const uint32_t*</code></td>
-              <td>Pointer to an array of 24-bit colors (<code>0xRRGGBB</code>) used by the palette.</td>
-            </tr>
-            <tr>
-              <td><code>size</code></td>
-              <td><code>uint8_t</code></td>
-              <td>Number of colors in the palette. Used for indexing and interpolation.</td>
-            </tr>
-          </tbody>
-        </table>
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="colors" type="const uint32_t*">
+            Pointer to an array of 24-bit colors (<code>0xRRGGBB</code>) used by the palette.
+          </tech-docs-row>
+          <tech-docs-row name="size" type="uint8_t">
+            Number of colors in the palette. Used for indexing and interpolation.
+          </tech-docs-row>
+        </tech-docs-table>
         <div class="alert alert-note">
           <strong>Note:</strong> The palette does not copy the array; it stores a reference. Ensure the color array remains valid.
         </div>
+        <!-- Example Code -->
         <div class="code-wrapper">
           <div class="code-header">example.ino</div>
           <pre><code class="language-cpp">
@@ -1367,22 +1081,6 @@
         </div>
 
         <h2>Methods</h2>
-        <!-- <h3>Access</h3>
-        <ul class="method-list">
-          <li><a href="#pal-size">size()</a></li>
-          <li><a href="#pal-count">count()</a></li>
-          <li><a href="#pal-data">data()</a></li>
-        </ul>
-        <h3>Indexing</h3>
-        <ul class="method-list">
-          <li><a href="#pal-index">operator[]</a></li>
-          <li><a href="#pal-reversed">reversed()</a></li>
-        </ul>
-        <h3>Interpolation</h3>
-        <ul class="method-list">
-          <li><a href="#pal-lerp">lerp()</a></li>
-          <li><a href="#pal-blend">blend()</a></li>
-        </ul> -->
 
         <details id="pal-size" class="accordion">
           <summary><code>uint8_t size()</code></summary>
@@ -1413,6 +1111,7 @@
               allowing seamless looping through the palette.
             </p>
 
+            <!-- Example Code -->
             <div class="code-wrapper">
               <pre><code class="language-cpp">
     palette[0];    // First color
@@ -1438,6 +1137,7 @@
               <li><code>t = 255</code> → last color</li>
             </ul>
             <p><code>palette.lerp(128)</code> would be the midpoint gradient.</p>
+            <!-- Example Code -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -1457,271 +1157,155 @@
             <p>Blends two colors together using linear interpolation.</p>
           </div>
           <!-- Parameter Table -->
-          <table id="pal-blend-table">
-            <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>c1</code></td>
-                <td><code>uint32_t</code></td>
-                <td>First color (start of the blend).</td>
-              </tr>
-              <tr>
-                <td><code>c2</code></td>
-                <td><code>uint32_t</code></td>
-                <td>Second color (end of the blend).</td>
-              </tr>
-              <tr>
-                <td><code>t</code></td>
-                <td><code>uint8_t</code></td>
-                <td>
-                  Interpolation factor (0-255). <code>0</code> returns <code>c1</code>,
-                  <code>255</code> returns <code>c2</code>, values in between produce a smooth blend.
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <tech-docs-table title="Parameters" columns="Name,Type,Description">
+            <tech-docs-row name="c1" type="uint32_t">
+              First color (start of the blend).
+            </tech-docs-row>
+            <tech-docs-row name="c2" type="uint32_t">
+              Second color (end of the blend).
+            </tech-docs-row>
+            <tech-docs-row name="t" type="uint8_t">
+              Interpolation factor (0-255). <code>0</code> returns <code>c1</code>,
+              <code>255</code> returns <code>c2</code>, values in between produce a smooth blend.
+            </tech-docs-row>
+          </tech-docs-table>
         </details>
 
-        <details id="pal-lerp8"  class="accordion">
-          <summary><code>uint8_t lerp8(uint8_t a, uint8_t b, uint8_t t)</code></summary>
-          <div class="accordion-content">
-            <p>
-              Performs an 8-bit linear interpolation between two values.
-              Commonly used for smooth transitions in color calculations.
-            </p>
-            <!-- Parameter Table -->
-            <table id="pal-lerp8-table">
-              <thead>
-                <tr>
-                  <th>Parameter</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>a</code></td>
-                  <td><code>uint8_t</code></td>
-                  <td>Starting value.</td>
-                </tr>
-                <tr>
-                  <td><code>b</code></td>
-                  <td><code>uint8_t</code></td>
-                  <td>Ending value.</td>
-                </tr>
-                <tr>
-                  <td><code>t</code></td>
-                  <td><code>uint8_t</code></td>
-                  <td>
-                    Interpolation factor (0-255). <code>0</code> returns <code>a</code>,
-                    <code>255</code> returns <code>b</code>, values in between produce a linear interpolation.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </details>
-
+        <tech-docs-accordion title="uint8_t lerp8(uint8_t a, uint8_t b, uint8_t t)">
+          <p>
+            Performs an 8-bit linear interpolation between two values.
+            <b>0</b> returns <b>a</b>, <b>255</b> returns <b>b</b>, values in between produce a linear interpolation.
+            Commonly used for smooth transitions in color calculations.
+          </p>
+          <!-- Parameter Table -->
+          <tech-docs-table title="Parameters" columns="Name,Type,Description">
+            <tech-docs-row name="a" type="uint8_t">Starting value.</tech-docs-row>
+            <tech-docs-row name="b" type="uint8_t">Ending value.</tech-docs-row>
+            <tech-docs-row name="t" type="uint8_t">Interpolation factor (0-255).</tech-docs-row>
+          </tech-docs-table>
+        </tech-docs-accordion>
       </section>
       <!-- Felix8A::Time Class Section -->
       <section id="time-class">
         <h1>Felix8A::Time Utility</h1>
-
         <p>
           The <code>Felix8A::Time</code> class provides lightweight, non-blocking
           timing utilities built on top of <code>millis()</code>.
         </p>
-
         <div class="alert alert-blue">
           <strong>Tip:</strong> Use these methods instead of <code>delay()</code> for responsive, non-blocking code.
         </div>
-
+        <!-- Methods -->
         <h2>Methods</h2>
-        <!-- <ul class="method-list">
-          <li><a href="#time-every">every()</a></li>
-          <li><a href="#time-after">after()</a></li>
-          <li><a href="#time-reset">reset()</a></li>
-          <li><a href="#time-once">once()</a></li>
-        </ul> -->
 
-        <details id="time-every" class="accordion">
-          <summary><code>bool every(unsigned long interval, unsigned long& last)</code></summary>
-          <div class="accordion-content">
-            <p>
-              Triggers repeatedly at a fixed interval. Automatically compensates for drift
-              to maintain consistent timing.
-            </p>
-            <!-- Parameter Table -->
-            <table>
-              <thead>
-                <tr>
-                  <th>Parameter</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>interval</code></td>
-                  <td><code>unsigned long</code></td>
-                  <td>Interval in milliseconds.</td>
-                </tr>
-                <tr>
-                  <td><code>last</code></td>
-                  <td><code>unsigned long&</code></td>
-                  <td>Timestamp of the last trigger (updated automatically).</td>
-                </tr>
-              </tbody>
-            </table>
+        <tech-docs-accordion title="bool every(unsigned long interval, unsigned long& last)">
+          <p>
+            Triggers repeatedly at a fixed interval. Automatically compensates for drift
+            to maintain consistent timing.
+          </p>
+          <!-- Parameter Table -->
+          <tech-docs-table title="Parameters" columns="Name,Type,Description">
+            <tech-docs-row name="interval" type="unsigned long">
+              Interval in milliseconds.
+            </tech-docs-row>
+            <tech-docs-row name="last" type="unsigned long&">
+              Timestamp of the last trigger (updated automatically).
+            </tech-docs-row>
+          </tech-docs-table>
+          <!-- Example Code -->
+          <div class="code-wrapper">
+            <div class="code-header">example.ino</div>
+            <pre><code class="language-cpp">
+  unsigned long last = 0;
 
-            <div class="code-wrapper">
-              <div class="code-header">example.ino</div>
-              <pre><code class="language-cpp">
-    unsigned long last = 0;
-
-    void loop() {
-      if (Time::every(1000, last)) {
-        // Runs every 1 second
-      }
+  void loop() {
+    if (Time::every(1000, last)) {
+      // Runs every 1 second
     }
-              </code></pre>
-            </div>
+  }
+            </code></pre>
           </div>
-        </details>
+        </tech-docs-accordion>
 
-        <details id="time-after" class="accordion">
-          <summary><code>bool after(unsigned long interval, unsigned long start)</code></summary>
-          <div class="accordion-content">
-            <p>Returns <code>true</code> once the specified time has elapsed since <code>start</code>.</p>
-            <!-- Parameter Table -->
-            <table>
-              <thead>
-                <tr>
-                  <th>Parameter</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>interval</code></td>
-                  <td><code>unsigned long</code></td>
-                  <td>Duration in milliseconds.</td>
-                </tr>
-                <tr>
-                  <td><code>start</code></td>
-                  <td><code>unsigned long</code></td>
-                  <td>Start timestamp.</td>
-                </tr>
-              </tbody>
-            </table>
+        <tech-docs-accordion title="bool after(unsigned long interval, unsigned long start)">
+          <p>Returns <code>true</code> once the specified time has elapsed since <code>start</code>.</p>
+          <!-- Parameter Table -->
+          <tech-docs-table title="Parameters" columns="Name,Type,Description">
+            <tech-docs-row name="interval" type="unsigned long">
+              Duration in milliseconds.
+            </tech-docs-row>
+            <tech-docs-row name="start" type="unsigned long">
+              Start timestamp.
+            </tech-docs-row>
+          </tech-docs-table>
+        </tech-docs-accordion>
 
-          </div>
-        </details>
+        <tech-docs-accordion title="void reset(unsigned long& timestamp)">
+          <p>Sets the given timestamp to the current time (<code>millis()</code>).</p>
+          <!-- Parameter Table -->
+          <tech-docs-table title="Parameters" columns="Name,Type,Description">
+            <tech-docs-row name="timestamp" type="unsigned long&">
+              Variable to store the current time.
+            </tech-docs-row>
+          </tech-docs-table>
+        </tech-docs-accordion>
 
-        <details id="time-reset" class="accordion">
-          <summary><code>void reset(unsigned long& timestamp)</code></summary>
-          <div class="accordion-content">
-            <p>Sets the given timestamp to the current time (<code>millis()</code>).</p>
-            <!-- Parameter Table -->
-            <table>
-              <thead>
-                <tr>
-                  <th>Parameter</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>timestamp</code></td>
-                  <td><code>unsigned long&</code></td>
-                  <td>Variable to store the current time.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </details>
+        <tech-docs-accordion title="bool once(unsigned long interval, unsigned long& start)">
+          <p>Triggers only once after the specified interval. Automatically resets itselfafter firing.</p>
+          <!-- Parameter Table -->
+          <tech-docs-table title="Parameters" columns="Name,Type,Description">
+            <tech-docs-row name="interval" type="unsigned long">
+              Delay in milliseconds.
+            </tech-docs-row>
+            <tech-docs-row name="start" type="unsigned long&">
+              Start timestamp. Must be non-zero to be active.
+              Reset to <code>0</code> after triggering.
+            </tech-docs-row>
+          </tech-docs-table>
+          <!-- Example Code -->
+          <div class="code-wrapper">
+            <div class="code-header">example.ino</div>
+            <pre><code class="language-cpp">
+  unsigned long timer = millis(); // arm
 
-        <details id="time-once" class="accordion">
-          <summary><code>bool once(unsigned long interval, unsigned long& start)</code></summary>
-          <div class="accordion-content">
-            <p>Triggers only once after the specified interval. Automatically resets itselfafter firing.</p>
-            <!-- Parameter Table -->
-            <table>
-              <thead>
-                <tr>
-                  <th>Parameter</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>interval</code></td>
-                  <td><code>unsigned long</code></td>
-                  <td>Delay in milliseconds.</td>
-                </tr>
-                <tr>
-                  <td><code>start</code></td>
-                  <td><code>unsigned long&</code></td>
-                  <td>
-                    Start timestamp. Must be non-zero to be active.
-                    Reset to <code>0</code> after triggering.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="code-wrapper">
-              <div class="code-header">example.ino</div>
-              <pre><code class="language-cpp">
-    unsigned long timer = millis(); // arm
-
-    void loop() {
-      if (Time::once(2000, timer)) {
-        // Runs once after 2 seconds
-      }
+  void loop() {
+    if (Time::once(2000, timer)) {
+      // Runs once after 2 seconds
     }
-              </code></pre>
-            </div>
+  }
+            </code></pre>
           </div>
-        </details>
+        </tech-docs-accordion>
 
-        <h2>Common Patterns</h2>
+        <div id="common-patterns">
+          <h2>Common Patterns</h2>
+          <h3>Blink Without delay()</h3>
+          <div class="code-wrapper">
+            <div class="code-header">example.ino</div>
+            <pre><code class="language-cpp">
+      unsigned long t = 0;
 
-        <h3>Blink Without delay()</h3>
-        <div class="code-wrapper">
-          <div class="code-header">example.ino</div>
-          <pre><code class="language-cpp">
-    unsigned long t = 0;
-
-    void loop() {
-      if (Time::every(500, t)) {
-        led.toggle();
+      void loop() {
+        if (Time::every(500, t)) {
+          led.toggle();
+        }
       }
-    }
-          </code></pre>
-        </div>
+            </code></pre>
+          </div>
 
-        <h3>One-Shot Timer</h3>
-        <div class="code-wrapper">
-          <div class="code-header">example.ino</div>
-          <pre><code class="language-cpp">
-    unsigned long t = millis();
+          <h3>One-Shot Timer</h3>
+          <div class="code-wrapper">
+            <div class="code-header">example.ino</div>
+            <pre><code class="language-cpp">
+      unsigned long t = millis();
 
-    void loop() {
-      if (Time::once(3000, t)) {
-        // fires once after 3s
+      void loop() {
+        if (Time::once(3000, t)) {
+          // fires once after 3s
+        }
       }
-    }
-          </code></pre>
+            </code></pre>
+          </div>
         </div>
 
       </section>
