@@ -6,6 +6,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <title>Standard Project Document</title>
   <link rel="stylesheet" href="assets/styles/style.min.css" />
+  <script src="assets/components/docsComponents.js" defer></script>
 </head>
 <body>
   <main class="main-docs">
@@ -19,7 +20,7 @@
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#getting-started">Getting Started</a></li>
         <li><a href="#project-class">Project Class</a></li>
-        <li><a href="#sample">Sample</a></li>
+        <li><a href="#web-components">Web Components</a></li>
       </ul>
     </nav>
     <!-- Main Content Area -->
@@ -85,7 +86,18 @@
         </div>
         <!-- Methods -->
         <h2>Methods</h2>
-        <!-- <ul class="method-list">
+        <!-- <style>
+          /* Method List */
+          .method-list {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          .method-list li {
+            margin: 4px 0;
+          }
+        </style>
+        <ul class="method-list">
           <li><a href="#project-begin">begin()</a></li>
         </ul> -->
         <!-- Method Accordion -->
@@ -93,6 +105,7 @@
           <summary><code>void begin()</code></summary>
           <div class="accordion-content">
             <p>Initializes the project class object.</p>
+            <!-- Method Example -->
             <div class="code-wrapper">
               <div class="code-header">example.ino</div>
               <pre><code class="language-cpp">
@@ -104,7 +117,74 @@
           </div>
         </details>
       </section>
+
+      <!-- Project Class with Web Components Section -->
+      <section id="web-components">
+        <h1>Project Class with Web Components</h1>
+        <p>Project Class with Web Components Description</p>
+        <p>For Development</p>
+        <!-- Constructor -->
+        <h2>Constructor</h2>
+        <docs-code lang="cpp" title="constructor">
+          Project(uint8_t param);
+        </docs-code>
+        <!-- Parameter Table  -->
+        <table id="parameter-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>param</code></td>
+              <td>uint8_t</td>
+              <td>description</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Code Setup -->
+        <docs-code lang="cpp" title="example.ino">
+          #include &lt;Project.h&gt;
+          Project project(5);
+        </docs-code>
+        <!-- Methods -->
+        <h2>Methods</h2>
+        <!-- Method Accordion -->
+        <docs-accordion title="void begin()">
+          <p>Initializes the project class object.</p>
+          <!-- Method Example -->
+          <docs-code lang="cpp" title="example.ino">
+            void setup() {
+              project.begin();
+            }
+          </docs-code>
+        </docs-accordion>
+      </section>
+
     </div>
+
+    <script>
+      document.querySelectorAll('#sidebar a').forEach(link => {
+        link.addEventListener('click', function () {
+          document.querySelectorAll('#sidebar a').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    </script>
+
+    <script>
+      if (window.location.hash) {
+        const el = document.querySelector(window.location.hash);
+        if (el && el.tagName === "DETAILS") {
+          el.open = true;
+          el.scrollIntoView();
+        }
+      }
+    </script>
+
   </main>
 </body>
 </html>
