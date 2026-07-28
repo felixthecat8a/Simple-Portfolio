@@ -1,5 +1,5 @@
-const ModalDialogHandler = require('./modal')
-const setupDarkModeToggle = require('./toggle')
+const ModalDialogHandler = require('./scripts/modal')
+const setupDarkModeToggle = require('./scripts/toggle')
 
 new ModalDialogHandler(
   'openButton00',

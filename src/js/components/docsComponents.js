@@ -1,36 +1,130 @@
-class TechDocsAccordion extends HTMLElement {
+class TechDocsClassSection extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  render() {
+    const name = this.getAttribute('name') || 'Class';
+    const hasConstructor = this.querySelector('[slot="constructor"]');
+
+    const constructorSection = hasConstructor
+      ? `
+        <h2 class="sub-section-heading">Constructor</h2>
+        <div class="code-wrapper">
+          <pre><code><slot name="constructor"></slot></code></pre>
+        </div>
+        <p><slot name="constructor-info"></slot></p>
+      `
+      : "";
+
+    this.shadowRoot.innerHTML = `
+      <style>
+        section.class-section {
+          padding: 0.5em 1em;
+          margin-bottom: 1em;
+          background-color: rgba(0, 0, 0, 0.05);
+          border-radius: 12px;
+        }
+
+        h1, h2 {
+          margin: 0;
+        }
+
+        h1.class-name,
+        h2.sub-section-heading {
+          margin-bottom: 0.25em;
+        }
+
+        .code-wrapper {
+          background: #333c;
+          color: #f1f1f1;
+          border-radius: 0.5rem;
+          overflow: hidden;
+        }
+
+        pre {
+          margin: 0;
+          padding: 0.75rem;
+          overflow-x: auto;
+          white-space: pre;
+        }
+
+        code {
+          font-family: monospace;
+          font-size: 0.9rem;
+        }
+      </style>
+
+      <section class="class-section">
+        <h1 class="class-name">${name}</h1>
+
+        ${constructorSection}
+
+        <h2 class="sub-section-heading">Methods</h2>
+        <div><slot name="methods"></slot></div>
+      </section>
+    `;
+  }
+}
+
+class TechDocsMethodAccordion extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
   connectedCallback() {
     const title = this.getAttribute("title") || "";
-    const content = this.innerHTML;
 
-    this.innerHTML = `
+    this.shadowRoot.innerHTML = `
       <style>
-        details.tech-docs-accordion {
-          background: rgba(255, 255, 255, 0.9);
+        details {
+          background: rgba(255, 255, 255, 0.95);
           color: #1f1f1f;
-          border: 1px solid #999;
+          border: 1px solid #9999;
           border-radius: 0.375rem;
           margin-bottom: 0.5rem;
         }
 
-        summary.tech-docs-accordion-summary {
+        summary {
           padding: 1rem;
           font-weight: 600;
           cursor: pointer;
-          outline: none;
+          list-style: none;
         }
 
-        .tech-docs-accordion-content {
+        summary::-webkit-details-marker {
+          display: none;
+        }
+
+        summary::after {
+          content: "▸";
+          float: right;
+          transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+          transform: rotate(90deg);
+        }
+
+        .content {
           padding: 0 1rem 1rem;
         }
       </style>
 
-      <details class="tech-docs-accordion">
-        <summary class="tech-docs-accordion-summary">
-          <code>${title}</code>
-        </summary>
-        <div class="tech-docs-accordion-content">
-          ${content}
+      <details>
+        <summary><code>${title}</code></summary>
+        <div class="content">
+          <slot></slot>
         </div>
       </details>
     `;
@@ -92,10 +186,10 @@ class TechDocsTable extends HTMLElement {
 
         .tech-docs-table-header {
           background: #ccc;
-          color: #222;
+          color: #111;
           padding: 0.5rem 1rem;
           font-family: monospace;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           border-bottom: 1.5px solid #333;
           text-transform: uppercase;
         }
@@ -106,7 +200,7 @@ class TechDocsTable extends HTMLElement {
         }
 
         th, td {
-          padding: 0.6rem 0.8rem;
+          padding: 0.7rem 0.9rem;
           text-align: left;
           border-bottom: 1.5px solid #333;
         }
@@ -150,7 +244,8 @@ class TechDocsTable extends HTMLElement {
   }
 }
 
-customElements.define("tech-docs-accordion", TechDocsAccordion);
+customElements.define("tech-docs-class-section", TechDocsClassSection);
+customElements.define("tech-docs-method-accordion", TechDocsMethodAccordion);
 customElements.define("tech-docs-table", TechDocsTable);
 
 
@@ -168,16 +263,19 @@ class TechDocsCode extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    if (window.Prism) Prism.highlightAllUnder(this.shadowRoot);
+    this.highlight();
   }
 
   attributeChangedCallback() {
     this.render();
+    this.highlight();
   }
 
   render() {
     const lang = this.getAttribute("lang") || "plaintext";
     const title = this.getAttribute("title") || "";
+    const tpl = this.querySelector("template");
+    const code = tpl ? tpl.innerHTML.trim() : this.textContent.trim();
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -185,7 +283,7 @@ class TechDocsCode extends HTMLElement {
           border: 1px solid #333;
           border-radius: 0.5rem;
           overflow: hidden;
-          background: #3d3d3d;
+          background: #444e;
           color: #f1f1f1;
           margin: 0.5rem 0;
         }
@@ -193,7 +291,7 @@ class TechDocsCode extends HTMLElement {
         .tech-docs-code-header {
           font-family: monospace;
           font-size: 0.8rem;
-          background: #1f1f1f;
+          background: #222;
           color: #ccc;
           border-bottom: 1px solid #2b2b2b;
           padding: 0.5rem 1rem;
@@ -216,9 +314,17 @@ class TechDocsCode extends HTMLElement {
 
       <div class="tech-docs-code">
         ${title ? `<div class="tech-docs-code-header">${title}</div>` : ""}
-        <pre><code class="language-${lang}"><slot></slot></code></pre>
+        <pre><code class="language-${lang}">${code}</code></pre>
       </div>
     `;
+  }
+
+  highlight() {
+    const codeEl = this.shadowRoot.querySelector("code");
+
+    if (window.Prism && codeEl) {
+      Prism.highlightElement(codeEl);
+    }
   }
 }
 
