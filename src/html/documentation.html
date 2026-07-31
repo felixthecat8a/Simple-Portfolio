@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon" />
   <title>Standard Project Document</title>
-  <link rel="stylesheet" href="assets/styles/style.min.css" />
-  <script src="assets/components/docsComponents.js" defer></script>
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <script src="../js/components/TechDocsClassSection.js" defer></script>
+  <script src="../js/components/TechDocsMethodAccordion.js" defer></script>
+  <script src="../js/components/TechDocsTable.js" defer></script>
+  <script src="../js/components/TechDocsCode.js" defer></script>
 </head>
 <body>
   <main class="main-docs">
@@ -103,7 +106,7 @@
         </details>
       </section>
       <!-- Project Class with Web Components Section -->
-      <tech-docs-class-section name="Project" id="web-components">
+      <tech-docs-class-section name="Project (Web Components)" id="web-components">
         <span slot="constructor">
           Project(uint8_t parameter);
         </span>
@@ -140,28 +143,32 @@
         </div>
       </tech-docs-class-section>
 
+      <section id="under-development">
+        <h1>Code Development</h1>
 
-      <tech-docs-code lang="cpp" title="example.ino">
-    #include &lt;Project.h&gt;
+        <tech-docs-code lang="cpp" title="example.ino">
+          #include &lt;Project.h&gt;
 
-    Project project(5);
+          Project project(5);
 
-    void setup() {
-      project.begin();
-    }
-      </tech-docs-code>
+          void setup() {
+            project.begin();
+          }
+            </tech-docs-code>
 
-      <tech-docs-code lang="cpp" title="example.ino">
-        <template>
-    #include &lt;Project.h&gt;
+            <tech-docs-code lang="cpp" title="example.ino">
+              <template>
+          #include &lt;Project.h&gt;
 
-    Project project(5);
+          Project project(5);
 
-    void setup() {
-      project.begin();
-    }
-        </template>
-      </tech-docs-code>
+          void setup() {
+            project.begin();
+          }
+              </template>
+            </tech-docs-code>
+
+      </section>
 
     </div>
 
@@ -183,6 +190,8 @@
         }
       }
     </script>
+
+<script src="../js/scripts/toggle.js"></script>
 
   </main>
 </body>

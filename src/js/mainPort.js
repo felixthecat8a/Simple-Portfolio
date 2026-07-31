@@ -1,5 +1,7 @@
-const ModalDialogHandler = require('./scripts/modal')
-const setupDarkModeToggle = require('./scripts/toggle')
+import '../less/style.less'
+import './components'
+import ModalDialogHandler from './modules/modal'
+import setupDarkModeToggle from './modules/toggle'
 
 new ModalDialogHandler(
   'openButton00',

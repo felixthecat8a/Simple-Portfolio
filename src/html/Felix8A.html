@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <title>Felix8A Documentation</title>
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <script src="../js/components/TechDocsClassSection.js" defer></script>
+  <script src="../js/components/TechDocsMethodAccordion.js" defer></script>
+  <script src="../js/components/TechDocsTable.js" defer></script>
+</head>
+
+<body>
+  <main class="main-docs">
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h2>Felix8A</h2>
+        <span class="version">v1.1.1</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#led-class">Felix8A::LED</a></li>
+        <li><a href="#pwm-class">Felix8A::PWM</a></li>
+        <li><a href="#rgb-class">Felix8A::RGB</a></li>
+        <li><a href="#button-class">Felix8A::Button</a></li>
+        <li><a href="#c32-class">Felix8A::Color32</a></li>
+        <li><a href="#palette-class">Felix8A::Palette</a></li>
+        <li><a href="#time-class">Felix8A::Time</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div id="main-content">
+      <!-- Introduction Section -->
+      <section id="introduction">
+        <h1>Introduction</h1>
+        <p>
+          The <strong>Felix8A</strong> library is a lightweight Arduino toolkit for working with common components such as LEDs, RGB lighting, buttons, timing utilities, and color helpers.
+        </p>
+      </section>
+      <!-- Getting Started Section -->
+      <section id="getting-started">
+        <h1>Getting Started</h1>
+        <p>Follow these quick installation steps to add the Felix8A library to your project.</p>
+        <h2>Install via ZIP file</h2>
+        <ol>
+          <li>
+            Download the .zip file of the <a href="https://github.com/felixthecat8a/Felix8A/releases/latest/">latest release</a>.
+          </li>
+          <li>
+            In the Arduino IDE, go to "Sketch > Include Library > Add .ZIP Library...." and select the downloaded .zip file.
+          </li>
+        </ol>
+        <br>
+        <h3>Updating the Library</h3>
+        <ol>
+          <li>
+            Go to Documents > Arduino > libraries > Felix8A and delete the existing Felix8A folder from your libraries directory.
+          </li>
+          <li>
+            Follow the installation steps above to install the latest version.
+          </li>
+        </ol>
+        <br>
+        <h2>Add to PlatformIO Project</h2>
+        <div class="code-wrapper">
+          <div class="code-header">platformio.ini</div>
+          <pre><code>
+  lib_deps =
+    https://github.com/felixthecat8a/Felix8A.git
+          </code></pre>
+        </div>
+      </section>
+      <!-- Felix8A::LED Class Section -->
+      <section id="led-class">
+        <h1>Felix8A::LED Class</h1>
+        <!-- Constructor -->
+        <h2>Constructor</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-cpp">
+    LED(uint8_t pin, bool activeLow = false);
+          </code></pre>
+        </div>
+        <!-- Parameters Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="pin" type="uint8_t">
+            GPIO pin connected to the LED
+          </tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the LED is active-low (default: false)
+          </tech-docs-row>
+        </tech-docs-table>
+        <!-- Notes -->
+        <div class="alert alert-tip">
+          <strong>Tip:</strong> Use <code>activeLow = true</code> for boards where the LED turns on when the pin is LOW.
+        </div>
+        <!-- Code Setup -->
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    #include &lt;Felix8A.h&gt;
+    #define LED_PIN 5
+    Felix8A::LED led(LED_PIN);
+          </code></pre>
+        </div>
+        <!-- Methods -->
+        <h2>Methods</h2>
+
+        <details  id="led-begin" class="accordion">
+          <summary><code>void begin()</code></summary>
+          <div class="accordion-content">
+            <p>Initializes the LED pin and prepares it for output.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      led.begin();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details  id="led-on" class="accordion">
+          <summary><code>void on()</code></summary>
+          <div class="accordion-content">
+            <p>Turns the LED on.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      led.begin();
+      led.on();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details  id="led-off" class="accordion">
+          <summary><code>void off()</code></summary>
+          <div class="accordion-content">
+            <p>Turns the LED off.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      led.on();
+      delay(1000);
+
+      led.off();
+      delay(1000);
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details  id="led-toggle" class="accordion">
+          <summary><code>void toggle()</code></summary>
+          <div class="accordion-content">
+            <p>Toggles the LED between ON and OFF states.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      led.toggle();
+      delay(1000);
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="led-ison" class="accordion">
+          <summary><code>bool isOn()</code></summary>
+          <div class="accordion-content">
+            <p>Returns the current state of the LED.</p>
+            <!-- Returns Table -->
+            <tech-docs-table title="Returns" columns="Value,Description">
+              <tech-docs-row name="true">The LED is currently ON</tech-docs-row>
+              <tech-docs-row name="false">The LED is currently OFF</tech-docs-row>
+            </tech-docs-table>
+            <div class="alert alert-warn">
+              <strong>Note:</strong> This reflects the stored state, not a physical read from the pin.
+            </div>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      if (led.isOn()) {
+        led.off();
+      } else {
+        led.on();
+      }
+      delay(1000);
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details  id="led-setpin" class="accordion">
+          <summary><code>void setPin(uint8_t pin)</code></summary>
+          <div class="accordion-content">
+            <p>Changes the GPIO pin used by the LED.</p>
+            <!-- Parameters Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="pin" type="uint8_t">
+                New GPIO pin number
+              </tech-docs-row>
+            </tech-docs-table>
+          </div>
+        </details>
+
+        <details  id="led-getpin" class="accordion">
+          <summary><code>uint8_t getPin()</code></summary>
+          <div class="accordion-content">
+            <p>Returns the GPIO pin currently assigned to the LED.</p>
+            <!-- Returns Table -->
+            <tech-docs-table title="Returns" columns="Type,Description">
+              <tech-docs-row type="uint8_t">
+                The GPIO pin number used by the LED
+              </tech-docs-row>
+            </tech-docs-table>
+            <div class="alert alert-warn">
+              <strong>Note:</strong> This value reflects the current configuration and may change if <code>setPin()</code> is called.
+            </div>
+          </div>
+        </details>
+
+        <details id="led-activelow" class="accordion">
+          <summary><code>void setActiveLow(bool enable)</code></summary>
+          <div class="accordion-content">
+            <p>
+              Sets whether the LED is active-low.
+              When enabled, the LED turns on when the pin is LOW.
+            </p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="enable" type="bool">
+                Set true to enable active-low
+              </tech-docs-row>
+            </tech-docs-table>
+          </div>
+        </details>
+
+        <details id="led-isactivelow" class="accordion">
+          <summary><code>bool isActiveLow()</code></summary>
+          <div class="accordion-content">
+            <p>Returns whether the LED is configured as active-low.</p>
+            <!-- Returns Table -->
+            <tech-docs-table title="Returns" columns="Value,Description">
+              <tech-docs-row name="true">Reference to store red value</tech-docs-row>
+              <tech-docs-row name="false">Reference to store green value</tech-docs-row>
+            </tech-docs-table>
+            <div class="alert alert-warn">
+              <strong>Note:</strong> This is a configuration setting. Use <code>isOn()</code> to check the current LED state.
+            </div>
+          </div>
+        </details>
+
+      </section>
+      <!-- Felix8A::PWM Class Section -->
+      <section id="pwm-class">
+        <h1>Felix8A::PWM Class</h1>
+        <!-- Constructor -->
+        <h2>Constructor</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-cpp">
+    PWM(uint8_t pin, bool activeLow = false, LED_t type = BASIC_LED, int8_t channel = -1);
+          </code></pre>
+        </div>
+        <!-- Parameter Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="pin" type="uint8_t">
+            GPIO pin connected to the LED
+          </tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the LED is active-low
+          </tech-docs-row>
+          <tech-docs-row name="type" type="LED_t">
+            Type of PWM implementation (BASIC_LED or ESP32_LED)
+          </tech-docs-row>
+          <tech-docs-row name="channel" type="uint8_t">
+            Optional ESP32 LEDC channel (-1 for auto allocation)
+          </tech-docs-row>
+        </tech-docs-table>
+        <!-- Notes -->
+        <div class="alert alert-note">
+          <strong>Note:</strong> Select pins with the ~ symbol.
+        </div>
+        <!-- Code Setup -->
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    #include &lt;Felix8A.h&gt;
+    #define PWM_PIN 6
+    Felix8A::PWM led(PWM_PIN);
+          </code></pre>
+        </div>
+        <!-- Note -->
+        <div class="alert alert-blue">
+          <strong>Note:</strong> On ESP32, this class uses hardware LEDC channels for efficient PWM output.
+        </div>
+        <!-- Methods -->
+        <h2>Methods</h2>
+
+        <details id="pwm-begin" class="accordion">
+          <summary><code>void begin()</code></summary>
+          <div class="accordion-content">
+            <p>Initializes the PWM output for the configured pin.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      pwn.begin();
+    }
+              </code></pre>
+            </div>
+            <div class="alert alert-note">
+              <strong>Note:</strong> On ESP32, this configures a hardware LEDC channel.
+            </div>
+          </div>
+        </details>
+
+        <details id="pwm-setpwm" class="accordion">
+          <summary><code>void setPWM(uint8_t level)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the PWM level of the LED.</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="level" type="uint8_t">
+                Brightness value (0-255)
+              </tech-docs-row>
+            </tech-docs-table>
+            <div class="alert alert-blue">
+              <strong>Note:</strong> This method automatically handles active-low inversion.
+            </div>
+          </div>
+        </details>
+
+        <details id="pwm-setbrightness" class="accordion">
+          <summary><code>void setBrightness(uint8_t brightness)</code></summary>
+          <div class="accordion-content">
+            <p>Alias for <code>setPWM()</code>.</p>
+          </div>
+        </details>
+
+        <details id="pwm-setglow" class="accordion">
+          <summary><code>void setGlow(uint8_t glow)</code></summary>
+          <div class="accordion-content">
+            <p>Alias for <code>setPWM()</code>.</p>
+          </div>
+        </details>
+
+        <details id="pwm-on" class="accordion">
+          <summary><code>void on()</code></summary>
+          <div class="accordion-content">
+            <p>Sets brightness to maximum (fully on).</p>
+          </div>
+        </details>
+
+        <details id="pwm-off" class="accordion">
+          <summary><code>void off()</code></summary>
+          <div class="accordion-content">
+            <p>Turns the LED off (brightness = 0).</p>
+          </div>
+        </details>
+
+        <details id="pwm-toggle" class="accordion">
+          <summary><code>void toggle()</code></summary>
+          <div class="accordion-content">
+            <p>Toggles between fully ON and OFF states.</p>
+          </div>
+        </details>
+
+        <div class="alert alert-warn">
+          <strong>Behavior:</strong> <code>toggle()</code> switches between OFF and maximum brightness, not the previous brightness level.
+        </div>
+
+        <h2>Platform Notes</h2>
+        <ul>
+          <li>Arduino: Uses standard PWM output via <code>analogWrite()</code></li>
+          <li>ESP32: Uses hardware LEDC channels</li>
+        </ul>
+
+      </section>
+      <!-- Felix8A::RGB Class Section -->
+      <section id="rgb-class">
+        <h1>Felix8A::RGB Class</h1>
+        <h2>Constructor</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-cpp">
+    RGB(uint8_t rPin, uint8_t gPin, uint8_t bPin, bool commonAnode = true, LED_t type = BASIC_LED, int8_t rCh = -1, int8_t gCh = -1, int8_t bCh = -1);
+          </code></pre>
+        </div>
+        <!-- Parameter Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="rPin" type="uint8_t">Red channel pin</tech-docs-row>
+          <tech-docs-row name="gPin" type="uint8_t">Green channel pin</tech-docs-row>
+          <tech-docs-row name="bPin" type="uint8_t">Blue channel pin</tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the LED is common-anode (active-low)
+          </tech-docs-row>
+        </tech-docs-table>
+        <!-- Example Code -->
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    #include &lt;Felix8A.h&gt;
+    #define RED_PIN 9
+    #define GREEN_PIN 10
+    #define BLUE_PIN 11
+    Felix8A::RGB rgb(RED_PIN, GREEN_PIN, BLUE_PIN);
+          </code></pre>
+        </div>
+        <div class="alert alert-note">
+          <strong>Note:</strong> Select pins with the ~ symbol.
+        </div>
+        <!-- Methods -->
+        <h2>Methods</h2>
+
+        <details id="rgb-begin" class="accordion">
+          <summary><code>void begin()</code></summary>
+          <div class="accordion-content">
+            <p>Initializes all RGB pins for PWM output.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      rgb.begin();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="rgb-setrgb" class="accordion">
+          <summary><code>setRGB(...)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the LED color using RGB values.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    void setRGB(uint8_t r, uint8_t g, uint8_t b);
+    void setRGB(uint32_t hex);
+    void setRGB(const uint8_t rgb[3]);
+    void setRGB(const RGB_Color& c);
+              </code></pre>
+            </div>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="r" type="uint8_t">Red value (0-255)</tech-docs-row>
+              <tech-docs-row name="g" type="uint8_t">Green value (0-255)</tech-docs-row>
+              <tech-docs-row name="b" type="uint8_t">Blue value (0-255)</tech-docs-row>
+              <tech-docs-row name="hex" type="uint32_t">
+                Hexadecimal color value such as 0xFF0000 for Red
+              </tech-docs-row>
+            </tech-docs-table>
+            <div class="alert alert-note">
+              <strong>Note:</strong> Values are automatically adjusted for brightness and gamma correction if enabled.
+            </div>
+          </div>
+        </details>
+
+        <details id="rgb-sethex" class="accordion">
+          <summary><code>void setHex(uint32_t hex)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the LED color using a hexadecimal value.</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="hex" type="uint32_t">
+                Hexadecimal color value such as 0x00FF00 for Green
+              </tech-docs-row>
+            </tech-docs-table>
+          </div>
+        </details>
+
+        <details id="rgb-sethsv" class="accordion">
+          <summary><code>void setHSV(int hue, float sat = 1.0, float val = 1.0)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the LED color using HSV (Hue, Saturation, Value).</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="hue" type="int">0-360 degrees</tech-docs-row>
+              <tech-docs-row name="sat" type="float">0.0-1.0</tech-docs-row>
+              <tech-docs-row name="val" type="float">0.0-1.0</tech-docs-row>
+            </tech-docs-table>
+            <div class="alert alert-blue">
+              <strong>Best For:</strong> Animations, color cycling, smooth transitions
+            </div>
+          </div>
+        </details>
+
+        <details id="rgb-brightness" class="accordion">
+          <summary><code>void setBrightness(uint8_t brightness)</code></summary>
+          <div class="accordion-content">
+            <p>Adjusts overall brightness without changing color.</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="brightness" type="uint8_t">
+                Brightness value (0-255)
+              </tech-docs-row>
+            </tech-docs-table>
+          </div>
+        </details>
+
+        <details id="rgb-gamma" class="accordion">
+          <summary><code>void setGammaCorrection(bool enabled)</code></summary>
+          <div class="accordion-content">
+            <p>Enables or disables gamma correction for more natural brightness perception.</p>
+            <div class="alert alert-note">
+              <strong>Why it matters:</strong> Human eyes perceive brightness non-linearly.
+            </div>
+          </div>
+        </details>
+
+        <details id="rgb-presets" class="accordion">
+          <summary><code>Color Presets</code></summary>
+          <div class="accordion-content">
+            <p>Quickly set common colors:</p>
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+        setWhite();
+        setRed();
+        setOrange();
+        setYellow();
+        setLime();
+        setGreen();
+        setSpring();
+        setCyan();
+        setAzure();
+        setBlue();
+        setViolet();
+        setMagenta();
+        setRose();
+              </code></pre>
+            </div>
+            <div class="alert alert-blue">
+              <strong>Tip:</strong> These use predefined constants from <code>ColorRGB</code>.
+            </div>
+          </div>
+        </details>
+
+        <details id="rgb-off" class="accordion">
+          <summary><code>void off()</code></summary>
+          <div class="accordion-content">
+            <p>Turns off all RGB channels.</p>
+          </div>
+        </details>
+
+        <details id="rgb-getrgb" class="accordion">
+          <summary><code>void getRGB(uint8_t &r, uint8_t &g, uint8_t &b)</code></summary>
+          <div class="accordion-content">
+            <p>Retrieves the current RGB color values.</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="r" type="uint8_t">
+                Reference to store red value
+              </tech-docs-row>
+              <tech-docs-row name="g" type="uint8_t">
+                Reference to store green value
+              </tech-docs-row>
+              <tech-docs-row name="b" type="uint8_t">
+                Reference to store blue value
+              </tech-docs-row>
+            </tech-docs-table>
+          </div>
+        </details>
+
+        <details id="rgb-gethex" class="accordion">
+          <summary><code>uint32_t getHex()</code></summary>
+          <div class="accordion-content">
+            <p>Returns the current color as a hexadecimal value such as 0x0000FF for Blue.</p>
+          </div>
+        </details>
+
+      </section>
+      <!-- Felix8A::Button Class Section -->
+      <section id="button-class">
+        <h1>Felix8A::Button Class</h1>
+        <h2>Constructor</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-cpp">
+    Button(uint8_t pin, bool activeLow = true, uint16_t debounceTime = 50);
+          </code></pre>
+        </div>
+        <!-- Parameter Table -->
+        <tech-docs-table title="Parameters" columns="Name,Type,Description">
+          <tech-docs-row name="pin" type="uint8_t">
+            Button pin
+          </tech-docs-row>
+          <tech-docs-row name="activeLow" type="bool">
+            Set to <code>true</code> if the button is active-low.
+            An active-low button reads <code>false</code> when pressed and <code>true</code> when released.
+            It uses a pull-up resistor to hold the pin high by default.
+          </tech-docs-row>
+          <tech-docs-row name="debounceTime" type="uint16_t">
+            Time in milliseconds used to filter out rapid signal changes caused by mechanical switch bouncing.
+          </tech-docs-row>
+        </tech-docs-table>
+        <!-- Setup Code -->
+        <div class="code-wrapper">
+          <div class="code-header">example.ino</div>
+          <pre><code class="language-cpp">
+    #include &lt;Felix8A.h&gt;
+    #define BUTTON_PIN 2
+    Felix8A::Button button(BUTTON_PIN);
+          </code></pre>
+        </div>
+        <!-- Methods -->
+        <h2>Methods</h2>
+
+        <details id="button-begin" class="accordion">
+          <summary><code>void begin()</code></summary>
+          <div class="accordion-content">
+            <p>Initializes the button input pin and internal state.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      button.begin();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-update" class="accordion">
+          <summary><code>void update()</code></summary>
+          <div class="accordion-content">
+            <p>
+              Updates the button state. This method must be called repeatedly
+              (typically inside <code>loop()</code>) to detect events.
+            </p>
+            <div class="alert alert-tip">
+              <strong>Tip:</strong> Call <code>update()</code> in your main loop to process button events.
+            </div>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-isdown" class="accordion">
+          <summary><code>bool isDown()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> if the button is currently pressed.</p>
+          </div>
+        </details>
+
+        <details id="btn-isheld" class="accordion">
+          <summary><code>bool isHeld()</code></summary>
+          <div class="accordion-content">
+            <p>
+              Returns <code>true</code> if the button is currently being held
+              (after the hold threshold is reached).
+            </p>
+          </div>
+        </details>
+
+        <details id="btn-poll" class="accordion">
+          <summary><code>Event poll()</code></summary>
+          <div class="accordion-content">
+            <p>
+              Returns the most recent button event and clears it.
+            </p>
+
+            <p><strong>Possible values:</strong></p>
+            <ul>
+              <li><code>None</code></li>
+              <li><code>Press</code></li>
+              <li><code>Release</code></li>
+              <li><code>Click</code></li>
+              <li><code>DoubleClick</code></li>
+              <li><code>TripleClick</code></li>
+              <li><code>Hold</code></li>
+            </ul>
+          </div>
+        </details>
+
+        <details id="btn-pressed" class="accordion">
+          <summary><code>bool wasPressed()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> once when the button is pressed.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasPressed()) {
+        Serial.println("Pressed!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-released" class="accordion">
+          <summary><code>bool wasReleased()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> once when the button is released.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasReleased()) {
+        Serial.println("Released!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-click" class="accordion">
+          <summary><code>bool wasClicked()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> when a single click is detected.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasClicked()) {
+        Serial.println("Click!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-double" class="accordion">
+          <summary><code>bool wasDoubleClicked()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> when a double-click is detected.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasDoubleClicked()) {
+        Serial.println("Double Click!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-triple" class="accordion">
+          <summary><code>bool wasTripleClicked()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> when a triple-click is detected.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasTripleClicked()) {
+        Serial.println("Triple Click!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-held" class="accordion">
+          <summary><code>bool wasHeld()</code></summary>
+          <div class="accordion-content">
+            <p>Returns <code>true</code> once when the button enters the hold state.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void loop() {
+      button.update();
+
+      if (button.wasHeld()) {
+        Serial.println("Held!");
+      }
+
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="btn-holdtime" class="accordion">
+          <summary><code>void setHoldTime(uint16_t ms)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the duration (in milliseconds) required to trigger a hold event.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      button.begin();
+      button.setHoldTime(900);
+      button.setMultiClickTime(250);
+    }
+              </code></pre>
+            </div>
+
+          </div>
+        </details>
+
+        <details id="btn-multitime" class="accordion">
+          <summary><code>void setMultiClickTime(uint16_t ms)</code></summary>
+          <div class="accordion-content">
+            <p>Sets the maximum time interval between clicks for multi-click detection.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    void setup() {
+      button.begin();
+      button.setHoldTime(900);
+      button.setMultiClickTime(250);
+    }
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+      </section>
+      <!-- Felix8A::Color32 Class Section -->
+      <section id="c32-class">
+        <h1>Felix8A::Color32 Utility Class</h1>
+        <!-- Methods -->
+        <h2>Methods</h2>
+
+        <details id="c32-hex" class="accordion">
+          <summary><code>uint32_t hex(uint8_t r, uint8_t g, uint8_t b)</code></summary>
+          <div class="accordion-content">
+            <p>Creates a packed 24-bit color from RGB values.</p>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    uint32_t color = Color32::hex(255, 0, 0); // Red
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="c32-rgb" class="accordion">
+          <summary><code>uint32_t rgb(uint8_t r, uint8_t g, uint8_t b)</code></summary>
+          <div class="accordion-content">
+            <p>Alias for <code>hex()</code>.</p>
+          </div>
+        </details>
+
+        <details id="c32-fromhex" class="accordion">
+          <summary><code>uint32_t fromHex(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Ensures a value is treated as a 24-bit color by masking out extra bits.</p>
+          </div>
+        </details>
+
+        <details id="c32-red" class="accordion">
+          <summary><code>uint8_t red(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Extracts the red channel (0-255).</p>
+          </div>
+        </details>
+
+        <details id="c32-green" class="accordion">
+          <summary><code>uint8_t green(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Extracts the green channel (0-255).</p>
+          </div>
+        </details>
+
+        <details id="c32-blue" class="accordion">
+          <summary><code>uint8_t blue(uint32_t c)</code></summary>
+          <div class="accordion-content">
+            <p>Extracts the blue channel (0-255).</p>
+          </div>
+        </details>
+
+        <details id="c32-scale" class="accordion">
+          <summary><code>uint32_t scale(uint32_t color, uint8_t brightness)</code></summary>
+          <div class="accordion-content">
+            <p>Scales a color's brightness while preserving its hue.</p>
+            <ul>
+              <li><code>brightness = 0</code> → off</li>
+              <li><code>brightness = 255</code> → full brightness</li>
+            </ul>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    auto dimRed = Color32::scale(Color32::RED, 128);
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="c32-blend" class="accordion">
+          <summary><code>uint32_t blend(uint32_t a, uint32_t b, uint8_t t)</code></summary>
+          <div class="accordion-content">
+            <p>Linearly interpolates between two colors.</p>
+            <ul>
+              <li><code>t = 0</code> → color A</li>
+              <li><code>t = 255</code> → color B</li>
+            </ul>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    auto purple = Color32::blend(Color32::RED, Color32::BLUE, 128);
+              </code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details id="c32-basic" class="accordion">
+          <summary><code>Basic Preset Colors</code></summary>
+          <div class="accordion-content">
+            <div class="code-wrapper">
+              <pre><code class="language-cpp">
+    Felix8A::Color32::BLACK / Felix8A::Color32::OFF = 0x000000;
+    Felix8A::Color32::GRAY / Felix8A::Color32::GREY = 0x999999;
+    Felix8A::Color32::WHITE           = 0xFFFFFF;
+    Felix8A::Color32::RED             = 0xFF0000;
+    Felix8A::Color32::VERMILION       = 0xFF4000;
+    Felix8A::Color32::ORANGE          = 0xFF8000;
+    Felix8A::Color32::AMBER           = 0xFFBF00;
+    Felix8A::Color32::YELLOW          = 0xFFFF00;
+    Felix8A::Color32::LIME            = 0xBFFF00;
+    Felix8A::Color32::CHARTREUSE      = 0x80FF00;
+    Felix8A::Color32::HARLEQUIN       = 0x40FF00;
+    Felix8A::Color32::GREEN           = 0x00FF00;
+    Felix8A::Color32::MINT            = 0x00FF40;
+    Felix8A::Color32::SPRING_GREEN    = 0x00FF80;
+    Felix8A::Color32::TURQUOISE       = 0x00FFBF;
+    Felix8A::Color32::CYAN            = 0x00FFFF;
+    Felix8A::Color32::SKY_BLUE        = 0x00BFFF;
+    Felix8A::Color32::AZURE           = 0x0080FF;
+    Felix8A::Color32::SAPPHIRE        = 0x0040FF;
+    Felix8A::Color32::BLUE            = 0x0000FF;
+    Felix8A::Color32::INDIGO          = 0x4000FF;
+    Felix8A::Color32::VIOLET          = 0x8000FF;
+    Felix8A::Color32::ELECTRIC_PURPLE = 0xBF00FF;
+    Felix8A::Color32::MAGENTA         = 0xFF00FF;
+    Felix8A::Color32::HOT_PINK        = 0xFF00BF;
+    Felix8A::Color32::ROSE            = 0xFF0080;
+    Felix8A::Color32::CRIMSON         = 0xFF0040;
+    Felix8A::Color32::CORAL           = 0xBF4040;
+    Felix8A::Color32::MOCHA           = 0xBFBF40;
+    Felix8A::Color32::HONEYDEW        = 0x40BF40;
+    Felix8A::Color32::CELESTE         = 0x40BFBF;
+    Felix8A::Color32::LAVENDER        = 0x4040BF;
+    Felix8A::Color32::LILAC           = 0xBF40BF;
+    Felix8A::Color32::MAROON          = 0x800000;
+    Felix8A::Color32::OLIVE           = 0x808000;
+    Felix8A::Color32::EMERALD         = 0x008000;
+    Felix8A::Color32::TEAL            = 0x008080;
+    Felix8A::Color32::NAVY            = 0x000080;
+    Felix8A::Color32::PURPLE          = 0x800080;
+    Felix8A::Color32::ARDUINO_TEAL    = 0x00878F;
+              </code></pre>
+            </div>
+          </div>
+        </details>
+        <h2>Color Formats</h2>
+        <table class="color-table">
+          <tr><th>Format</th><th>Example</th><th>Description</th></tr>
+          <tr><td>HEX</td><td><code>0xFF0000</code></td><td>Packed 24-bit color</td></tr>
+          <tr><td>RGB</td><td><code>(255, 0, 0)</code></td><td>Red, Green, Blue channels</td></tr>
+          <tr><td>HSV</td><td><code>(0°, 100%, 100%)</code></td><td>Hue, Saturation, Value</td></tr>
+        </table>
+      </section>
+      <!-- Felix8A::Palette Class Section -->
+      <tech-docs-class-section name="Felix8A::Palette" id="palette-class">
+        <span slot="constructor">
+    Palette(const uint32_t* colors, uint8_t size);
+        </span>
+        <span slot="constructor-info">
+          <!-- Parameter Table -->
+          <tech-docs-table title="Parameters" columns="Name,Type,Description">
+            <tech-docs-row name="colors" type="const uint32_t*">
+              Pointer to an array of 24-bit colors (<code>0xRRGGBB</code>) used by the palette.
+            </tech-docs-row>
+            <tech-docs-row name="size" type="uint8_t">
+              Number of colors in the palette. Used for indexing and interpolation.
+            </tech-docs-row>
+          </tech-docs-table>
+          <div class="alert alert-note">
+            <strong>Note:</strong> The palette does not copy the array; it stores a reference. Ensure the color array remains valid.
+          </div>
+          <!-- Example Code -->
+          <div class="code-wrapper">
+            <div class="code-header">example.ino</div>
+            <pre><code class="language-cpp">
+    constexpr uint32_t colors[] = {
+      Color32::RED,
+      Color32::GREEN,
+      Color32::BLUE
+    };
+
+    Palette palette(colors);
+            </code></pre>
+          </div>
+        </span>
+        <div slot="methods">
+
+          <details id="pal-size" class="accordion">
+            <summary><code>uint8_t size()</code></summary>
+            <div class="accordion-content">
+              <p>Returns the number of colors in the palette.</p>
+            </div>
+          </details>
+
+          <details id="pal-count" class="accordion">
+            <summary><code>uint8_t count()</code></summary>
+            <div class="accordion-content">
+              <p>Alias for <code>size()</code>.</p>
+            </div>
+          </details>
+
+          <details id="pal-data" class="accordion">
+            <summary><code>const uint32_t* data()</code></summary>
+            <div class="accordion-content">
+              <p>Returns a pointer to the underlying color array.</p>
+            </div>
+          </details>
+
+          <details id="pal-index" class="accordion">
+            <summary><code>uint32_t operator[](uint8_t i)</code></summary>
+            <div class="accordion-content">
+              <p>
+                Returns the color at index <code>i</code>. The index wraps automatically,
+                allowing seamless looping through the palette.
+              </p>
+
+              <!-- Example Code -->
+              <div class="code-wrapper">
+                <pre><code class="language-cpp">
+      palette[0];    // First color
+      palette[10];   // Wraps if size &lt; 10
+                </code></pre>
+              </div>
+            </div>
+          </details>
+
+          <details id="pal-reversed" class="accordion">
+            <summary><code>uint32_t reversed(uint8_t i)</code></summary>
+            <div class="accordion-content">
+              <p>Returns colors in reverse order, with automatic wrapping.</p>
+            </div>
+          </details>
+
+          <details id="pal-lerp" class="accordion">
+            <summary><code>uint32_t lerp(uint8_t t)</code></summary>
+            <div class="accordion-content">
+              <p>Interpolates smoothly across the palette.</p>
+              <p><code>t = 0</code> → first color</p>
+              <p><code>t = 255</code> → last color</p>
+              <p><code>palette.lerp(128)</code> would be the midpoint gradient.</p>
+              <div class="alert alert-tip">
+                <strong>Tip:</strong> Use <code>lerp()</code> to generate smooth color transitions across a palette.
+              </div>
+              <!-- Example Code -->
+              <div class="code-wrapper">
+                <div class="code-header">example.ino</div>
+                <pre><code class="language-cpp">
+      void loop() {
+        static uint8_t t = 0;
+        rgb.setHex(palette.lerp(t));
+        t++;
+      }
+                </code></pre>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </tech-docs-class-section>
+      <!-- Felix8A::Time Class Section -->
+      <tech-docs-class-section name="Felix8A::Time"  id="time-class">
+        <div slot="methods">
+          <tech-docs-method-accordion title="bool every(unsigned long interval, unsigned long& last)">
+            <p>
+              Triggers repeatedly at a fixed interval. Automatically compensates for drift
+              to maintain consistent timing.
+            </p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="interval" type="unsigned long">
+                Interval in milliseconds.
+              </tech-docs-row>
+              <tech-docs-row name="last" type="unsigned long&">
+                Timestamp of the last trigger (updated automatically).
+              </tech-docs-row>
+            </tech-docs-table>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    unsigned long last = 0;
+
+    void loop() {
+      if (Time::every(1000, last)) {
+        // Runs every 1 second
+      }
+    }
+              </code></pre>
+            </div>
+          </tech-docs-method-accordion>
+
+          <tech-docs-method-accordion title="bool after(unsigned long interval, unsigned long start)">
+            <p>Returns <code>true</code> once the specified time has elapsed since <code>start</code>.</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="interval" type="unsigned long">
+                Duration in milliseconds.
+              </tech-docs-row>
+              <tech-docs-row name="start" type="unsigned long">
+                Start timestamp.
+              </tech-docs-row>
+            </tech-docs-table>
+          </tech-docs-method-accordion>
+
+          <tech-docs-method-accordion title="void reset(unsigned long& timestamp)">
+            <p>Sets the given timestamp to the current time (<code>millis()</code>).</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="timestamp" type="unsigned long&">
+                Variable to store the current time.
+              </tech-docs-row>
+            </tech-docs-table>
+          </tech-docs-method-accordion>
+
+          <tech-docs-method-accordion title="bool once(unsigned long interval, unsigned long& start)">
+            <p>Triggers only once after the specified interval. Automatically resets itselfafter firing.</p>
+            <!-- Parameter Table -->
+            <tech-docs-table title="Parameters" columns="Name,Type,Description">
+              <tech-docs-row name="interval" type="unsigned long">
+                Delay in milliseconds.
+              </tech-docs-row>
+              <tech-docs-row name="start" type="unsigned long&">
+                Start timestamp. Must be non-zero to be active.
+                Reset to <code>0</code> after triggering.
+              </tech-docs-row>
+            </tech-docs-table>
+            <!-- Example Code -->
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+    unsigned long timer = millis(); // arm
+
+    void loop() {
+      if (Time::once(2000, timer)) {
+        // Runs once after 2 seconds
+      }
+    }
+              </code></pre>
+            </div>
+          </tech-docs-method-accordion>
+
+          <div class="alert alert-blue">
+            <strong>Tip:</strong> Use these methods instead of <code>delay()</code> for responsive, non-blocking code.
+          </div>
+
+          <div id="common-patterns">
+            <h2>Common Patterns</h2>
+            <h3>Blink Without delay()</h3>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+        unsigned long t = 0;
+
+        void loop() {
+          if (Time::every(500, t)) {
+            led.toggle();
+          }
+        }
+              </code></pre>
+            </div>
+
+            <h3>One-Shot Timer</h3>
+            <div class="code-wrapper">
+              <div class="code-header">example.ino</div>
+              <pre><code class="language-cpp">
+        unsigned long t = millis();
+
+        void loop() {
+          if (Time::once(3000, t)) {
+            // fires once after 3s
+          }
+        }
+              </code></pre>
+            </div>
+          </div>
+        </div>
+      </tech-docs-class-section>
+
+    </div>
+
+    <script>
+      document.querySelectorAll('#sidebar a').forEach(link => {
+        link.addEventListener('click', function () {
+          document.querySelectorAll('#sidebar a').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    </script>
+
+    <script>
+      if (window.location.hash) {
+        const el = document.querySelector(window.location.hash);
+        if (el && el.tagName === "DETAILS") {
+          el.open = true;
+          el.scrollIntoView();
+        }
+      }
+    </script>
+
+  </main>
+  <script src="../js/scripts/toggle.js"></script>
+</body>
+
+</html>

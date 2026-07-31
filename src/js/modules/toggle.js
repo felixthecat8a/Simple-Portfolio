@@ -37,4 +37,4 @@ function setupDarkModeToggle() {
   })
 }
 
-setupDarkModeToggle()
+export default setupDarkModeToggle
