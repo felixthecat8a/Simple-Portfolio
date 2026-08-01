@@ -24,34 +24,27 @@ yarn add --dev less less-plugin-clean-css
 }
 ```
 ### Compile
-Create a **dist** folder ind the root directory and run the command `yarn less` in the terminal.
+Create a **dist** folder in the root directory and run the command `yarn less` in the terminal.
 ```ps
 yarn less
 ```
 ---
 
-## Compiling Less Files using [Webpack](https://webpack.js.org/)
+## Compiling Less Files using Webpack
 
 [![Webpack](https://img.shields.io/badge/developed_with-Webpack-8DD6F9?logo=webpack&logoColor=8DD6F9&style=for-the-badge)](https://webpack.js.org/)
 
-***Webpack*** is a module bundler. Webpack bundles JavaScript for the browser and can also transform and bundle assets like LESS, CSS, and images.
+[***Webpack***](https://webpack.js.org/) bundles JavaScript for the browser and can also transform and bundle assets like LESS, CSS, and images.
 
 ### Install Dependencies
 
-#### Webpack
 ```ps
 yarn add --dev webpack webpack-cli webpack-dev-server
-```
-#### Style Loaders
-```ps
+
 yarn add --dev style-loader css-loader less less-loader
-```
-#### HTML Plugins
-```ps
+
 yarn add --dev html-webpack-plugin
-```
-#### CSS Plugins
-```ps
+
 yarn add --dev mini-css-extract-plugin css-minimizer-webpack-plugin
 ```
 #### Configuration: `webpack.config.js`
@@ -145,7 +138,7 @@ Import the LESS file into your JavaScript entry so Webpack can bundle it:
 ```js
 // main.js
 import '../less/style.less'
-import '../css/style.css' // if you have other css files
+import '../css/style.css'
 ```
 
 #### Script: `package.json`
@@ -153,8 +146,9 @@ import '../css/style.css' // if you have other css files
 ```json
 {
   "scripts": {
-    "dev": "webpack serve",
-    "build": "webpack"
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch"
   }
 }
 ```
@@ -168,13 +162,10 @@ import '../css/style.css' // if you have other css files
 ***PostCSS*** lets you transform CSS with plugins, and ***Autoprefixer*** automatically adds vendor prefixes (like -webkit-, -ms-) based on browser support.
 
 ### Install Dependencies
-
 ```ps
 yarn add --dev postcss postcss-loader autoprefixer
 ```
-
-- Create a `postcss.config.js`
-
+### Configuration: `postcss.config.js`
 ```js
 module.exports = {
   plugins: [
@@ -182,9 +173,7 @@ module.exports = {
   ]
 }
 ```
-
 ### Update: `webpack.config.js`
-
 ```js
 {
   test: /\.css$/i,
