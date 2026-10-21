@@ -1,10 +1,9 @@
 <!-- Mocha.js Testing -->
 # Mocha.js Testing
-
+<!-- Badges -->
 ![JavaScript](https://img.shields.io/badge/--555?style=for-the-badge&logo=javascript&logoSize=auto&logoColor=F7DF1E)
 [![Mocha](https://img.shields.io/badge/testing_with-Mocha-8D6748?style=for-the-badge&logo=Mocha&logoSize=auto&logoColor=white)](https://mochajs.org/)
 [![ChaiJS]( https://img.shields.io/badge/Chai-faf4e8?style=for-the-badge&logo=chai&logoSize=auto&logoColor=A30701)](https://www.chaijs.com/)
-[![SinonJS]( https://img.shields.io/badge/Sinon-469a4c?style=for-the-badge)](https://sinonjs.org/)
 <!-- Dependencies -->
 ## Dependencies
 <!-- Mocha.js -->
@@ -31,18 +30,29 @@ yarn add --dev mocha chai sinon
 ```json
 {
   "scripts": {
-    "test": "mocha --config server/config/.mocharc.yaml"
+    "test": "mocha"
+  }
+}
+```
+- Or, refer to a config directory
+```json
+{
+  "scripts": {
+    "test": "mocha --config config/.mocharc.yaml"
   }
 }
 ```
 
-- In a terminal, run:
+- To run test, open a terminal and run
 
 ```bash
 yarn test
 ```
+
+---
+
 <!-- Code Coverage -->
-## Code Coverage with [c8](https://github.com/bcoe/c8)
+# Code Coverage with [c8](https://github.com/bcoe/c8)
 
 ***c8*** is a code-coverage tool that uses Node.js' built in functionality and is compatible with Istanbul's reporters. Create a `.nycrc.json` to configure c8/Istanbul options.
 
@@ -90,6 +100,8 @@ start coverage/index.html
 
 > **Note:** The `start` command works on Windows. For macOS/Linux, use `open coverage/index.html`.
 
+---
+
 <!-- DOM Testing -->
 ## DOM Testing (Optional)
 <!-- jsdom -->
@@ -100,59 +112,3 @@ start coverage/index.html
 ```bash
 yarn add --dev jsdom
 ```
----
-
-# Compiling LESS Files Using [Gulp.js](https://gulpjs.com/)
-
-[![Gulp.js](https://img.shields.io/badge/automate_testing_with-Gulp.js-CF4647?style=for-the-badge&logo=gulp&logoSize=auto&logoColor=#CF4647)](https://gulpjs.com/)
-
-***Gulp.js*** is an open-source JavaScript toolkit and task runner used to automate repetitive and time-consuming workflows in web development. It runs on Node.js and leverages its "streams" capability to process files in memory, making it significantly faster than older tools that write temporary files to a disk.
-
-## Install Dependencies
-
-```ps
-yarn add --dev gulp gulp-mocha
-
-```
-
-## Setup: `gulpfile.js`
-
-```js
-const gulp = require('gulp')
-const mochaImport = require('gulp-mocha')
-const mocha = mochaImport.default || mochaImport
-
-function test() {
-  return gulp
-    .src('test/*.js', { read: false })
-    .pipe(
-      mocha({
-        reporter: 'nyan', // options: spec, dot, nyan, etc.
-        timeout: 2000,
-      })
-    )
-    .on('error', function (err) {
-      console.error(err.stack || err.message)
-      this.emit('end')
-    })
-}
-
-exports.test = test
-```
-
-## Script: `package.json`
-
-```json
-{
-  "scripts": {
-    "test": "gulp test"
-  }
-}
-```
-
-## Usage
-
-```ps
-yarn test
-```
----
