@@ -9,7 +9,8 @@
 <!-- Mocha.js -->
 ### [Mocha.js](https://mochajs.org/)
 
-***Mocha.js*** is a JavaScript testing framework that allows you to write, organize, and run unit tests efficiently. To configure Mocha, create a `.mocharc.yaml` or `.mocharc.js` file.
+***Mocha.js*** is a JavaScript testing framework that allows you to write, organize, and run unit tests efficiently. 
+To configure Mocha, create a `.mocharc.yaml` or `.mocharc.js` file.
 <!-- Chai.js -->
 ### [Chai.js](https://www.chaijs.com/)
 
@@ -103,7 +104,7 @@ start coverage/index.html
 ---
 
 <!-- DOM Testing -->
-## DOM Testing (Optional)
+# DOM Testing (Optional)
 <!-- jsdom -->
 [***jsdom***](https://github.com/jsdom/jsdom) simulates a browser environment in Node.js, allowing you to test DOM manipulation and browser-specific APIs without needing a real browser.
 

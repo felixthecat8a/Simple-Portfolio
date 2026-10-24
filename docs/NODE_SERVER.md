@@ -7,13 +7,14 @@
 
 ***Node.js®*** is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.
 
-- In the terminal, run `yarn start` to run the project server.
+- Add the following scripts to `package.json` and use `yarn start` in a terminal to run the project server.
 <!-- package.json -->
 ### `package.json`
 ```json
 {
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
+    "dev": "node --watch src/server.js"
   }
 }
 ```
@@ -32,7 +33,7 @@ Using YAML helps keep configuration separate from code and avoids hard-coding va
 yarn add yaml
 ```
 
-### Nodemon
+# Nodemon
 
 [***Nodemon***](https://nodemon.io/) is a command-line tool that automatically restarts the node application when it detects changes to files in the project directory.
 
@@ -49,7 +50,7 @@ yarn add --dev nodemon
 {
   "restartable": "rs",
   "verbose": true,
-  "exec": "node index.js",
+  "exec": "node server.js",
   "watch": ["server/", "src/"],
   "ignore": ["node_modules", "coverage", "test", "dist"],
   "ext": "js,less",
@@ -63,14 +64,26 @@ yarn add --dev nodemon
 }
 ```
 
-- Run `yarn dev` to run and monitor the server using Nodemon.
+
 <!-- package.json -->
 ### `package.json`
+
+- Run `yarn dev` to run and monitor the server using Nodemon.
 
 ```json
 {
   "scripts": {
-    "dev": "nodemon --config server/config/nodemon.json",
+    "dev": "nodemon server.js"
+  }
+}
+```
+
+- Or, refer to a config directory
+
+```json
+{
+  "scripts": {
+    "dev": "nodemon --config config/nodemon.json",
   }
 }
 ```
