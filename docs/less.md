@@ -37,7 +37,8 @@ Add the following script to `package.json`:
 ```json
 {
   "scripts": {
-    "less": "lessc src/less/style.less dist/css/style.css --clean-css"
+    "less": "lessc src/less/style.less dist/css/style.css",
+    "less:min": "lessc src/less/style.less dist/css/style.min.css --clean-css"
   }
 }
 ```
@@ -48,6 +49,10 @@ Run:
 
 ```shell
 yarn less
+```
+
+```shell
+yarn less:min
 ```
 
 The compiler generates:
