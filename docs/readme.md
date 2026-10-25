@@ -21,3 +21,25 @@ These guides cover CSS preprocessing, asset bundling, CSS processing, and build 
 These notes serve as a personal reference for setting up and configuring front-end development tools.
 
 Examples may need adjustments depending on the project structure, installed package versions, and build requirements.
+
+---
+
+---
+
+# JavaScript Testing Reference
+
+Notes and examples for testing JavaScript applications, including Node.js and front-end code.
+
+## Topics
+
+- [Testing Setup](testing.md) — Install and configure testing tools.
+- [Code Coverage](coverage.md) — Measure how much code your tests exercise.
+- [Front-End Testing](frontend.md) — Test browser-based JavaScript and DOM interactions.
+
+## Tools
+
+- **Mocha** — Test runner
+- **Chai** — Assertions
+- **Sinon** — Spies, stubs, and mocks
+- **c8** — Code coverage
+- **jsdom** — Simulated browser DOM for testing
