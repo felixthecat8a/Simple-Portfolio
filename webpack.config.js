@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
   const isProd = argv.mode === 'production'
 
   return {
-    mode: isProd ? 'production' : 'development',
+
     entry: {
       docs: path.resolve(__dirname, 'src/js/mainDocs.js'),
       port: path.resolve(__dirname, 'src/js/mainPort.js'),
@@ -80,5 +80,6 @@ module.exports = (env, argv) => {
       compress: true,
       historyApiFallback: true,
     },
+    mode: isProd ? 'production' : 'development',
   }
 }
