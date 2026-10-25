@@ -24,6 +24,22 @@ Examples may need adjustments depending on the project structure, installed pack
 
 ---
 
+# Node.js
+
+Notes and examples for building and running Node.js applications.
+
+## Topics
+
+- [Node.js Server](server.md) — Set up and run a Node.js server.
+- [Nodemon](nodemon.md) — Automatically restart applications during development.
+- [YAML Configuration](yaml.md) — Use YAML to organize application and server configuration.
+
+## Tools
+
+- [Node.js](https://nodejs.org/) — JavaScript runtime.
+- [Nodemon](https://nodemon.io/) — Development server monitoring.
+- [YAML](https://yaml.org/) — Human-friendly data serialization format.
+
 ---
 
 # JavaScript Testing Reference
@@ -38,8 +54,8 @@ Notes and examples for testing JavaScript applications, including Node.js and fr
 
 ## Tools
 
-- **Mocha** — Test runner
-- **Chai** — Assertions
-- **Sinon** — Spies, stubs, and mocks
-- **c8** — Code coverage
-- **jsdom** — Simulated browser DOM for testing
+- [Mocha](https://mochajs.org/) — Test runner
+- [Chai](https://www.chaijs.com/) — Assertions
+- [Sinon](https://sinonjs.org/) — Spies, stubs, and mocks
+- [c8](https://github.com/bcoe/c8) — Code coverage
+- [jsdom](https://github.com/jsdom/jsdom) — Simulated browser DOM for testing

@@ -1,6 +1,5 @@
 # Mocha Setup
 
-![JavaScript](https://img.shields.io/badge/--555?style=for-the-badge&logo=javascript&logoSize=auto&logoColor=F7DF1E)
 [![Mocha](https://img.shields.io/badge/testing_with-Mocha-8D6748?style=for-the-badge&logo=Mocha&logoSize=auto&logoColor=white)](https://mochajs.org/)
 [![ChaiJS]( https://img.shields.io/badge/Chai-faf4e8?style=for-the-badge&logo=chai&logoSize=auto&logoColor=A30701)](https://www.chaijs.com/)
 
