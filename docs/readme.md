@@ -8,13 +8,13 @@ These guides cover CSS preprocessing, asset bundling, CSS processing, and build 
 
 ### Stylesheets
 
-- [LESS](less.md) — Compile LESS stylesheets into CSS.
-- [PostCSS and Autoprefixer](postcss.md) — Process CSS and automatically add vendor prefixes.
+- [LESS](less/less.md) — Compile LESS stylesheets into CSS.
+- [PostCSS and Autoprefixer](less/postcss.md) — Process CSS and automatically add vendor prefixes.
 
 ### Build Tools
 
-- [Webpack](webpack.md) — Bundle JavaScript, stylesheets, and other front-end assets.
-- [Gulp](gulp.md) — Automate stylesheet compilation, minification, file copying, and other build tasks.
+- [Webpack](less/webpack.md) — Bundle JavaScript, stylesheets, and other front-end assets.
+- [Gulp](less/gulp.md) — Automate stylesheet compilation, minification, file copying, and other build tasks.
 
 ## Purpose
 
@@ -30,9 +30,9 @@ Notes and examples for building and running Node.js applications.
 
 ## Topics
 
-- [Node.js Server](server.md) — Set up and run a Node.js server.
-- [Nodemon](nodemon.md) — Automatically restart applications during development.
-- [YAML Configuration](yaml.md) — Use YAML to organize application and server configuration.
+- [Node.js Server](server/server.md) — Set up and run a Node.js server.
+- [Nodemon](server/nodemon.md) — Automatically restart applications during development.
+- [YAML Configuration](server/yaml.md) — Use YAML to organize application and server configuration.
 
 ## Tools
 
@@ -48,9 +48,9 @@ Notes and examples for testing JavaScript applications, including Node.js and fr
 
 ## Topics
 
-- [Testing Setup](testing.md) — Install and configure testing tools.
-- [Code Coverage](coverage.md) — Measure how much code your tests exercise.
-- [Front-End Testing](frontend.md) — Test browser-based JavaScript and DOM interactions.
+- [Testing Setup](testing/testing.md) — Install and configure testing tools.
+- [Code Coverage](testing/coverage.md) — Measure how much code your tests exercise.
+- [Front-End Testing](testing/frontend.md) — Test browser-based JavaScript and DOM interactions.
 
 ## Tools
 
