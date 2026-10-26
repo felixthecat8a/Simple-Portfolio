@@ -1,6 +1,6 @@
 // prettier-ignore
 #element-styles() {
-  .text-elements() {
+  .html-text-elements() {
     p, h1, h2, h3, h4, h5, h6 {
       overflow-wrap: break-word;
       margin-bottom: 0.25em;
@@ -31,7 +31,7 @@
       content: none;
     }
   }
-  .html-elements() {
+  .html-media-elements() {
     img, picture, video, canvas, svg {
       display: block;
       max-width: 100%;
@@ -44,8 +44,8 @@
 
 #typograpy {
   .body-styles(@bg: #F1F1F1, @txt: #333) {
-    #element-styles.text-elements();
-    #element-styles.html-elements();
+    #element-styles.html-text-elements();
+    #element-styles.html-media-elements();
     body {
       width: max(100%, 30rem);
       font-family: @primary-font-family;
@@ -65,7 +65,7 @@
         }
       }
     }
-    #media-lib.small({
+    #media-styles.small({
       body { font-size: 0.9rem; }
     });
   }

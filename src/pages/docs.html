@@ -12,7 +12,7 @@
     <nav id="sidebar">
       <div class="sidebar-header">
         <h2>Felix8A</h2>
-        <span class="version">v1.1.1</span>
+        <span class="sidebar-version">v1.1.1</span>
       </div>
       <ul class="nav-links">
         <li><a href="#introduction">Introduction</a></li>
@@ -24,6 +24,7 @@
         <li><a href="#c32-class">Felix8A::Color32</a></li>
         <li><a href="#palette-class">Felix8A::Palette</a></li>
         <li><a href="#time-class">Felix8A::Time</a></li>
+        <li><a href="index.html">Back to Portfolio</a></li>
       </ul>
     </nav>
 
@@ -89,7 +90,7 @@
           </tech-docs-row>
         </tech-docs-table>
         <!-- Notes -->
-        <div class="alert alert-tip">
+        <div class="alert-card alert-tip">
           <strong>Tip:</strong> Use <code>activeLow = true</code> for boards where the LED turns on when the pin is LOW.
         </div>
         <!-- Code Setup -->
@@ -183,7 +184,7 @@
               <tech-docs-row name="true">The LED is currently ON</tech-docs-row>
               <tech-docs-row name="false">The LED is currently OFF</tech-docs-row>
             </tech-docs-table>
-            <div class="alert alert-warn">
+            <div class="alert-card alert-warn">
               <strong>Note:</strong> This reflects the stored state, not a physical read from the pin.
             </div>
             <!-- Example Code -->
@@ -226,7 +227,7 @@
                 The GPIO pin number used by the LED
               </tech-docs-row>
             </tech-docs-table>
-            <div class="alert alert-warn">
+            <div class="alert-card alert-warn">
               <strong>Note:</strong> This value reflects the current configuration and may change if <code>setPin()</code> is called.
             </div>
           </div>
@@ -254,10 +255,10 @@
             <p>Returns whether the LED is configured as active-low.</p>
             <!-- Returns Table -->
             <tech-docs-table title="Returns" columns="Value,Description">
-              <tech-docs-row name="true">Reference to store red value</tech-docs-row>
-              <tech-docs-row name="false">Reference to store green value</tech-docs-row>
+              <tech-docs-row name="true">LED is set to active-low</tech-docs-row>
+              <tech-docs-row name="false">LED is set to active-high</tech-docs-row>
             </tech-docs-table>
-            <div class="alert alert-warn">
+            <div class="alert-card alert-warn">
               <strong>Note:</strong> This is a configuration setting. Use <code>isOn()</code> to check the current LED state.
             </div>
           </div>
@@ -290,7 +291,7 @@
           </tech-docs-row>
         </tech-docs-table>
         <!-- Notes -->
-        <div class="alert alert-note">
+        <div class="alert-card alert-note">
           <strong>Note:</strong> Select pins with the ~ symbol.
         </div>
         <!-- Code Setup -->
@@ -303,7 +304,7 @@
           </code></pre>
         </div>
         <!-- Note -->
-        <div class="alert alert-blue">
+        <div class="alert-card alert-blue">
           <strong>Note:</strong> On ESP32, this class uses hardware LEDC channels for efficient PWM output.
         </div>
         <!-- Methods -->
@@ -322,7 +323,7 @@
     }
               </code></pre>
             </div>
-            <div class="alert alert-note">
+            <div class="alert-card alert-note">
               <strong>Note:</strong> On ESP32, this configures a hardware LEDC channel.
             </div>
           </div>
@@ -338,7 +339,7 @@
                 Brightness value (0-255)
               </tech-docs-row>
             </tech-docs-table>
-            <div class="alert alert-blue">
+            <div class="alert-card alert-blue">
               <strong>Note:</strong> This method automatically handles active-low inversion.
             </div>
           </div>
@@ -379,7 +380,7 @@
           </div>
         </details>
 
-        <div class="alert alert-warn">
+        <div class="alert-card alert-warn">
           <strong>Behavior:</strong> <code>toggle()</code> switches between OFF and maximum brightness, not the previous brightness level.
         </div>
 
@@ -419,7 +420,7 @@
     Felix8A::RGB rgb(RED_PIN, GREEN_PIN, BLUE_PIN);
           </code></pre>
         </div>
-        <div class="alert alert-note">
+        <div class="alert-card alert-note">
           <strong>Note:</strong> Select pins with the ~ symbol.
         </div>
         <!-- Methods -->
@@ -463,7 +464,7 @@
                 Hexadecimal color value such as 0xFF0000 for Red
               </tech-docs-row>
             </tech-docs-table>
-            <div class="alert alert-note">
+            <div class="alert-card alert-note">
               <strong>Note:</strong> Values are automatically adjusted for brightness and gamma correction if enabled.
             </div>
           </div>
@@ -492,7 +493,7 @@
               <tech-docs-row name="sat" type="float">0.0-1.0</tech-docs-row>
               <tech-docs-row name="val" type="float">0.0-1.0</tech-docs-row>
             </tech-docs-table>
-            <div class="alert alert-blue">
+            <div class="alert-card alert-blue">
               <strong>Best For:</strong> Animations, color cycling, smooth transitions
             </div>
           </div>
@@ -515,7 +516,7 @@
           <summary><code>void setGammaCorrection(bool enabled)</code></summary>
           <div class="accordion-content">
             <p>Enables or disables gamma correction for more natural brightness perception.</p>
-            <div class="alert alert-note">
+            <div class="alert-card alert-note">
               <strong>Why it matters:</strong> Human eyes perceive brightness non-linearly.
             </div>
           </div>
@@ -542,7 +543,7 @@
         setRose();
               </code></pre>
             </div>
-            <div class="alert alert-blue">
+            <div class="alert-card alert-blue">
               <strong>Tip:</strong> These use predefined constants from <code>ColorRGB</code>.
             </div>
           </div>
@@ -640,7 +641,7 @@
               Updates the button state. This method must be called repeatedly
               (typically inside <code>loop()</code>) to detect events.
             </p>
-            <div class="alert alert-tip">
+            <div class="alert-card alert-tip">
               <strong>Tip:</strong> Call <code>update()</code> in your main loop to process button events.
             </div>
             <!-- Example Code -->
@@ -1016,7 +1017,7 @@
               Number of colors in the palette. Used for indexing and interpolation.
             </tech-docs-row>
           </tech-docs-table>
-          <div class="alert alert-note">
+          <div class="alert-card alert-note">
             <strong>Note:</strong> The palette does not copy the array; it stores a reference. Ensure the color array remains valid.
           </div>
           <!-- Example Code -->
@@ -1088,7 +1089,7 @@
               <p><code>t = 0</code> → first color</p>
               <p><code>t = 255</code> → last color</p>
               <p><code>palette.lerp(128)</code> would be the midpoint gradient.</p>
-              <div class="alert alert-tip">
+              <div class="alert-card alert-tip">
                 <strong>Tip:</strong> Use <code>lerp()</code> to generate smooth color transitions across a palette.
               </div>
               <!-- Example Code -->
@@ -1189,7 +1190,7 @@
             </div>
           </tech-docs-method-accordion>
 
-          <div class="alert alert-blue">
+          <div class="alert-card alert-blue">
             <strong>Tip:</strong> Use these methods instead of <code>delay()</code> for responsive, non-blocking code.
           </div>
 

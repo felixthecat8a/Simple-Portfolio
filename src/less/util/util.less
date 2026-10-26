@@ -26,11 +26,6 @@
 @txt-main: @color-grey;
 @bg-footer: @color-dark;
 @txt-footer: @color-light;
-@card-border-green: 5px solid @color-green;
-@card-border-blue: 5px solid @color-blue;
-@card-border-orange: 5px solid @color-orange;
-@card-border-yellow: 5px solid @color-yellow;
-@card-border-red: 5px solid @color-red;
 
 @bg-sidebar: darken(@color-theme, 35%);
 @txt-sidebar: @color-light;
@@ -41,7 +36,6 @@
 @txt-header-code: lighten(@color-theme, 42%);
 @bg-body-code: fade(@color-theme, 17%);
 
-
 @breakpoint-xs: calc(480 / 16 * 1rem);
 @breakpoint-sm: calc(576 / 16 * 1rem);
 @breakpoint-md: calc(768 / 16 * 1rem);
@@ -49,7 +43,7 @@
 @breakpoint-xl: calc(1200 / 16 * 1rem);
 @breakpoint-xxl: calc(1400 / 16 * 1rem);
 
-#media-lib {
+#media-styles {
   .extra-small(@rules) {
     @media only screen and (max-width: @breakpoint-xs) {
       @rules();

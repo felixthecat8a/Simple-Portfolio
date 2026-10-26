@@ -1,40 +1,16 @@
-.info-card-styles() {
-  .info-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1em;
-    margin: 1em 0;
-    transition: box-shadow 0.3s ease;
-    &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    ul {
-      margin-left: 12px;
-    }
+.info-card-styles(@border-color) {
+  border-left: 5px solid @border-color;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  margin: 1em 0;
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
-}
-
-.title-card-styles() {
-  .title-card {
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.25rem;
-    font-weight: 700;
-  }
-  .bottom-green {
-    border-bottom: @card-border-green;
-  }
-  .bottom-blue {
-    border-bottom: @card-border-blue;
-  }
-  .bottom-orange {
-    border-bottom: @card-border-orange;
-  }
-  .bottom-yellow {
-    border-bottom: @card-border-yellow;
-  }
-  .bottom-red {
-    border-bottom: @card-border-red;
+  ul {
+    margin-left: 12px;
   }
 }
 
@@ -76,23 +52,51 @@
   }
 }
 
+.title-card-styles() {
+  .title-card {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    font-weight: 700;
+  }
+  .bottom-green {
+    border-bottom: 5px solid @color-green;
+  }
+  .bottom-blue {
+    border-bottom: 5px solid @color-blue;
+  }
+  .bottom-orange {
+    border-bottom: 5px solid @color-orange;
+  }
+  .bottom-yellow {
+    border-bottom: 5px solid @color-yellow;
+  }
+  .bottom-red {
+    border-bottom: 5px solid @color-red;
+  }
+}
+
 .card-styles() {
-  .info-card-styles();
-  .side-green {
-    border-left: @card-border-green;
+  .info-card-green {
+    .info-card-styles(@color-green);
   }
-  .side-blue {
-    border-left: @card-border-blue;
+
+  .info-card-blue {
+    .info-card-styles(@color-blue);
   }
-  .side-orange {
-    border-left: @card-border-orange;
+
+  .info-card-orange {
+    .info-card-styles(@color-orange);
   }
-  .side-yellow {
-    border-left: @card-border-yellow;
+
+  .info-card-yellow {
+    .info-card-styles(@color-yellow);
   }
-  .side-red {
-    border-left: @card-border-red;
+
+  .info-card-red {
+    .info-card-styles(@color-red);
   }
+
   .alert-card-styles();
+
   .title-card-styles();
 }

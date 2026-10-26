@@ -48,7 +48,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         title: 'Portfolio',
         filename: 'index.html',
-        template: 'src/html/port.html',
+        template: 'src/pages/port.html',
         favicon: 'src/favicon/favicon.ico',
         chunks: ['port'],
         minify: isProduction,
@@ -57,7 +57,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         title: 'Documentation',
         filename: 'docs.html',
-        template: 'src/html/docs.html',
+        template: 'src/pages/docs.html',
         favicon: 'src/favicon/favicon.ico',
         chunks: ['docs'],
         minify: isProduction,

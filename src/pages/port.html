@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Felix Ochoa</title>
+  </head>
+  <body>
+    <header>
+      <div class="branding">
+        <h1>Felix Ochoa</h1>
+        <p><strong>Educator</strong> | <em>Applied Engineering&#8226;Robotics&#8226;Engineering Design</em></p>
+      </div>
+      <nav class="header-nav">
+        <ul>
+          <li><a href="#about-section">About</a></li>
+          <li><a href="#projects-section">Projects</a></li>
+          <li><a href="#skills-section">Skills</a></li>
+          <li><a href="#contact-section">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-portfolio">
+      <section id="about-section">
+        <h2>About Me</h2>
+        <article id="about-article">
+          <p>
+            Hi! I'm Felix, a technology and mathematics educator with over nineteen years of experience and a degree in Electrical Engineering.
+            I enjoy working on Arduino-based projects and empowering students to build functional, real-world systems from scratch.
+          </p>
+        </article>
+      </section>
+
+      <section id="projects-section">
+        <h2>My Projects</h2>
+
+        <div class="info-card-green" id="project-arduino-library">
+          <h3>Felix8A Arduino Library</h3>
+          <p>
+            &emsp;&emsp;<strong><em>Felix8A</em></strong> is a lightweight Arduino library designed for simple input and output device control.
+            It combines LED, button, and sensor utilities into a single, easy-to-use package.
+          </p>
+          <p>
+            &emsp;&emsp;<strong>WS2812 Light Control Box:</strong> I used the library to make a sketch that updates the colors of a WS2812 LED string, similar to Christmas tree lights, using a push button.
+            I used Tinkercad and a 3D printer to design and fabricate a control box that houses an Arduino Nano, a momentary push button, a latching button, and a 9V battery.
+          </p>
+          <p>
+            &emsp;&emsp;<strong>Quiz Show Button System:</strong> I used the Felix8A library to build a four-player quiz show button system using an Arduino.
+            Each player has a dedicated push button and indicator LED.
+            When a player presses their button, the corresponding LED illuminates, and the system locks out additional player inputs until the host presses the reset button to begin the next round.
+            A separate indicator LED signals when the system is ready for another round.
+          </p>
+          <p>
+            &emsp;&emsp;<strong>RGB Thermometer:</strong> The Felix8A library was also used to build a digital thermometer that reads temperature from a thermistor and display it on an 18-Pin RGB LCD.
+            The LCD's RGB pins are used to visually represent temperature through color, while a photoresistor adjusts display brightness based on ambient light levels.
+          </p>
+          <div class="alert-card alert-blue">
+            <strong>Equipment:</strong> <code>Arduino Nano Every, Arduino Nano Screw Terminal Adapter, Apiele&reg; Latching and Non-latching Pushbuttons & 3D Printer</code>
+          </div>
+          <div class="alert-card alert-green">
+            <strong>Tech:</strong> <code>Arduino, C++ & Tinkercad</code>
+          </div>
+          <a class="button-info" href="/docs.html">Documentation</a>
+          <a class="button-secondary" href="https://github.com/felixthecat8a/Felix8A" target="_blank" rel="noopener noreferrer">Felix8A on GitHub</a>
+          <a class="button-primary" href="https://www.tinkercad.com/" target="_blank" rel="noopener noreferrer">Tinkercad</a>
+          <a class="button-success" href="https://github.com/felixthecat8a/Felix8A/blob/main/projects/LightString.md" target="_blank" rel="noopener noreferrer">LightString</a>
+        </div>
+
+        <div class="info-card-orange" id="project-arduino-rest-api-server">
+          <h3>Arduino RESTful Weather Server</h3>
+          <p>
+            &emsp;&emsp;<strong>Server:</strong> used an Arduino Nano RP2040 Connect to collect real-time temperature and humidity data from a sensor.
+            The readings are served as JSON through a RESTful API using the onboard Wi-Fi module.
+            The system is designed to be easily consumed by JavaScript-based frontends and embedded clients.
+          </p>
+          <div class="alert-card alert-blue">
+            <strong>Equipment:</strong> <code>Arduino Nano RP2040 Connect, AHT20 sensor</code>
+          </div>
+          <div class="alert-card alert-orange">
+            <strong>Libraries:</strong> <code>WiFiNINA, ArduinoJson</code>
+          </div>
+          <div class="alert-card alert-green">
+            <strong>Tech:</strong> <code>Arduino IDE, JavaScript, HTML, CSS</code>
+          </div>
+          <a class="button-secondary" href="https://github.com/felixthecat8a/Arduino-Weather-Server-and-Client" target="_blank" rel="noopener noreferrer">View GitHub</a>
+          <a class="button-info" href="https://docs.arduino.cc/libraries/wifinina/" target="_blank" rel="noopener noreferrer">WiFiNINA</a>
+          <a class="button-warning" href="https://docs.arduino.cc/libraries/arduinojson/" target="_blank" rel="noopener noreferrer">ArduinoJson</a>
+        </div>
+
+        <div class="info-card-yellow" id="project-arduino-rest-api-client">
+          <h3>Arduino RESTful Weather Client</h3>
+          <p>
+            &emsp;&emsp;<strong>Client:</strong>I used an ESP32 CYD (Cheap Yellow Display) to develop a display client.
+            The ESP32 connects to the REST API over Wi-Fi and renders live environmental data on a touchscreen interface built with the LVGL graphics library.
+            The UI includes real-time updates and is optimized for embedded display performance.
+          </p>
+          <div class="alert-card alert-blue">
+            <strong>Equipment:</strong> <code>ESP32 CYD (Cheap Yellow Display)</code>
+          </div>
+          <div class="alert-card alert-orange">
+            <strong>Libraries:</strong> <code>ArduinoJson, WiFi, HTTPClient, LVGL, TFT_eSPI</code>
+          </div>
+          <div class="alert-card alert-green">
+            <strong>Tech:</strong> <code>Arduino IDE</code>
+          </div>
+          <a class="button-success" href="https://lvgl.io/" target="_blank" rel="noopener noreferrer">LVGL</a>
+          <a class="button-primary" href="https://docs.arduino.cc/libraries/tft_espi/" target="_blank" rel="noopener noreferrer">TFT_eSPI</a>
+          <a class="button-info" href="https://docs.arduino.cc/libraries/wifi/" target="_blank" rel="noopener noreferrer">WiFi</a>
+          <a class="button-warning" href="https://docs.arduino.cc/libraries/httpclient/" target="_blank" rel="noopener noreferrer">HTTPClient</a>
+        </div>
+
+      </section>
+
+      <section id="skills-section">
+        <h2>Skills & Tools</h2>
+        <div class="info-card-blue">
+          <ul>
+            <li><strong>Languages:</strong> C++ (Arduino), JavaScript (Node.js), Python (CircuitPython)</li>
+            <li><strong>Web Technologies:</strong> HTML, CSS, Less, Express.js, MongoDB</li>
+            <li><strong>Tools:</strong> VS Code, GitHub, Arduino IDE, Tinkercad, Fusion 360</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact-section">
+        <h2>Contact</h2>
+        <p>
+          You can find my projects and source code on
+          <a href="https://github.com/felixthecat8a" target="_blank">GitHub</a>, and
+          <a href="https://codepen.io/felixthecat8a" target="_blank">CodePen</a>.
+        </p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>&copy;2026 felixthecat8a. All rights reserved. | <a href="https://github.com/felixthecat8a" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script src="./assets/scripts/main.js"></script>
+  </body>
+
+  <script>
+    class HoneycombImages extends HTMLElement {
+      constructor() {
+        super()
+        this.attachShadow({ mode: 'open' })
+      }
+
+      async connectedCallback() {
+        await this.load()
+      }
+
+      async fetchImages() {
+        const res = await fetch('/api/images')
+        return res.json()
+      }
+
+      async load() {
+        const images = await this.fetchImages()
+
+        this.shadowRoot.innerHTML = `
+          <style>
+            .honeycomb {
+              margin: 0 auto;
+              padding-bottom: 3em;
+              width: 430px;
+            }
+            .hexagon {
+              display: inline-block;
+              clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+              position: relative;
+              height: 115.5px;
+              width: 100px;
+              margin: 1px;
+              margin-bottom: -30px;
+            }
+            .hex-green {
+              --bg-accent: #6c33;
+            }
+            .hex-blue {
+              --bg-accent: #1565c533;
+            }
+            .hex-teal {
+              --bg-accent: #00878f33;
+            }
+            .hex-yellow {
+              --bg-accent: #f0db4f33;
+            }
+            .hex-red {
+              --bg-accent: #e34c2633;
+            }
+            .hex-purple {
+              --bg-accent: #6393;
+            }
+            .hex-mocha {
+              --bg-accent: #8d674833;
+            }
+            .hex-dark {
+              --bg-accent: #9993;
+            }
+            .hex-orange {
+              --bg-accent: #f903;
+            }
+            .hexagon::before {
+              content: '';
+              background-color: var(--bg-accent);
+              height: 115.5px;
+              width: 100px;
+            }
+            .hexagon img {
+              max-width: 70%;
+              max-height: 70%;
+              object-fit: cover;
+            }
+            .hexagon::before,
+            .hexagon img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 0;
+            }
+            .hexagon:nth-child(1),
+            .hexagon:nth-child(7n + 1) {
+              margin-left: 53px;
+            }
+
+            /* ---------- Hexagon Hover Animation ---------- */
+            .hexagon {
+              cursor: pointer;
+              transition:
+                transform 0.25s ease,
+                filter 0.25s ease;
+            }
+            .hexagon:hover {
+              filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.1));
+              z-index: 1; /* bring above neighbors */
+            }
+            .hexagon img {
+              transition: transform 0.25s ease;
+            }
+            .hexagon:hover img {
+              transform: translate(-50%, -50%) scale(1.25);
+            }
+          </style>
+
+          <div id="hex-images">
+            ${images
+              .map(
+                i => `
+                  <div class="hexagon hex-${i.color}">
+                    <img src="./assets/images/${i.file}" alt="${i.name}" />
+                  </div>
+                `
+              )
+              .join('')}
+          </div>
+        `
+      }
+    }
+
+    customElements.define('honeycomb-images', HoneycombImages)
+  </script>
+</html>
