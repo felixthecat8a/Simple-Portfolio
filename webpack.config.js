@@ -4,36 +4,37 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = (env, argv) => {
-  const isProd = argv.mode === 'production'
+  const isProduction = argv.mode === 'production'
 
   return {
-
     entry: {
-      docs: path.resolve(__dirname, 'src/js/mainDocs.js'),
-      port: path.resolve(__dirname, 'src/js/mainPort.js'),
+      port: path.resolve(__dirname, 'src/js/port.js'),
+      docs: path.resolve(__dirname, 'src/js/docs.js'),
     },
+
     output: {
-      filename: isProd ? '[name].[contenthash].js' : '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      filename: 'script/[name].bundle.js',
       clean: true,
     },
+
     module: {
       rules: [
         {
-          test: /\.css$/i,
+          test: /\.less$/i,
           use: [
-            isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
-            'postcss-loader',
-          ],
-        },
-        {
-          test: /\.less$/,
-          use: [
-            isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
             'css-loader',
             'postcss-loader',
             'less-loader',
+          ],
+        },
+        {
+          test: /\.css$/i,
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            'css-loader',
+            'postcss-loader',
           ],
         },
         {
@@ -42,44 +43,45 @@ module.exports = (env, argv) => {
         },
       ],
     },
+
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Documentation',
-        filename: 'index.html',
-        template: 'src/docs.html',
-        favicon: 'src/favicon/favicon.ico',
-        chunks: ['docs'],
-      }),
-      new HtmlWebpackPlugin({
         title: 'Portfolio',
-        filename: 'port.html',
-        template: 'src/port.html',
+        filename: 'index.html',
+        template: 'src/html/port.html',
         favicon: 'src/favicon/favicon.ico',
         chunks: ['port'],
+        minify: isProduction,
       }),
-      ...(isProd
-        ? [
-            new MiniCssExtractPlugin({
-              filename: '[name].[contenthash].css',
-            }),
-          ]
-        : []),
+
+      new HtmlWebpackPlugin({
+        title: 'Documentation',
+        filename: 'docs.html',
+        template: 'src/html/docs.html',
+        favicon: 'src/favicon/favicon.ico',
+        chunks: ['docs'],
+        minify: isProduction,
+      }),
+
+      ...(isProduction ? [new MiniCssExtractPlugin({ filename: 'style/[name].css' })] : []),
     ],
+
     optimization: {
-      minimize: true,
       minimizer: ['...', new CssMinimizerPlugin()],
+      minimize: isProduction,
     },
-    devtool: isProd ? 'source-map' : 'eval-source-map',
+
+    devtool: isProduction ? false : 'inline-source-map',
+
     devServer: {
-      static: {
-        directory: path.join(__dirname, 'dist'),
-      },
+      static: path.resolve(__dirname, 'dist'),
       port: 3000,
       open: true,
       hot: true,
       compress: true,
       historyApiFallback: true,
     },
-    mode: isProd ? 'production' : 'development',
+
+    mode: isProduction ? 'production' : 'development',
   }
 }
