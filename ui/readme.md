@@ -6,7 +6,7 @@
 
 ## Overview
 
-A collection of HTML files to develop stylesheets in this project
+This is a collection of HTML files to develop stylesheets in this project
 
 [LESS](https://lesscss.org/) is a stylesheet language that extends CSS with variables, mixins, nested rules, operations, and functions.
 The LESS compiler converts `.less` files into standard CSS.

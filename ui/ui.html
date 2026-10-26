@@ -19,10 +19,10 @@
       </nav>
     </header>
 
-    <main>
+    <main class="main-portfolio">
       <section id="button-elements">
         <h2>Default HTML Button Elements</h2>
-        <div class="project-card">
+        <div class="info-card-blue">
           <p>
             &emsp;<em>Basic Elements <small>(no styles applied)</small></em
             ><br />
@@ -30,7 +30,7 @@
           </p>
         </div>
         <h2>Styled Button Elements</h2>
-        <div class="info-card">
+        <div class="info-card-green">
           <h3>Buttons</h3>
           <button type="button" class="button-primary">primary</button>
           <button type="button" class="button-secondary">secondary</button>
@@ -51,7 +51,7 @@
 
       <section id="select-element">
         <h2>Select Element</h2>
-        <div class="project-card">
+        <div class="info-card-orange">
           <label for="selectId">Choose an Item:</label>
           <select name="select" id="selectId">
             <option value="">--Please choose an option--</option>
@@ -72,7 +72,7 @@
 
       <section id="input-elements">
         <h2>Input Elements</h2>
-        <div class="project-card">
+        <div class="info-card-yellow">
           <h3>Form Template</h3>
           <form>
             <fieldset>
@@ -97,13 +97,13 @@
             </fieldset>
           </form>
         </div>
-        <div class="project-card">
+        <div class="info-card-red">
           <h3>Search Input Element</h3>
           <label for="searchId">Search:</label>
           <input type="search" id="searchId" name="search" placeholder="search" />
           <button class="button-primary">Search</button><br />
         </div>
-        <div class="project-card">
+        <div class="info-card">
           <h3>Date/Time Input Elements</h3>
           <label for="dateId">Date:</label>
           <input type="date" id="dateId" name="date" /><br />
@@ -116,7 +116,7 @@
           <label for="meetingId">Choose an appointment time:</label>
           <input type="datetime-local" id="meetingId" name="meeting" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" />
         </div>
-        <div class="project-card">
+        <div class="info-card">
           <h3>Interactive Input Elements</h3>
           <p>&emsp;<em>Range Element</em></p>
           <label for="rangeId">Range: </label>
@@ -152,7 +152,7 @@
           <input type="radio" id="radio3" name="radio" value="radio3" />
           <label for="radio3">Radio 3</label><br />
         </div>
-        <div class="project-card">
+        <div class="info-card">
           <h3>File Upload Input Elements</h3>
           <!-- File Upload -->
           <p>
@@ -206,7 +206,7 @@
           </script>
         </div>
         <!-- Experimental -->
-        <div class="project-card" id="image-input-elements">
+        <div class="info-card" id="image-input-elements">
           <h3>Image Input Elements</h3>
           <p>&emsp;<em>Not Included: Create styles for image input elements.</em></p>
           <input type="image" id="image" alt="Login" src="" />
@@ -215,7 +215,7 @@
 
       <section id="dialog-elements">
         <h2>Dialogs</h2>
-        <div class="project-card">
+        <div class="info-card">
           <button type="button" id="sampleButton" class="button-primary">Click to View</button>
           <dialog id="sampleDialog">
             <button type="button" id="closeSampleButton" class="button-danger dialog-close">
