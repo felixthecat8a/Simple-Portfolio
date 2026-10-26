@@ -89,7 +89,8 @@
       letter-spacing: 0.05em;
     }
 
-    p code, td code {
+    p code,
+    td code {
       background-color: @bg-inline-code;
       color: @txt-inline-code;
       padding: 0.2rem 0.4rem;
@@ -98,6 +99,33 @@
   }
 
   .table-styles() {
+    .table-card {
+      border-bottom: 1.5px solid #333;
+      border-radius: 0.25rem;
+      overflow: hidden;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+
+      table {
+        margin: 0;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+    }
+
+    .table-card-header {
+      background: #222;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-bottom: 1.5px solid #333;
+      text-transform: uppercase;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -106,13 +134,19 @@
 
     th, td {
       text-align: left;
-      padding: 0.75rem 1rem;
-      border-bottom: @border-gray-line;
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1.5px solid #333;
+      font-size: 0.9rem;
     }
 
     th {
-      background-color: @color-light;
-      color: @color-dark;
+      background-color: #fff;
+      color: #111;
+    }
+
+    td {
+      background-color: #eee;
+      color: #111;
     }
   }
 

@@ -12,11 +12,14 @@
 
 ## My VS Code Theme Setup
 
-- Color Theme: [Nightingale](https://github.com/bfrangi/vscode-nightingale-theme)
+- Favorite Color Themes:
+  - [Nightingale](https://github.com/bfrangi/vscode-nightingale-theme)
 
-- Icon Theme: [Fluent Icons](https://github.com/miguelsolorio/vscode-fluent-icons)
+- Favorite Icon Themes: 
+  - [Fluent Icons](https://github.com/miguelsolorio/vscode-fluent-icons)
 
-- Product Icon Theme: [vscode-icons](https://github.com/vscode-icons)
+- Favorite Product Icon Themes: 
+  - [vscode-icons](https://github.com/vscode-icons)
 
 ---
 

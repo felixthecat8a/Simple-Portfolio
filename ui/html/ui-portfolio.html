@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../../src/favicon/favicon.ico" type="image/x-icon" />
+    <title>Felix Ochoa</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../components/dark-mode-toggle.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="branding">
+        <h1>Felix Ochoa</h1>
+        <p><strong>Educator</strong> | <em>Applied Engineering&#8226;Robotics&#8226;Engineering Design</em></p>
+      </div>
+      <nav class="header-nav">
+        <ul>
+          <li><a href="#about-section">About</a></li>
+          <li><a href="#projects-section">Projects</a></li>
+          <li><a href="#skills-section">Skills</a></li>
+          <li><a href="#contact-section">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-portfolio">
+      <section id="about-section">
+        <h2>About Me</h2>
+        <article id="about-article">
+          <p>
+            &emsp;&emsp;Hi! I'm Felix, a technology and mathematics educator with over nineteen years of experience and a degree in Electrical Engineering.
+            I enjoy working on Arduino-based projects and empowering students to build functional, real-world systems from scratch.
+          </p>
+        </article>
+      </section>
+
+      <section id="projects-section">
+        <h2>My Projects</h2>
+        <div class="info-card side-green" id="project-arduino-library">
+          <h3>Felix8A Arduino Library</h3>
+          <p>
+            &emsp;&emsp;<strong><em>Felix8A</em></strong> is a lightweight Arduino library designed for simple input and output device control.
+            It combines LED, button, and sensor utilities into a single, easy-to-use package.
+          </p>
+          <p>
+            &emsp;&emsp;<strong>WS2812 Light Control Box:</strong> I used the library to make a sketch that updates the colors of a WS2812 LED string, similar to Christmas tree lights, using a push button.
+            I used Tinkercad and a 3D printer to design and fabricate a control box that houses an Arduino Nano, a momentary push button, a latching button, and a 9V battery.
+          </p>
+          <p>
+            &emsp;&emsp;<strong>Quiz Show Button System:</strong> I used the Felix8A library to build a four-player quiz show button system using an Arduino.
+            Each player has a dedicated push button and indicator LED.
+            When a player presses their button, the corresponding LED illuminates, and the system locks out additional player inputs until the host presses the reset button to begin the next round.
+            A separate indicator LED signals when the system is ready for another round.
+          </p>
+          <p>
+            &emsp;&emsp;<strong>RGB Thermometer:</strong> The Felix8A library was also used to build a digital thermometer that reads temperature from a thermistor and display it on an 18-Pin RGB LCD.
+            The LCD's RGB pins are used to visually represent temperature through color, while a photoresistor adjusts display brightness based on ambient light levels.
+          </p>
+          <div class="alert-card alert-green">
+            <strong>Technology:</strong> <code>Arduino, PlatformIO, C++, &amp; Tinkercad</code>
+          </div>
+          <div class="alert-card alert-blue">
+            <strong>Hardware:</strong> <code>Arduino Nano Every, Arduino Nano Screw Terminal Adapter, &amp; Apiele&reg; Latching and Non-latching Pushbuttons</code>
+          </div>
+          <div class="alert-card alert-orange">
+            <strong>Equipment:</strong> <code>3D Printer</code>
+          </div>
+          <a class="button-info" href="ui-docs.html">Documentation</a>
+          <a class="button-secondary" href="https://github.com/felixthecat8a/Felix8A" target="_blank" rel="noopener noreferrer">Felix8A on GitHub</a>
+          <a class="button-primary" href="https://www.tinkercad.com/" target="_blank" rel="noopener noreferrer">Tinkercad</a>
+          <a class="button-success" href="https://github.com/felixthecat8a/Felix8A/blob/main/projects/LightString.md" target="_blank" rel="noopener noreferrer">LightString</a>
+        </div>
+      </section>
+
+      <section id="skills-section">
+        <h2>Skills</h2>
+        <div class="info-card side-blue">
+          <ul>
+            <li><strong>Languages:</strong> C++ (Arduino/PlatformIO), JavaScript (Node.js), Python (CircuitPython)</li>
+            <li><strong>Web Technologies:</strong> HTML, CSS, Less</li>
+            <li><strong>Tools:</strong> VS Code, GitHub, Arduino IDE, Tinkercad, Fusion 360</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact-section">
+        <h2>Contact</h2>
+        <div class="info-card side-orange">
+          <p>
+            You can find my projects and source code on
+            <a href="https://github.com/felixthecat8a" target="_blank">GitHub</a>, and
+            <a href="https://codepen.io/felixthecat8a" target="_blank">CodePen</a>.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>&copy;2026 felixthecat8a. All rights reserved. | <a href="https://github.com/felixthecat8a" target="_blank">GitHub</a></p>
+    </footer>
+
+    <!-- <script src="../script/toggleDarkMode.js"></script> -->
+    <dark-mode-toggle></dark-mode-toggle>
+  </body>
+</html>

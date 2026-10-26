@@ -3,13 +3,13 @@
 @import './component/component';
 
 body {
-  .header-styles(@bg-header,@txt-header,@accent-color);
-  .main-styles({
+  .layout-header-styles(@bg-header,@txt-header,@accent-color);
+  .layout-main-styles({
     .ui-component-styles();
     .template-component-styles();
     .card-styles();
   });
-  .footer-styles(@bg-footer,@txt-footer,@accent-color);
+  .layout-footer-styles(@bg-footer,@txt-footer,@accent-color);
 }
 
 @import './theme/dark-mode';
