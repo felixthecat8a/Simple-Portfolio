@@ -1,7 +1,7 @@
 // cSpell Settings
 {
   "version": "0.2", // Version of the setting file. (Always 0.2)
-  "language": "en", // language - current active spelling language
+  "language": "en, lorem-ipsum", // language - current active spelling language
   "ignorePaths": [
     "node_modules/**",
     "coverage/**"

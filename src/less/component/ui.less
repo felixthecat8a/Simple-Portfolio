@@ -1,42 +1,50 @@
-#ui-element-lib {
-  .box-attributes() {
-    display: inline-block;
-    box-sizing: border-box;
-    border-radius: 0.5em;
-    outline: none;
-    font: inherit;
-    font-weight: 500;
-    text-align: center;
-    padding: 0.25rem 0.75rem;
-    margin: 0 0.25rem 0.5rem 0.25rem;
-  }
+.box-attributes {
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  outline: none;
+  font: inherit;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  margin: 0 0.25rem 0.5rem;
+}
 
-  .button-attributes(@bg-color) {
-    cursor: pointer;
-    border: none;
-    color: #f1f1f1 !important;
-    @bg-gradient: darken(@bg-color, 5%);
-    background: linear-gradient(135deg, @bg-color, @bg-gradient);
-    transition:
-      transform 0.1s ease,
-      box-shadow 0.1s ease;
-    &:hover {
-      @bg-hover: lighten(@bg-color, 5%);
-      background: linear-gradient(135deg, @bg-hover, @bg-color);
-      transform: scale(1.01);
-      box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.1);
-    }
-    &:active {
-      @active-grad: darken(@bg-gradient, 5%);
-      background: linear-gradient(135deg, @bg-gradient, @active-grad);
-      transform: scale(0.99);
-      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-    }
+.button-attributes(@bg-color) when (iscolor(@bg-color)) {
+  @bg-gradient: darken(@bg-color, 5%);
+  cursor: pointer;
+  border: none;
+  color: #f1f1f1 !important;
+  text-align: center;
+  background: linear-gradient(135deg, @bg-color, @bg-gradient);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  &:hover:not(:disabled) {
+    @bg-hover: lighten(@bg-color, 5%);
+    background: linear-gradient(135deg, @bg-hover, @bg-color);
+    transform: scale(1.01);
+    box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.1);
+  }
+  &:active:not(:disabled) {
+    @active-grad: darken(@bg-gradient, 5%);
+    background: linear-gradient(135deg, @bg-gradient, @active-grad);
+    transform: scale(0.99);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  }
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 }
 
-#ui-component-lib {
-  .button-styles() {
+.disabled-attributes {
+  opacity: 50%;
+  cursor: not-allowed;
+  box-shadow: none;
+  filter: grayscale(40%);
+  transform: none;
+}
+
+#ui-component-styles {
+  .buttons() {
     @button-defaults: {
       primary: #007bff;
       secondary: #6c757d;
@@ -48,41 +56,56 @@
     each(@button-defaults, {
       a.button-@{key} {
         text-decoration: none !important;
-        #ui-element-lib.box-attributes();
+        &:extend(.box-attributes);
+        .button-attributes(@value);
       }
-      a.button-@{key},
       button.button-@{key},
       input[type='reset'].button-@{key},
       input[type='submit'].button-@{key} {
-        #ui-element-lib.button-attributes(@value);
+        &:extend(.box-attributes);
+        .button-attributes(@value);
+      }
+      button.button-@{key}:disabled,
+      input[type='reset'].button-@{key}:disabled,
+      input[type='submit'].button-@{key}:disabled {
+        &:extend(.disabled-attributes);
       }
     });
+    // button,
+    // input[type='reset'],
+    // input[type='submit'] {
+    //   &:extend(.box-attributes);
+    //   &:disabled {
+    //     &:extend(.disabled-attributes);
+    //   }
+    // }
     button,
     input[type='reset'],
     input[type='submit'] {
-      #ui-element-lib.box-attributes();
-      &:disabled {
-        opacity: 50%;
-        cursor: not-allowed;
-        box-shadow: none;
-        filter: grayscale(40%);
-      }
+      &:extend(.box-attributes);
+    }
+    button:disabled,
+    input[type='reset']:disabled,
+    input[type='submit']:disabled {
+      &:extend(.disabled-attributes);
     }
     .disabled-link {
-      opacity: 50%;
-      cursor: not-allowed;
-      box-shadow: none;
-      filter: grayscale(40%);
+      &:extend(.disabled-attributes);
     }
     label.file-input-label {
       position: relative;
-      #ui-element-lib.box-attributes();
+      overflow: hidden;
       border: @border-gray-line;
-      #ui-element-lib.button-attributes(rgb(36, 181, 36));
+      &:extend(.box-attributes);
+      &:focus-within {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
       input[type='file'] {
         position: absolute;
         left: 0;
         top: 0;
+        // inset: 0;
         opacity: 0;
         cursor: pointer;
         height: 100%;
@@ -91,7 +114,7 @@
     }
   }
 
-  .data-input-styles() {
+  .data-inputs() {
     select,
     textarea,
     input[type='number'],
@@ -106,11 +129,21 @@
     input[type='week'],
     input[type='time'],
     input[type='datetime-local'] {
-      #ui-element-lib.box-attributes();
+      &:extend(.box-attributes);
       border: @border-gray-line;
+
+      &:focus-visible {
+        outline: 2px solid darkcyan;
+        outline-offset: 2px;
+      }
+
+      &:disabled {
+        &:extend(.disabled-attributes);
+      }
     }
     textarea {
       width: 100%;
+      resize: vertical;
     }
   }
 
@@ -132,16 +165,16 @@
     input[type='color'] {
       background: none;
       appearance: auto;
-      -moz-appearance: none;
-      -webkit-appearance: none;
       inline-size: 50px;
       block-size: 32px;
       box-sizing: border-box;
       border: @border-gray-line;
+      border-radius: 0.25em;
+      // padding: 2px;
     }
   }
 
-  .meter-styles() {
+  .meters() {
     meter {
       width: 75%;
       height: 1em;

@@ -23,11 +23,9 @@
       <section id="button-elements">
         <h2>Default HTML Button Elements</h2>
         <div class="info-card-blue">
-          <p>
-            &emsp;<em>Basic Elements <small>(no styles applied)</small></em
-            ><br />
-            <a href="#">anchor</a>&emsp;<button type="button">button</button>
-          </p>
+          <a href="#">anchor</a>&emsp;<button type="button">button</button>
+          <br>
+          <em><small>*no styles applied</small></em>
         </div>
         <h2>Styled Button Elements</h2>
         <div class="info-card-green">
@@ -46,6 +44,7 @@
           <a class="button-warning" href="#">warning</a>
           <a class="button-danger" href="#">danger</a>
           <a class="button-info" href="#">info</a>
+          <a class="disabled-link" href="">disabled</a>
         </div>
       </section>
 
@@ -92,6 +91,8 @@
               <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="tel" /><br />
               <label for="textareaId">Text Area:</label><br />
               <textarea name="textarea" id="textareaId" placeholder="textarea"></textarea><br />
+              <label for="textareaId">Disabled Text Area:</label><br />
+              <textarea disabled name="textarea" id="textareaId" placeholder="textarea"></textarea><br />
               <input type="reset" class="button-danger" value="Reset" />
               <input type="submit" class="button-success" value="Submit" />
             </fieldset>
@@ -157,7 +158,7 @@
           <!-- File Upload -->
           <p>
             &emsp;<em>Choose a file to upload:</em>
-            <label class="file-input-label">
+            <label class="file-input-label  button-secondary">
               <input type="file" id="fileUpload" />
               <span>Select File</span>
             </label>
@@ -176,7 +177,7 @@
           <!-- Image Upload with Preview -->
           <p>
             &emsp;<em>Choose a image to upload:</em>
-            <label class="file-input-label">
+            <label class="file-input-label button-info">
               <input type="file" id="imageUpload" accept="image/*" />
               <span>Select Image</span>
             </label>
@@ -216,14 +217,17 @@
       <section id="dialog-elements">
         <h2>Dialogs</h2>
         <div class="info-card">
-          <button type="button" id="sampleButton" class="button-primary">Click to View</button>
+          <button type="button" id="sampleButton" class="button-warning">Click to View</button>
           <dialog id="sampleDialog">
-            <button type="button" id="closeSampleButton" class="button-danger dialog-close">
-              Close
-            </button>
+            <button type="button" id="closeSampleButton" class="button-danger dialog-close">Close</button>
             <div class="dialog-card">
               <h4>Sample Header</h4>
-              <p><strong>Sample Text</strong></p>
+              <p>
+                <strong>Sample Text:</strong> lorem ipsum dolor sit amet consectetur adipiscing elit eiusmod
+                dolore fugiat nobis nam quos aliqua excepteur similique nostrud ut in qui est quibusdam culpa
+                animi eu esse anim amet fugiat excepturi ducimus commodo et labore dolorum quas aliquip commodo
+                ex corrupti provident odio soluta dolores tempore cillum lorem est proident
+              </p>
             </div>
           </dialog>
         </div>
