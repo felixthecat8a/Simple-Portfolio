@@ -22,13 +22,13 @@
     <main class="main-portfolio">
       <section id="button-elements">
         <h2>Default HTML Button Elements</h2>
-        <div class="info-card-blue">
+        <div class="info-card">
           <a href="#">anchor</a>&emsp;<button type="button">button</button>
           <br>
           <em><small>*no styles applied</small></em>
         </div>
         <h2>Styled Button Elements</h2>
-        <div class="info-card-green">
+        <div class="info-card side-blue">
           <h3>Buttons</h3>
           <button type="button" class="button-primary">primary</button>
           <button type="button" class="button-secondary">secondary</button>
@@ -50,7 +50,7 @@
 
       <section id="select-element">
         <h2>Select Element</h2>
-        <div class="info-card-orange">
+        <div class="info-card side-green">
           <label for="selectId">Choose an Item:</label>
           <select name="select" id="selectId">
             <option value="">--Please choose an option--</option>
@@ -71,7 +71,7 @@
 
       <section id="input-elements">
         <h2>Input Elements</h2>
-        <div class="info-card-yellow">
+        <div class="info-card side-orange">
           <h3>Form Template</h3>
           <form>
             <fieldset>
@@ -98,13 +98,13 @@
             </fieldset>
           </form>
         </div>
-        <div class="info-card-red">
+        <div class="info-card side-yellow">
           <h3>Search Input Element</h3>
           <label for="searchId">Search:</label>
           <input type="search" id="searchId" name="search" placeholder="search" />
           <button class="button-primary">Search</button><br />
         </div>
-        <div class="info-card">
+        <div class="info-card side-red">
           <h3>Date/Time Input Elements</h3>
           <label for="dateId">Date:</label>
           <input type="date" id="dateId" name="date" /><br />
@@ -153,11 +153,14 @@
           <input type="radio" id="radio3" name="radio" value="radio3" />
           <label for="radio3">Radio 3</label><br />
         </div>
+      </section>
+      <section class="upload-elements">
+        <h2>File Upload Elements</h2>
         <div class="info-card">
-          <h3>File Upload Input Elements</h3>
           <!-- File Upload -->
+          <h3>File Upload Input Element</h3>
           <p>
-            &emsp;<em>Choose a file to upload:</em>
+            <em>Choose a file to upload.</em>
             <label class="file-input-label  button-secondary">
               <input type="file" id="fileUpload" />
               <span>Select File</span>
@@ -174,9 +177,12 @@
               fileInfo.textContent = file ? `Selected: ${file.name}` : ''
             })
           </script>
+        </div>
+        <div class="info-card">
           <!-- Image Upload with Preview -->
+          <h3>Image Upload Input Element</h3>
           <p>
-            &emsp;<em>Choose a image to upload:</em>
+            <em>Choose a image to upload.</em>
             <label class="file-input-label button-info">
               <input type="file" id="imageUpload" accept="image/*" />
               <span>Select Image</span>
@@ -213,7 +219,6 @@
           <input type="image" id="image" alt="Login" src="" />
         </div>
       </section>
-
       <section id="dialog-elements">
         <h2>Dialogs</h2>
         <div class="info-card">
@@ -223,11 +228,22 @@
             <div class="dialog-card">
               <h4>Sample Header</h4>
               <p>
-                <strong>Sample Text:</strong> lorem ipsum dolor sit amet consectetur adipiscing elit eiusmod
-                dolore fugiat nobis nam quos aliqua excepteur similique nostrud ut in qui est quibusdam culpa
-                animi eu esse anim amet fugiat excepturi ducimus commodo et labore dolorum quas aliquip commodo
-                ex corrupti provident odio soluta dolores tempore cillum lorem est proident
+                <strong>Sample Text:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Tenetur nobis labore temporibus rem sapiente minus nam, vitae doloremque ex voluptate
+                laudantium quibusdam quis libero quae expedita officiis obcaecati nesciunt sed.
               </p>
+              <div class="alert-card alert-note">
+                Note: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias provident iusto aperiam eum illum ratione fugit quis explicabo maxime placeat enim nisi harum delectus debitis quidem, dicta dolorum hic est.
+              </div>
+              <div class="alert-card alert-tip">
+                Tip: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur expedita quod consequuntur repudiandae alias, eos modi in eius voluptates quam explicabo dolor est, a amet distinctio quaerat sit corrupti similique.
+              </div>
+              <div class="alert-card alert-danger">
+                Danger: Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, cum eos! Rerum eveniet est numquam molestias nisi accusamus vero itaque beatae, aliquid magni? Eaque id error dolore, eum ullam ratione.
+              </div>
+              <div class="alert-card alert-warn">
+                Warning: Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium iste culpa eius cupiditate neque repellat, animi reiciendis sed eum, quisquam possimus velit eligendi quae earum et, ex amet. Rem, sit?
+              </div>
             </div>
           </dialog>
         </div>

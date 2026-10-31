@@ -1,0 +1,39 @@
+@breakpoint-xs: calc(480 / 16 * 1rem);
+@breakpoint-sm: calc(576 / 16 * 1rem);
+@breakpoint-md: calc(768 / 16 * 1rem);
+@breakpoint-lg: calc(992 / 16 * 1rem);
+@breakpoint-xl: calc(1200 / 16 * 1rem);
+@breakpoint-xxl: calc(1400 / 16 * 1rem);
+
+#media-styles {
+  .extra-small(@rules) {
+    @media only screen and (max-width: @breakpoint-xs) {
+      @rules();
+    }
+  }
+  .small(@rules) {
+    @media only screen and (max-width: @breakpoint-sm) {
+      @rules();
+    }
+  }
+  .medium(@rules) {
+    @media only screen and (max-width: @breakpoint-md) {
+      @rules();
+    }
+  }
+  .large(@rules) {
+    @media only screen and (max-width: @breakpoint-lg) {
+      @rules();
+    }
+  }
+  .extra-large(@rules) {
+    @media only screen and (max-width: @breakpoint-xl) {
+      @rules();
+    }
+  }
+  .extra-extra-large(@rules) {
+    @media only screen and (max-width: @breakpoint-xxl) {
+      @rules();
+    }
+  }
+}

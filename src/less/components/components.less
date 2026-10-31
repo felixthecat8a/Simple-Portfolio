@@ -1,0 +1,56 @@
+@import './ui';
+@import './template';
+@import './cards';
+@import './spinner';
+
+// Docs Code Container
+@bg-code-container-header: darken(@color-theme, 33%);
+@txt-code-container-header: lighten(@color-theme, 42%);
+@bg-code-container-body: fade(@color-theme, 17%);
+// Docs Inline Code
+@bg-inline-code: #d3d3d3d3;
+@txt-inline-code: #3d3d3d;
+
+.code-containers() {
+  .code-wrapper {
+    background-color: @bg-code-container-body;
+    color: inherit;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    overflow: hidden;
+  }
+
+  .code-header {
+    background-color: @bg-code-container-header;
+    color: @txt-code-container-header;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  p code,
+  td code {
+    background-color: @bg-inline-code;
+    color: @txt-inline-code;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+  }
+}
+
+.ui-component-styles() {
+  #ui-components.buttons();
+  #ui-components.data-inputs();
+  #ui-components.interactive-inputs();
+  #ui-components.meters();
+}
+
+.template-component-styles() {
+  #template-components.forms();
+  #template-components.anchors();
+  #template-components.dialogs();
+  #template-components.tables();
+  #template-components.accordions();
+  .spinner-styles();
+  .code-containers();
+}

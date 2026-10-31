@@ -9,7 +9,7 @@
   margin: 0 0.25rem 0.5rem;
 }
 
-.button-attributes(@bg-color) when (iscolor(@bg-color)) {
+.button-color(@bg-color) when (iscolor(@bg-color)) {
   @bg-gradient: darken(@bg-color, 5%);
   cursor: pointer;
   border: none;
@@ -17,18 +17,21 @@
   text-align: center;
   background: linear-gradient(135deg, @bg-color, @bg-gradient);
   transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+
   &:hover:not(:disabled) {
     @bg-hover: lighten(@bg-color, 5%);
     background: linear-gradient(135deg, @bg-hover, @bg-color);
     transform: scale(1.01);
     box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.1);
   }
+
   &:active:not(:disabled) {
     @active-grad: darken(@bg-gradient, 5%);
     background: linear-gradient(135deg, @bg-gradient, @active-grad);
     transform: scale(0.99);
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   }
+
   &:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
@@ -43,7 +46,7 @@
   transform: none;
 }
 
-#ui-component-styles {
+#ui-components {
   .buttons() {
     @button-defaults: {
       primary: #007bff;
@@ -53,24 +56,30 @@
       warning: #dd5625;
       info: #17a2b8;
     };
+
     each(@button-defaults, {
       a.button-@{key} {
         text-decoration: none !important;
         &:extend(.box-attributes);
-        .button-attributes(@value);
+        .button-color(@value);
       }
+
+      label.button-@{key},
       button.button-@{key},
       input[type='reset'].button-@{key},
       input[type='submit'].button-@{key} {
         &:extend(.box-attributes);
-        .button-attributes(@value);
+        .button-color(@value);
       }
+
+      label.button-@{key}:disabled,
       button.button-@{key}:disabled,
       input[type='reset'].button-@{key}:disabled,
       input[type='submit'].button-@{key}:disabled {
         &:extend(.disabled-attributes);
       }
     });
+
     // button,
     // input[type='reset'],
     // input[type='submit'] {
@@ -79,33 +88,38 @@
     //     &:extend(.disabled-attributes);
     //   }
     // }
+
     button,
     input[type='reset'],
     input[type='submit'] {
       &:extend(.box-attributes);
     }
+
     button:disabled,
     input[type='reset']:disabled,
     input[type='submit']:disabled {
       &:extend(.disabled-attributes);
     }
+
     .disabled-link {
       &:extend(.disabled-attributes);
     }
+
     label.file-input-label {
       position: relative;
-      overflow: hidden;
       border: @border-gray-line;
+
       &:extend(.box-attributes);
+
       &:focus-within {
         outline: 2px solid currentColor;
         outline-offset: 2px;
       }
+
       input[type='file'] {
         position: absolute;
         left: 0;
         top: 0;
-        // inset: 0;
         opacity: 0;
         cursor: pointer;
         height: 100%;
@@ -141,6 +155,7 @@
         &:extend(.disabled-attributes);
       }
     }
+
     textarea {
       width: 100%;
       resize: vertical;
@@ -154,6 +169,7 @@
     input[type='color'] {
       cursor: pointer;
     }
+
     input[type='checkbox'],
     input[type='radio'] {
       accent-color: darkcyan;
@@ -162,6 +178,7 @@
       margin: 0.3em;
       vertical-align: middle;
     }
+
     input[type='color'] {
       background: none;
       appearance: auto;
@@ -170,7 +187,6 @@
       box-sizing: border-box;
       border: @border-gray-line;
       border-radius: 0.25em;
-      // padding: 2px;
     }
   }
 

@@ -1,0 +1,73 @@
+#card-styles {
+  .side-color(@border-color) {
+    border-left: 5px solid @border-color;
+  }
+
+  .alert-color(@color-txt, @color-bg, @color-side) {
+    padding: 0.75rem;
+    border-left: 4px solid;
+    border-radius: 0.375rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    background-color: @color-bg;
+    border-color: @color-side;
+    color: @color-txt;
+  }
+}
+
+.card-styles() {
+  .info-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    margin: 1em 0;
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    ul {
+      margin-left: 12px;
+    }
+  }
+
+  .side-green {
+    #card-styles.side-color(@color-green);
+  }
+
+  .side-blue {
+    #card-styles.side-color(@color-blue);
+  }
+
+  .side-orange {
+    #card-styles.side-color(@color-orange);
+  }
+
+  .side-yellow {
+    #card-styles.side-color(@color-yellow);
+  }
+
+  .side-red {
+    #card-styles.side-color(@color-red);
+  }
+
+  .alert-note,
+  .alert-blue {
+    #card-styles.alert-color(#0369a1, #e0f2feee, #0284c7);
+  }
+
+  .alert-warn,
+  .alert-orange {
+    #card-styles.alert-color(#b45309, #fef3c7ee, #d97706);
+  }
+
+  .alert-tip,
+  .alert-green {
+    #card-styles.alert-color(#166534, #dcfce7ee, #16a34a);
+  }
+
+  .alert-danger,
+  .alert-red {
+    #card-styles.alert-color(#991b1b, #fee2e2ee, #dc2626);
+  }
+}
