@@ -16,8 +16,8 @@ Create `.nycrc.json` in your project root:
 
 ```json
 {
-  "reporter": ["text", "html"],
   "all": true,
+  "reporter": ["text", "html"],
   "include": ["src/**/*.js"],
   "exclude": ["test/**"],
   "check-coverage": true,
