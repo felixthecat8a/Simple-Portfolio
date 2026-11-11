@@ -7,7 +7,6 @@
 ## Overview
 
 [LESS](https://lesscss.org/) is a stylesheet language that extends CSS with variables, mixins, nested rules, operations, and functions.
-
 These features make stylesheets easier to organize, reuse, and maintain.
 
 The LESS compiler converts `.less` files into standard CSS.
@@ -50,6 +49,8 @@ Run:
 ```shell
 yarn less
 ```
+
+or
 
 ```shell
 yarn less:min
