@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../src/favicon/favicon.ico" type="image/x-icon" />
-    <title>UI Element Samples</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon" />
+    <title>UI Element Sample</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header>
@@ -15,6 +15,7 @@
           <li><a href="#button-elements" class="page-link">Buttons</a></li>
           <li><a href="#select-element" class="page-link">Select</a></li>
           <li><a href="#input-elements" class="page-link">Inputs</a></li>
+          <li><a href="index.html">Portfolio</a></li>
         </ul>
       </nav>
     </header>
@@ -215,9 +216,10 @@
         <!-- Experimental -->
         <div class="info-card" id="image-input-elements">
           <h3>Image Input Elements</h3>
-          <p>&emsp;<em>Not Included: Create styles for image input elements.</em></p>
+          <p><em>Not Included: Create styles for image input elements.</em></p>
           <input type="image" id="image" alt="Login" src="" />
         </div>
+        <!-- /Experimental -->
       </section>
       <section id="dialog-elements">
         <h2>Dialogs</h2>
@@ -267,29 +269,6 @@
         <a href="https://github.com/felixthecat8a" target="_blank" class="page-link">GitHub</a>
       </p>
     </footer>
-
-    <label class="dark-mode-toggle">
-      <input type="checkbox" id="darkModeCheckbox" class="dark-mode-checkbox" />
-      <span id="slider">light</span>
-    </label>
-    <script>
-      const darkModeCheckbox = document.getElementById('darkModeCheckbox')
-      const darkModeText = document.getElementById('slider')
-      if (localStorage.getItem('darkMode') === 'true') {
-        darkModeCheckbox.checked = true
-        document.body.classList.add('dark-mode')
-        darkModeText.textContent = 'dark'
-      }
-      darkModeCheckbox.addEventListener('change', () => {
-        document.body.classList.toggle('dark-mode')
-        localStorage.setItem('darkMode', darkModeCheckbox.checked)
-        if (darkModeCheckbox.checked) {
-          darkModeText.textContent = 'dark'
-        } else {
-          darkModeText.textContent = 'light'
-        }
-      })
-    </script>
 
   </body>
 </html>

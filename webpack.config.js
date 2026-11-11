@@ -8,8 +8,8 @@ module.exports = (env, argv) => {
 
   return {
     entry: {
-      port: path.resolve(__dirname, 'src/js/port.js'),
-      docs: path.resolve(__dirname, 'src/js/docs.js'),
+      index: path.resolve(__dirname, 'src/js/port.js'),
+      sample: path.resolve(__dirname, 'src/js/ui.js'),
     },
 
     output: {
@@ -48,18 +48,18 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         title: 'Portfolio',
         filename: 'index.html',
-        template: 'src/pages/port.html',
+        template: 'src/html/port.html',
         favicon: 'src/favicon/favicon.ico',
-        chunks: ['port'],
+        chunks: ['index'],
         minify: isProduction,
       }),
 
       new HtmlWebpackPlugin({
-        title: 'Documentation',
-        filename: 'docs.html',
-        template: 'src/pages/docs.html',
+        title: 'UI Sample',
+        filename: 'sample.html',
+        template: 'src/html/ui.html',
         favicon: 'src/favicon/favicon.ico',
-        chunks: ['docs'],
+        chunks: ['sample'],
         minify: isProduction,
       }),
 
