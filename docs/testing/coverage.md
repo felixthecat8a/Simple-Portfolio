@@ -16,8 +16,8 @@ Create `.nycrc.json` in your project root:
 
 ```json
 {
-  "reporter": ["text", "html"],
   "all": true,
+  "reporter": ["text", "html"],
   "include": ["src/**/*.js"],
   "exclude": ["test/**"],
   "check-coverage": true,
@@ -41,18 +41,6 @@ Create `.nycrc.json` in your project root:
 | `statements` | Minimum statement coverage percentage. |
 
 **Note:** c8 supports `.nycrc.json` for its configuration, along with `.c8rc.json` and other supported formats. Confirm the filename and option support against the c8 version used by your project.
-
-### Using `--config` (Optional)
-
-You can explicitly select a configuration file instead of relying on automatic discovery:
-
-```bash
-yarn c8 --config .nycrc.json mocha
-```
-
-This is useful when you maintain multiple configurations or store them outside the project root.
-
-For a simple project, automatic discovery is usually sufficient.
 
 ## Run Coverage
 
