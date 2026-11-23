@@ -64,7 +64,70 @@ dist/
     └── style.css
 ```
 
+## Using Stylelint with LESS
+
+For LESS, you can use Stylelint to check your stylesheets for errors and enforce consistent coding conventions.
+Unlike CSS, LESS requires an additional parser because it introduces syntax that standard CSS parsers don't understand.
+
+### Install Stylelint, the standard configuration, and the LESS parser:
+```shell
+yarn add --dev stylelint stylelint-config-standard postcss-less
+```
+- Stylelint: Lints stylesheets and enforces coding conventions.
+- `stylelint-config-standard`: Provides a predefined set of recommended rules.
+- `postcss-less`: Allows Stylelint to parse LESS syntax.
+
+### Create a `stylelint.config.cjs` file in the project root:
+```js
+module.exports = {
+  extends: ['stylelint-config-standard'],
+  overrides: [
+    {
+      files: ['**/*.less'],
+      customSyntax: 'postcss-less',
+      rules: {
+        'at-rule-no-unknown': null,
+        'at-rule-prelude-no-invalid': null,
+        'at-rule-descriptor-value-no-unknown': null,
+        'declaration-property-value-no-unknown': null
+      }
+    }
+  ]
+}
+```
+
+Why disable these rules?
+
+Some standard Stylelint rules validate against CSS specifications and don't fully understand LESS-specific syntax.
+Disabling these rules for LESS files prevents false positives involving LESS variables, mixins, and functions.
+Other standard Stylelint rules remain enabled.
+
+### Add the following scripts to package.json:
+```json
+{
+  "scripts": {
+    "less": "lessc src/less/style.less dist/css/style.css",
+    "less:min": "lessc src/less/style.less dist/css/style.min.css --clean-css",
+    "lint:less": "stylelint \"src/less/**/*.less\"",
+    "lint:less:fix": "stylelint \"src/less/**/*.less\" --fix"
+  }
+}
+```
+
+### To check your LESS stylesheets:
+```shell
+yarn lint:less
+```
+To automatically fix supported issues:
+```shell
+yarn lint:less:fix
+```
+Stylelint will report any remaining problems in your terminal.
+
 ## References
 
 - [LESS Documentation](https://lesscss.org/)
 - [Clean CSS](https://github.com/clean-css/clean-css)
+- [Stylelint Documentation](https://stylelint.io/)
+- [Stylelint Standard Configuration](https://github.com/stylelint/stylelint-config-standard)
+- [PostCSS LESS](https://github.com/prettier/postcss-less)
