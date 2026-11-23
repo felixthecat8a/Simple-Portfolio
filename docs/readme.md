@@ -30,6 +30,7 @@ Notes and examples for building and running Node.js applications.
 
 ## Topics
 
+- [Editor Setup](server/editor.md) — Set up VSCode.
 - [Node.js Server](server/server.md) — Set up and run a Node.js server.
 - [Nodemon](server/nodemon.md) — Automatically restart applications during development.
 - [YAML Configuration](server/yaml.md) — Use YAML to organize application and server configuration.

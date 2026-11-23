@@ -1,5 +1,5 @@
-<!-- Visual Studio Code -->
-# Visual Studio Code
+<!-- Editor Setup -->
+# Editor Setup
 
 [![Edited with VS Code](https://img.shields.io/badge/edited_with-vscode-0078D4?style=for-the-badge)](https://code.visualstudio.com/)
 [![NodeJS](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoSize=auto&logoColor=white)](https://nodejs.org)
@@ -130,54 +130,36 @@ yarn add --dev eslint-config-prettier
 
 - Create an `eslint.config.mjs` file to define linting rules.
 
-#### `eslint.config.js`
+#### `eslint.config.mjs`
 
 ```js
-const { defineConfig, globalIgnores } = require('eslint/config')
-const js = require('@eslint/js')
-const globals = require('globals')
-const eslintConfigPrettier = require('eslint-config-prettier')
+import js from '@eslint/js'
+import globals from 'globals'
+import { defineConfig } from 'eslint/config'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
-module.exports = defineConfig([
-  js.configs.recommended,
-  globalIgnores(['coverage/**/*']),
+export default defineConfig([
   {
-    files: ['**/*.js'],
-    languageOptions: {
-      sourceType: 'commonjs',
-      globals: {
-        ...globals.commonjs,
-        ...globals.node,
-        ...globals.browser,
-        ...globals.mocha,
-        ...globals.chai,
-      },
-    },
+    files: ['**/*.{js,mjs,cjs}'],
+    plugins: { js },
+    extends: ['js/recommended'],
+    languageOptions: { globals: globals.browser },
     rules: {
-      /* Style / consistency */
-      eqeqeq: ["error", "always"],          // use === instead of ==
-      curly: ["error", "all"],              // enforce braces for all control blocks
-      semi: ["error", "always"],            // require semicolons
-      quotes: ["error", "double"],          // enforce double quotes
-      indent: ["error", 2],                 // 2-space indentation
-      "comma-dangle": ["error", "always-multiline"], // cleaner diffs in arrays/objects
-      /* Code quality */
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }], // warn but allow _var
-      "no-undef": "error",                    // disallow using undeclared vars
-      "no-console": "off",                    // allow console.log (useful in Node)
-      "no-var": "error",                      // prefer let/const
-      "prefer-const": "error",                // prefer const when possible
-      "no-empty": ["warn", { allowEmptyCatch: true }], // prevent accidental empty blocks
-      /* Best practices */
-      "handle-callback-err": "warn",          // remind to handle callback errors
-      "callback-return": "warn",              // avoid multiple callbacks
-      "consistent-return": "warn",            // functions should return consistently
-    },
-    linterOptions: {
-      noInlineConfig: false,
-      reportUnusedDisableDirectives: 'warn'
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'all'],
+      'no-console': 'off',
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },
+  {
+    files: ['server/**/*.js', 'test/**/*.js'],
+    languageOptions: { sourceType: 'commonjs', globals: { ...globals.commonjs, ...globals.node } },
+  },
+  {
+    files: ['**/*.test.js', '**/*.spec.js'],
+    languageOptions: { globals: { ...globals.mocha, ...globals.chai } },
+  },
+
   eslintConfigPrettier,
 ])
 ```
@@ -195,7 +177,7 @@ In the terminal:
 {
   "scripts": {
     "format": "prettier --write src/ server/ test/ dist/",
-    "lint": "eslint server/**/*.js test/**/*.js"
+    "lint": "eslint server/**/*.js test/**/*.js src/**/*.js"
   }
 }
 ```
