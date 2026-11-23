@@ -1,6 +1,6 @@
 import '../less/style.less'
 import './components'
-import ModalDialogHandler from './modules/modal'
+import ModalDialogHandler from './modules/handleModal'
 
 new ModalDialogHandler(
   'openButton00',
